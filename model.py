@@ -10,7 +10,8 @@ from keras.callbacks import ModelCheckpoint, LearningRateScheduler
 from keras import backend as keras
 
 
-def unet(pretrained_weights=None, input_size=(256, 256, 1), learning_rate=1e-4):
+def unet(pretrained_weights=None, input_size=(256, 256, 1), learning_rate=1e-4,loss="dice_coef_loss",
+         metrics=["dice_coef"]):
     inputs = Input(input_size)
     conv1 = Conv2D(64, 3, activation='relu', padding='same', kernel_initializer='he_normal')(inputs)
     conv1 = Conv2D(64, 3, activation='relu', padding='same', kernel_initializer='he_normal')(conv1)
@@ -58,7 +59,7 @@ def unet(pretrained_weights=None, input_size=(256, 256, 1), learning_rate=1e-4):
 
     model = Model(inputs=inputs, outputs=conv10)
 
-    model.compile(optimizer=Adam(lr=learning_rate), loss='binary_crossentropy', metrics=['accuracy'])
+    model.compile(optimizer=Adam(lr=learning_rate), loss=loss, metrics=metrics)
 
     # model.summary()
 
