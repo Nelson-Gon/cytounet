@@ -9,9 +9,21 @@ from keras.optimizers import *
 from keras.callbacks import ModelCheckpoint, LearningRateScheduler
 from keras import backend as keras
 
+# https://stackoverflow.com/questions/49785133/keras-dice-coefficient-loss-function-is-negative-and-increasing-with-epochs
+smooth = 1
+def dice_coef(y_true, y_pred):
+    y_true_f = K.flatten(y_true)
+    y_pred_f = K.flatten(y_pred)
+    intersection = K.sum(y_true_f * y_pred_f)
+    return (2. * intersection + smooth) / (K.sum(y_true_f) + K.sum(y_pred_f) + smooth)
 
-def unet(pretrained_weights=None, input_size=(256, 256, 1), learning_rate=1e-4,loss="dice_coef_loss",
-         metrics=["dice_coef"]):
+
+def dice_coef_loss(y_true, y_pred):
+  return 1 - dice_coef(y_true, y_pred)
+
+
+def unet(pretrained_weights=None, input_size=(256, 256, 1), learning_rate=1e-4,loss=dice_coef_loss,
+         metrics=[dice_coef]):
     inputs = Input(input_size)
     conv1 = Conv2D(64, 3, activation='relu', padding='same', kernel_initializer='he_normal')(inputs)
     conv1 = Conv2D(64, 3, activation='relu', padding='same', kernel_initializer='he_normal')(conv1)
