@@ -25,6 +25,8 @@ def dice_coef_loss(y_true, y_pred):
     return 1 - dice_coef(y_true, y_pred)
 
 
+# https://en.wikipedia.org/wiki/Batch_normalization
+# https://github.com/zhixuhao/unet/issues/98
 def unet(pretrained_weights=None, input_size=(256, 256, 1), learning_rate=1e-4, loss=dice_coef_loss,
          metrics=[dice_coef]):
     inputs = Input(input_size)
