@@ -1,3 +1,17 @@
+**IMPORTANT NOTICE**
+
+Most of the code in this repository was originally written by [zhuxihao](https://github.com/zhixuhao).
+
+NelsonGon decided to turn this from a fork to an actual repository because he had no intentions of merging any changes made here
+into the original repository. To view commits by NelsonGon, please do so via Github or `git` as you may find convenient.
+
+The purpose of this repository is to extend and fix known issues at [zhixuhao-unet](https://github.com/zhixuhao/unet/issues)
+and provide some useful functions.
+
+**End of Notice** 
+
+---
+
 # Implementation of deep learning framework -- Unet, using Keras
 
 The architecture was inspired by [U-Net: Convolutional Networks for Biomedical Image Segmentation](http://lmb.informatik.uni-freiburg.de/people/ronneber/u-net/).
