@@ -126,5 +126,4 @@ def saveResult(save_path, npyfile, flag_multi_class=False, num_class=2):
             img[img > 0.5] = 1
             img[img <= 0.5] = 0
             print(np.max(img), np.min(img))
-            io.imsave(os.path.
-                      (save_path, "%d_predict.png" % i), img)
+            io.imsave(os.path.join(save_path, "%d_predict.png" % i), img)
