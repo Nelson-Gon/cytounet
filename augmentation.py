@@ -1,4 +1,4 @@
-from ..data import *
+from .data import *
 import glob
 from skimage.io import ImageCollection
 
