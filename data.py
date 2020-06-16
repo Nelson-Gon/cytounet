@@ -117,8 +117,9 @@ def labelVisualize(num_class, color_dict, img):
 
 def saveResult(save_path, npyfile, flag_multi_class=False, num_class=2):
     for i, item in enumerate(npyfile):
+
         if flag_multi_class:
-            img = labelVisualize(num_class, COLOR_DICT, item)
+            return labelVisualize(num_class, COLOR_DICT, item)
         else:
             img = item[:, :, 0]
             print(np.max(img), np.min(img))
