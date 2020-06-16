@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 
 def show_augmented(directory="aug", image_suffix="png", image_type="masks", number=4):
     masks = ImageCollection(glob.glob(directory + "/mask*." + image_suffix))
-    original = ImageCollection(glob.glob(directory + "/image/*." + image_suffix))
+    original = ImageCollection(glob.glob(directory + "/image*." + image_suffix))
     if image_type == "masks":
         use_data = masks
     else:
