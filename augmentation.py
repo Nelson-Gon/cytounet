@@ -1,6 +1,7 @@
 from .data import *
 import glob
 from skimage.io import ImageCollection
+import matplotlib.pyplot as plt
 
 # augment data
 
