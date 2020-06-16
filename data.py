@@ -79,9 +79,9 @@ def trainGenerator(batch_size, train_path, image_folder, mask_folder, aug_dict, 
         yield (img, mask)
 
 
-def testGenerator(test_path, num_image=30, target_size=(256, 256), flag_multi_class=False, as_gray=True):
+def testGenerator(test_path, num_image=30, target_size=(256, 256), lag_multi_class=False, as_gray=True,image_suffix="tif"):
     for i in range(num_image):
-        img = io.imread(glob.glob(test_path + "/*.jpg"), as_gray=as_gray)
+        img = io.imread(glob.glob(test_path + "/*." + image_suffix)[i], as_gray=as_gray)
         img /= 255.
         img = trans.resize(img, target_size)
         img = np.reshape(img, img.shape + (1,)) if (not flag_multi_class) else img
@@ -115,7 +115,7 @@ def labelVisualize(num_class, color_dict, img):
     return img_out / 255.
 
 
-def saveResult(save_path, npyfile, flag_multi_class=False, num_class=2):
+def saveResult(save_path, npyfile, flag_multi_class=False, num_class=2, save_suffix="tif"):
     for i, item in enumerate(npyfile):
 
         if flag_multi_class:
@@ -126,4 +126,4 @@ def saveResult(save_path, npyfile, flag_multi_class=False, num_class=2):
             img[img > 0.5] = 1
             img[img <= 0.5] = 0
             print(np.max(img), np.min(img))
-            io.imsave(os.path.join(save_path, "%d_predict.png" % i), img)
+            io.imsave(os.path.join(save_path, "%d_predict." + save_suffix % i), img)
