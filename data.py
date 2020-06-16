@@ -23,7 +23,7 @@ Unlabelled = [0, 0, 0]
 COLOR_DICT = np.array([Sky, Building, Pole, Road, Pavement,
                        Tree, SignSymbol, Fence, Car, Pedestrian, Bicyclist, Unlabelled])
 
-
+#https://blog.keras.io/building-powerful-image-classification-models-using-very-little-data.html
 def adjustData(img, mask, flag_multi_class, num_class):
     if (flag_multi_class):
         img = img / 255.
@@ -117,5 +117,12 @@ def labelVisualize(num_class, color_dict, img):
 
 def saveResult(save_path, npyfile, flag_multi_class=False, num_class=2):
     for i, item in enumerate(npyfile):
-        img = labelVisualize(num_class, COLOR_DICT, item) if flag_multi_class else item[:, :, 0]
-        io.imsave(os.path.join(save_path, "image_%d_predict.tif" % (i)), img_as_uint(img))
+        if flag_multi_class:
+            img = labelVisualize(num_class, COLOR_DICT, item)
+        else:
+            img = item[:, :, 0]
+            print(np.max(img), np.min(img))
+            img[img > 0.5] = 1
+            img[img <= 0.5] = 0
+            print(np.max(img), np.min(img))
+            io.imsave(os.path.join(save_path, "%d_predict.png" % i), img)
