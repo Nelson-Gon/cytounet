@@ -9,3 +9,5 @@
 * Saving and image reading functions made more flexible to read/save any image file format.
 
 * Made most functions compatible with Keras >= 2.0 
+
+* Added `dice` loss and dice coefficient.
