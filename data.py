@@ -79,7 +79,7 @@ def trainGenerator(batch_size, train_path, image_folder, mask_folder, aug_dict, 
         yield (img, mask)
 
 
-def testGenerator(test_path, num_image=30, target_size=(256, 256), lag_multi_class=False, as_gray=True,image_suffix="tif"):
+def testGenerator(test_path, num_image=30, target_size=(256, 256), flag_multi_class=False, as_gray=True,image_suffix="tif"):
     for i in range(num_image):
         img = io.imread(glob.glob(test_path + "/*." + image_suffix)[i], as_gray=as_gray)
         img /= 255.
@@ -91,7 +91,7 @@ def testGenerator(test_path, num_image=30, target_size=(256, 256), lag_multi_cla
 
 def geneTrainNpy(image_path, mask_path, flag_multi_class=False, num_class=2, image_prefix="image", mask_prefix="mask",
                  image_as_gray=True, mask_as_gray=True):
-    image_name_arr = glob.glob(os.path.join(image_path, "%s*.png" % image_prefix))
+    image_name_arr = glob.glob(os.path.join(image_path, "{}*.png".format(image_prefix)))
     image_arr = []
     mask_arr = []
     for index, item in enumerate(image_name_arr):
@@ -115,15 +115,9 @@ def labelVisualize(num_class, color_dict, img):
     return img_out / 255.
 
 
-def saveResult(save_path, npyfile, flag_multi_class=False, num_class=2, save_suffix="tif"):
+def saveResult(save_path, npyfile, flag_multi_class=False, num_class=2, save_suffix="png"):
     for i, item in enumerate(npyfile):
+        img = labelVisualize(num_class, COLOR_DICT, item) if flag_multi_class else item[:, :, 0]
+        io.imsave(os.path.join(save_path, "image_{}_predict.{}".format(i, save_suffix)), img_as_uint(img))
 
-        if flag_multi_class:
-            return labelVisualize(num_class, COLOR_DICT, item)
-        else:
-            img = item[:, :, 0]
-            print(np.max(img), np.min(img))
-            img[img > 0.5] = 1
-            img[img <= 0.5] = 0
-            print(np.max(img), np.min(img))
-            io.imsave(os.path.join(save_path, "%d_predict." + save_suffix % i), img)
+
