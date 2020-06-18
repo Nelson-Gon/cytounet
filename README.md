@@ -8,13 +8,19 @@ into the original repository. To view commits by NelsonGon, please do so via Git
 The purpose of this repository is to extend and fix known issues at [zhixuhao-unet](https://github.com/zhixuhao/unet/issues)
 and provide some useful functions.
 
+To see example usage, please see [example_usage.ipynb](https://github.com/Nelson-Gon/unet/blob/master/example_usage.ipynb)
+
 To see a list of changes, please view [changelog.md](https://github.com/Nelson-Gon/unet/blob/master/changelog.md)
 
 **End of Notice** 
 
+**Related work**
+
+[Original Implementation](https://github.com/zhixuhao/unet)
+
 ---
 
-**Original Documentation by zhixuhao**
+**Original Documentation by zhixuhao kept here for legacy reasons**
 
 # Implementation of deep learning framework -- Unet, using Keras
 
