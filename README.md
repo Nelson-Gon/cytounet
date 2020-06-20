@@ -8,9 +8,20 @@ into the original repository. To view commits by NelsonGon, please do so via Git
 The purpose of this repository is to extend and fix known issues at [zhixuhao-unet](https://github.com/zhixuhao/unet/issues)
 and provide some useful functions.
 
+To install:
+
+```
+git clone https://github.com/Nelson-Gon/unet.git
+
+```
+
 To see example usage, please see [example_usage.ipynb](https://github.com/Nelson-Gon/unet/blob/master/example_usage.ipynb)
 
 To see a list of changes, please view [changelog.md](https://github.com/Nelson-Gon/unet/blob/master/changelog.md)
+
+You can raise issues here or on zhixuhao's repo. I monitor it for new issues although I am not in any 
+way part of the original development. I simply try to solve issues.
+
 
 **End of Notice** 
 
