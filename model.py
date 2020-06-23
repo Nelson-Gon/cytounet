@@ -16,6 +16,13 @@ smooth = 1
 
 
 def dice_coef(y_true, y_pred):
+    """
+
+    :param y_true: Train ground truth
+    :param y_pred: Predicted
+    :return: Returns the dice coefficient
+
+    """
     y_true_f = K.flatten(y_true)
     y_pred_f = K.flatten(y_pred)
     intersection = K.sum(y_true_f * y_pred_f)
@@ -23,6 +30,13 @@ def dice_coef(y_true, y_pred):
 
 
 def dice_coef_loss(y_true, y_pred):
+    """
+
+       :param y_true: Train ground truth
+       :param y_pred: Predicted
+       :return: Returns dice loss
+
+       """
     return 1 - dice_coef(y_true, y_pred)
 
 
@@ -30,6 +44,16 @@ def dice_coef_loss(y_true, y_pred):
 # https://github.com/zhixuhao/unet/issues/98
 def unet(pretrained_weights=None, input_size=(256, 256, 1), learning_rate=1e-4, loss=dice_coef_loss,
          metrics=[dice_coef]):
+    """
+
+    :param pretrained_weights: If a pretrained model exists, provide it here for fine tuning
+    :param input_size: size of the first layer(input_layer). Defaults to (256, 256, 1)
+    :param learning_rate: Learning rate to use with the Adam optimiser. Defaults to 1e-4
+    :param loss:  Loss function to use. Defaults to dice_coef_loss
+    :param metrics: Metrics to use. Defaults to dice_coef
+    :return: A unet model.
+
+    """
     inputs = Input(input_size)
     conv1 = Conv2D(64, 3, activation='relu', padding='same', kernel_initializer='he_normal')(inputs)
     conv1 = BatchNormalization()(conv1)

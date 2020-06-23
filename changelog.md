@@ -1,5 +1,9 @@
 # Changes to zhixuhao's original implementation
 
+* Updated module documentation 
+
+* `adjustData` was removed since it had known issues. It may be restored in the future. 
+
 * Fixed issues tha resulted in blank predictions 
 
 * Added `show_augmented` to show results of data augmentation
