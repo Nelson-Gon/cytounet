@@ -1,5 +1,7 @@
 # Changes to zhixuhao's original implementation
 
+* Fixed issues tha resulted in blank predictions 
+
 * Added `show_augmented` to show results of data augmentation
 
 * Added `BatchNormarmalisation` steps
@@ -11,3 +13,5 @@
 * Made most functions compatible with Keras >= 2.0 
 
 * Added `dice` loss and dice coefficient.
+
+
