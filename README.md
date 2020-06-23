@@ -7,8 +7,8 @@ originally written by [zhuxihao](https://github.com/zhixuhao). You can see the o
 
 **Why another repository and not a fork?**
 
-NelsonGon decided to turn this from a fork to an actual repository because I had no intentions of merging any changes made here
-into the original repository, mainly because the original repository seemed fairly inactive. 
+I decided to turn this from a fork to an actual repository because I did not intend to create a pull request at the original
+repository, mainly because the latter seemed fairly inactive.  
 
 You can view my commits via Github or `git` as you may find convenient, in case you are curious.
 
