@@ -75,19 +75,19 @@ def trainGenerator(batch_size, train_path, image_folder, mask_folder, aug_dict, 
         seed=seed)
     train_generator = zip(image_generator, mask_generator)
     for (img, mask) in train_generator:
-        img, mask = adjustData(img, mask, flag_multi_class, num_class)
+        #img, mask = adjustData(img, mask, flag_multi_class, num_class)
         yield (img, mask)
 
 
-def testGenerator(test_path, num_image=30, target_size=(256, 256), flag_multi_class=False, as_gray=True,image_suffix="tif"):
-    for i in range(num_image):
-        img = io.imread(glob.glob(test_path + "/*." + image_suffix)[i], as_gray=as_gray)
-        img = img / 255.
-        img = trans.resize(img, target_size)
-        img = np.reshape(img, img.shape + (1,)) if (not flag_multi_class) else img
-        img = np.reshape(img, (1,) + img.shape)
-        yield img
-
+def testGenerator(test_path, num_image=30, target_size=(256, 256),image_suffix="tif"):
+  img_width, img_height = target_size
+  for i in range(num_image):
+    img = image.load_img(glob.glob(test_path + "/*." + image_suffix)[i],
+                             target_size = (img_width, img_height), color_mode="grayscale")
+    img = image.img_to_array(img)
+    img = img / 255.
+    img = np.expand_dims(img, axis = 0)
+    yield img
 
 def geneTrainNpy(image_path, mask_path, flag_multi_class=False, num_class=2, image_prefix="image", mask_prefix="mask",
                  image_as_gray=True, mask_as_gray=True):
