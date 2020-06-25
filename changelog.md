@@ -1,6 +1,6 @@
 # Changes to zhixuhao's original implementation
 
-* `geneTrainNpY` was refactored and renamed `TrainAugmented`
+* `geneTrainNpY` was refactored and renamed `LoadAugmented`
 
 * Added `thresholdImages` to threshold masks(mostly). Please see [pyautocv](https://github.com/Nelson-Gon/pyautocv)
 for a more general and flexible way to manipulate images. 
