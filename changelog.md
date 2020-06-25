@@ -1,5 +1,14 @@
 # Changes to zhixuhao's original implementation
 
+* Added thresholdImages to threshold masks(mostly). Please see [pyautocv](https://github.com/Nelson-Gon/pyautocv)
+
+for a more general and flexible way to manipulate images. 
+
+* Added `saveImages`, a helper to save images as(by default) `.tif`. This is because biological
+images are normally tiff in nature.
+
+* Removed `savePredictions`. Use `saveImages` instead. 
+
 * Updated module documentation 
 
 * `adjustData` was removed since it had known issues. It may be restored in the future. 

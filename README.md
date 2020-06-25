@@ -34,8 +34,7 @@ git clone https://github.com/Nelson-Gon/unet.git
 
 **Sample Usage**
 
-The quickest way to get to speed with how the repository works is to take a look at the example notebooks
-
+The quickest way to get to speed with how the repository works is to take a look at the example notebooks 
 in the examples [folder](https://github.com/Nelson-Gon/unet/blob/master/examples).
 
 

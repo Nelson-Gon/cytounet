@@ -7,6 +7,8 @@ import glob
 import skimage.io as io
 import skimage.transform as trans
 from skimage import img_as_uint
+from PIL import Image
+import cv2
 Sky = [128,128,128]
 Building = [128,0,0]
 Pole = [192,192,128]
@@ -73,6 +75,12 @@ def trainGenerator(batch_size, train_path, image_folder, mask_folder, aug_dict, 
         yield (img, mask)
 
 
+
+
+
+
+
+
 def testGenerator(test_path, num_image=30, target_size=(256, 256), image_suffix="tif"):
     """
 
@@ -125,17 +133,36 @@ def labelVisualize(num_class, color_dict, img):
     return img_out / 255.
 
 
-def saveResult(save_path, npyfile, flag_multi_class=False, num_class=2, save_suffix="png"):
+def saveImages(directory, images, flag_multi_class=False,image_prefix = None, image_suffix="tif"):
     """
 
-    :param save_path: Path to save predictions
-    :param npyfile: npy file that holds the predictions
-    :param flag_multi_class: Logical for multi class
-    :param num_class: Number of classes
-    :param save_suffix: Format, defaults to png
-    :return: Saved predictions
+    :param Directory: Directory to which to save images
+    :param images: A list of image arrays
+    image_prefix: Optional prefix to add to images eg msk or img
+
+
+    :param image_suffix: Format, defaults to tif
+    :return: Saved images
 
     """
-    for i, item in enumerate(npyfile):
-        img = labelVisualize(num_class, COLOR_DICT, item) if flag_multi_class else item[:, :, 0]
-        io.imsave(os.path.join(save_path, "image_{}_predict.{}".format(i, save_suffix)), img_as_uint(img))
+    for index in range(len(images)):
+        read_image = Image.fromarray(images[index])
+        read_image.save(directory + "/" + image_prefix + str(index) + "." + image_suffix)
+
+def thresholdImages(image_path, image_format="tif", thresh_val=1, thresh_max=255):
+    """
+    This is mostly useful as a wrapper for masks(labels)
+
+    :param image_path: Path to images to threshold
+    :param image_format: Format to save images to
+    :param thresh_val: Thresholding threshold, defaults to 1
+    :param thresh_max: Maximum value of pixels, defaults to 255
+    :return: thresholded images
+
+    """
+    masks = glob.glob(image_path + "/*." + image_format)
+    masks_arrays = [cv2.imread(x, cv2.IMREAD_GRAYSCALE) for x in masks]
+    thresholded = [cv2.threshold(x, thresh_val, thresh_max,
+                                 cv2.THRESH_BINARY + cv2.THRESH_OTSU)[1] for x in masks_arrays]
+    return thresholded
+
