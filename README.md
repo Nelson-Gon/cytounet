@@ -1,3 +1,12 @@
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Nelson-Gon/unet/graphs/commit-activity)
+[![GitHub last commit](https://img.shields.io/github/last-commit/Nelson-Gon/unet.svg)](https://github.com/Nelson-Gon/unet/commits/master)
+[![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
+[![GitHub issues](https://img.shields.io/github/issues/Nelson-Gon/unet.svg)](https://GitHub.com/Nelson-Gon/unet/issues/)
+[![GitHub issues-closed](https://img.shields.io/github/issues-closed/Nelson-Gon/unet.svg)](https://GitHub.com/Nelson-Gon/unet/issues?q=is%3Aissue+is%3Aclosed)
+[![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/Nelson-Gon/pyautocv/blob/master/LICENSE)
+
+---
+
 **IMPORTANT NOTICE**
 
 It is important to first state that most of the code in this repository was 
