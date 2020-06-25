@@ -94,18 +94,20 @@ def testGenerator(test_path, num_image=30, target_size=(256, 256), image_suffix=
         img = np.expand_dims(img, axis=0)
         yield img
 
-
-def geneTrainNpy(image_path, mask_path, flag_multi_class=False, num_class=2, image_prefix="image", mask_prefix="mask",
-                 image_as_gray=True, mask_as_gray=True):
+def TrainAugmented(image_path, mask_path,image_prefix="image", mask_prefix="mask"):
     image_name_arr = glob.glob(os.path.join(image_path, "{}*.png".format(image_prefix)))
     image_arr = []
     mask_arr = []
     for index, item in enumerate(image_name_arr):
-        img = io.imread(item, as_gray=image_as_gray)
-        img = np.reshape(img, img.shape + (1,)) if image_as_gray else img
-        mask = io.imread(item.replace(image_path, mask_path).replace(image_prefix, mask_prefix), as_gray=mask_as_gray)
-        mask = np.reshape(mask, mask.shape + (1,)) if mask_as_gray else mask
-        img, mask = adjustData(img, mask, flag_multi_class, num_class)
+        img = image.load_img(item,color_mode="grayscale")
+        img = image.img_to_array(img)
+        img = img[:,:,0]
+        img = np.expand_dims(img, axis=0)
+        img = img.transpose(2, 1, 0) # make channels last
+        mask = image.load_img(item.replace(image_path, mask_path).replace(image_prefix, mask_prefix),color_mode="grayscale")
+        mask = image.img_to_array(mask)
+        mask = mask / 255.
+        mask = mask[:,:,0]
         image_arr.append(img)
         mask_arr.append(mask)
     image_arr = np.array(image_arr)
