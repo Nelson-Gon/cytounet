@@ -94,6 +94,7 @@ def testGenerator(test_path, num_image=30, target_size=(256, 256), image_suffix=
         img = np.expand_dims(img, axis=0)
         yield img
 
+
 def LoadAugmented(image_path, mask_path,image_prefix="image", mask_prefix="mask"):
     image_name_arr = glob.glob(os.path.join(image_path, "{}*.png".format(image_prefix)))
     image_arr = []
@@ -108,6 +109,8 @@ def LoadAugmented(image_path, mask_path,image_prefix="image", mask_prefix="mask"
         mask = image.img_to_array(mask)
         mask = mask / 255.
         mask = mask[:,:,0]
+        mask = np.expand_dims(mask, axis=0)
+        mask = mask.transpose(2, 1, 0) # make channels last
         image_arr.append(img)
         mask_arr.append(mask)
     image_arr = np.array(image_arr)
