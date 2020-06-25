@@ -139,8 +139,9 @@ def saveImages(directory, images, image_prefix=None, image_suffix="tif"):
     :return: Saved images
 
     """
-    for index in range(len(images)):
-        read_image = Image.fromarray(images[index][:, :, 0].astype(np.uint8))
+    for index, item in enumerate(images):
+        item = item[:, :, 0] if len(item.shape) == 3 else item
+        read_image = Image.fromarray(item.astype(np.uint8))
         read_image.save(directory + "/" + image_prefix + str(index) + "." + image_suffix)
 
 
