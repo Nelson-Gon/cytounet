@@ -9,21 +9,22 @@ import skimage.transform as trans
 from skimage import img_as_uint
 from PIL import Image
 import cv2
-Sky = [128,128,128]
-Building = [128,0,0]
-Pole = [192,192,128]
-Road = [128,64,128]
-Pavement = [60,40,222]
-Tree = [128,128,0]
-SignSymbol = [192,128,128]
-Fence = [64,64,128]
-Car = [64,0,128]
-Pedestrian = [64,64,0]
-Bicyclist = [0,128,192]
-Unlabelled = [0,0,0]
+
+Sky = [128, 128, 128]
+Building = [128, 0, 0]
+Pole = [192, 192, 128]
+Road = [128, 64, 128]
+Pavement = [60, 40, 222]
+Tree = [128, 128, 0]
+SignSymbol = [192, 128, 128]
+Fence = [64, 64, 128]
+Car = [64, 0, 128]
+Pedestrian = [64, 64, 0]
+Bicyclist = [0, 128, 192]
+Unlabelled = [0, 0, 0]
 
 COLOR_DICT = np.array([Sky, Building, Pole, Road, Pavement,
-                          Tree, SignSymbol, Fence, Car, Pedestrian, Bicyclist, Unlabelled])
+                       Tree, SignSymbol, Fence, Car, Pedestrian, Bicyclist, Unlabelled])
 
 
 # https://blog.keras.io/building-powerful-image-classification-models-using-very-little-data.html
@@ -73,12 +74,6 @@ def trainGenerator(batch_size, train_path, image_folder, mask_folder, aug_dict, 
     train_generator = zip(image_generator, mask_generator)
     for (img, mask) in train_generator:
         yield (img, mask)
-
-
-
-
-
-
 
 
 def testGenerator(test_path, num_image=30, target_size=(256, 256), image_suffix="tif"):
@@ -133,14 +128,13 @@ def labelVisualize(num_class, color_dict, img):
     return img_out / 255.
 
 
-def saveImages(directory, images, image_prefix = None, image_suffix="tif"):
+def saveImages(directory, images, image_prefix=None, image_suffix="tif"):
     """
 
-    :param Directory: Directory to which to save images
+
+    :param image_prefix: Optional prefix to add to images eg msk or img
+    :param directory: Directory to which to save images
     :param images: A list of image arrays
-    image_prefix: Optional prefix to add to images eg msk or img
-
-
     :param image_suffix: Format, defaults to tif
     :return: Saved images
 
@@ -148,6 +142,7 @@ def saveImages(directory, images, image_prefix = None, image_suffix="tif"):
     for index in range(len(images)):
         read_image = Image.fromarray(images[index][:, :, 0].astype(np.uint8))
         read_image.save(directory + "/" + image_prefix + str(index) + "." + image_suffix)
+
 
 def thresholdImages(image_path, image_format="tif", thresh_val=1, thresh_max=255):
     """
@@ -165,4 +160,3 @@ def thresholdImages(image_path, image_format="tif", thresh_val=1, thresh_max=255
     thresholded = [cv2.threshold(x, thresh_val, thresh_max,
                                  cv2.THRESH_BINARY + cv2.THRESH_OTSU)[1] for x in masks_arrays]
     return thresholded
-
