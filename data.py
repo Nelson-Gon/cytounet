@@ -133,7 +133,7 @@ def labelVisualize(num_class, color_dict, img):
     return img_out / 255.
 
 
-def saveImages(directory, images, flag_multi_class=False,image_prefix = None, image_suffix="tif"):
+def saveImages(directory, images, image_prefix = None, image_suffix="tif"):
     """
 
     :param Directory: Directory to which to save images
@@ -146,7 +146,7 @@ def saveImages(directory, images, flag_multi_class=False,image_prefix = None, im
 
     """
     for index in range(len(images)):
-        read_image = Image.fromarray(images[index])
+        read_image = Image.fromarray(images[index][:, :, 0].astype(np.uint8))
         read_image.save(directory + "/" + image_prefix + str(index) + "." + image_suffix)
 
 def thresholdImages(image_path, image_format="tif", thresh_val=1, thresh_max=255):
