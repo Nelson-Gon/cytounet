@@ -43,7 +43,7 @@ def dice_coef_loss(y_true, y_pred):
 # https://en.wikipedia.org/wiki/Batch_normalization
 # https://github.com/zhixuhao/unet/issues/98
 def unet(pretrained_weights=None, input_size=(256, 256, 1), learning_rate=1e-4, loss=dice_coef_loss,
-         metrics=[dice_coef]):
+         metrics=[dice_coef], dropout_rate = 0.2):
     """
 
     :param pretrained_weights: If a pretrained model exists, provide it here for fine tuning
@@ -74,14 +74,14 @@ def unet(pretrained_weights=None, input_size=(256, 256, 1), learning_rate=1e-4, 
     conv4 = BatchNormalization()(conv4)
     conv4 = Conv2D(512, 3, activation='relu', padding='same', kernel_initializer='he_normal')(conv4)
     conv4 = BatchNormalization()(conv4)
-    drop4 = Dropout(0.5)(conv4)
+    drop4 = Dropout(dropout_rate)(conv4)
     pool4 = MaxPooling2D(pool_size=(2, 2))(drop4)
 
     conv5 = Conv2D(1024, 3, activation='relu', padding='same', kernel_initializer='he_normal')(pool4)
     conv5 = BatchNormalization()(conv5)
     conv5 = Conv2D(1024, 3, activation='relu', padding='same', kernel_initializer='he_normal')(conv5)
     conv5 = BatchNormalization()(conv5)
-    drop5 = Dropout(0.5)(conv5)
+    drop5 = Dropout(dropout_rate)(conv5)
 
     up6 = Conv2D(512, 2, activation='relu', padding='same', kernel_initializer='he_normal')(
         UpSampling2D(size=(2, 2))(drop5))
