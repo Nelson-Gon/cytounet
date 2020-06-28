@@ -132,7 +132,6 @@ def labelVisualize(num_class, color_dict, img):
         img_out[img == i, :] = color_dict[i]
     return img_out / 255.
 
-
 def saveImages(directory, images, image_prefix=None, image_suffix="tif"):
     """
 
@@ -145,10 +144,10 @@ def saveImages(directory, images, image_prefix=None, image_suffix="tif"):
 
     """
     for index, item in enumerate(images):
-        item = item[:, :, 0] if len(item.shape) == 3 else item
+        # needed for PIL
+        item = (item * 255) [:, :, 0] if len(item.shape) == 3 else (item * 255)
         read_image = Image.fromarray(item.astype(np.uint8))
         read_image.save(directory + "/" + image_prefix + str(index) + "." + image_suffix)
-
 
 def thresholdImages(image_path, image_format="tif", thresh_val=1, thresh_max=255):
     """
