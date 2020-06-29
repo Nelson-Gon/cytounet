@@ -1,7 +1,14 @@
-# Changes to zhixuhao's original implementation
+# Changes to the original [implementation](https://github.com/zhixuhao/unet). 
+
+
+* `show_augmented` was renamed to `show_images` and refactored as a more general method not limited
+
+to just augmented images. A `cmap` argument was also added for more flexibility. 
 
 * Introduced a separate save method for images and predictions. Use `saveImages` and `savePredictions`
 respectively. 
+
+---
 
 * Fixed issues with information loss following saving of predictions. 
 
@@ -14,6 +21,8 @@ for a more general and flexible way to manipulate images.
 images are normally tiff in nature.
 
 * Removed `savePredictions`. Use `saveImages` instead. 
+
+---
 
 * Updated module documentation 
 
