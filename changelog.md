@@ -1,5 +1,8 @@
 # Changes to zhixuhao's original implementation
 
+* Introduced a separate save method for images and predictions. Use `saveImages` and `savePredictions`
+respectively. 
+
 * Fixed issues with information loss following saving of predictions. 
 
 * `geneTrainNpY` was refactored and renamed `LoadAugmented`

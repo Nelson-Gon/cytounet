@@ -132,7 +132,7 @@ def labelVisualize(num_class, color_dict, img):
         img_out[img == i, :] = color_dict[i]
     return img_out / 255.
 
-def saveImages(directory, images, image_prefix=None, image_suffix="tif"):
+def savePredictions(directory, images, image_prefix=None, image_suffix="tif"):
     """
 
 
@@ -148,6 +148,24 @@ def saveImages(directory, images, image_prefix=None, image_suffix="tif"):
         item = (item * 255) [:, :, 0] if len(item.shape) == 3 else (item * 255)
         read_image = Image.fromarray(item.astype(np.uint8))
         read_image.save(directory + "/" + image_prefix + str(index) + "." + image_suffix)
+
+
+def saveImages(directory, images, image_prefix=None, image_suffix="tif"):
+    """
+
+
+    :param image_prefix: Optional prefix to add to images eg msk or img
+    :param directory: Directory to which to save images
+    :param images: A list of image arrays
+    :param image_suffix: Format, defaults to tif
+    :return: Saved images
+
+    """
+    for index, item in enumerate(images):
+      item = item[:, :, 0] if len(item.shape) == 3 else item
+      read_image = Image.fromarray(item.astype(np.uint8))
+      read_image.save(directory + "/" + image_prefix + str(index) + "." + image_suffix)
+
 
 def thresholdImages(image_path, image_format="tif", thresh_val=1, thresh_max=255):
     """
