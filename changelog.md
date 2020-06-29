@@ -3,7 +3,8 @@
 
 * `show_augmented` was renamed to `show_images` and refactored as a more general method not limited
 
-to just augmented images. A `cmap` argument was also added for more flexibility. 
+to just augmented images. A `cmap` argument was also added for more flexibility. This replaces `labelVisualize`
+which has now been dropped. 
 
 * Introduced a separate save method for images and predictions. Use `saveImages` and `savePredictions`
 respectively. 

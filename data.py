@@ -118,19 +118,7 @@ def LoadAugmented(image_path, mask_path,image_prefix="image", mask_prefix="mask"
     return image_arr, mask_arr
 
 
-def labelVisualize(num_class, color_dict, img):
-    """
 
-    :param num_class: Number of classses
-    :param color_dict: A dictionary to define colors for visualization
-    :param img: An image to visualise
-    :return: A visualisation of the image
-    """
-    img = img[:, :, 0] if len(img.shape) == 3 else img
-    img_out = np.zeros(img.shape + (3,))
-    for i in range(num_class):
-        img_out[img == i, :] = color_dict[i]
-    return img_out / 255.
 
 def savePredictions(directory, images, image_prefix=None, image_suffix="tif"):
     """
