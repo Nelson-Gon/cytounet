@@ -167,7 +167,7 @@ def saveImages(directory, images, image_prefix=None, image_suffix="tif"):
       read_image.save(directory + "/" + image_prefix + str(index) + "." + image_suffix)
 
 
-def thresholdImages(image_path, image_format="tif", thresh_val=1, thresh_max=255):
+def thresholdImages(image_path, image_format="tif", thresh_val=127, thresh_max=255):
     """
     This is mostly useful as a wrapper for masks(labels)
 
