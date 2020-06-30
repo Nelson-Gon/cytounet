@@ -1,5 +1,8 @@
 # Changes to the original [implementation](https://github.com/zhixuhao/unet). 
 
+* Initiated ability to install with `pip` and `setup.py`.
+
+---
 
 * `show_augmented` was renamed to `show_images` and refactored as a more general method not limited
 
