@@ -7,29 +7,6 @@
 
 ---
 
-**IMPORTANT NOTICE**
-
-It is important to first state that most of the code in this repository was 
-originally written by [zhuxihao](https://github.com/zhixuhao). You can see the original implementation
-[here](https://github.com/zhixuhao/unet/). At the time of writing, this was licensed under the MIT 
-[license](https://github.com/zhixuhao/unet/blob/b45af4d458437d8281cc218a07fd4380818ece4a/LICENSE). 
-
-**Why another repository and not a fork?**
-
-I decided to turn this from a fork to an actual repository because I did not intend to create a pull request at the original
-repository, mainly because the latter seemed fairly inactive.  
-
-You can view my commits via Github or `git` as you may find convenient, in case you are curious.
-
-Alternatively, take a look at the [change log](https://github.com/Nelson-Gon/unet/blob/master/changelog.md) for a detailed list of 
-changes from the original implementation. 
-
-The **overall purpose of this repository** is to:
-1. Extend the original implementation
- 
-2. Fix known issues at [zhixuhao-unet](https://github.com/zhixuhao/unet/issues)
-
-----
 
 **Installation**
 
@@ -43,22 +20,34 @@ git clone https://github.com/Nelson-Gon/unet.git
 
 **Sample Usage**
 
-The quickest way to get to speed with how the repository works is to take a look at the example notebooks 
-in the examples [folder](https://github.com/Nelson-Gon/unet/blob/master/examples).
+Sample usage is shown in a Colab notebook available in the 
+examples [folder](https://github.com/Nelson-Gon/unet/blob/master/examples/example_usage.ipynb).
 
 
 **To raise an issue or question**
 
+Please raise an issue [here](https://github.com/Nelson-Gon/unet/issues) if you have any discussion, criticism,
 
+or bug reports. 
 
-You can either raise issues here or at zhixuhao's repo. I monitor the latter for new issues although I am not in any 
-way part of the original development. 
+Thank you very much. 
 
 ---
 
-**Credit(s)**
+**Credits**
 
-[Original Implementation](https://github.com/zhixuhao/unet)
+This repository is a clone of [zhuxihao](https://github.com/zhixuhao)'s  original 
+unet [implementation](https://github.com/zhixuhao/unet/).
 
-[U-Net: Convolutional Networks for Biomedical Image Segmentation](http://lmb.informatik.uni-freiburg.de/people/ronneber/u-net/)
+This repository has considerably diverged from the original implementation hence the need
+to distribute it separately. 
+
+This decision was taken in part due to the relative inactivity of the original implementation which would have made
+it harder to collaborate. Please take a look at the list of changes from the original implementation
+[here]https://github.com/Nelson-Gon/unet/blob/master/changelog.md). 
+
+The Unet algorithm was introduced by Ronneberger et al. in their 
+[paper](http://lmb.informatik.uni-freiburg.de/people/ronneber/u-net/).
+
+
 
