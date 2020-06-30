@@ -18,7 +18,8 @@ def show_images(directory="aug/mask", image_suffix="png",number=4, cmap="gray"):
     :return: A plot of images as requested.
 
     """
-    images = ImageCollection(glob.glob(directory + "*." + image_suffix))
+    # should really use os and sys to join paths
+    images = ImageCollection(glob.glob(directory + "/*." + image_suffix))
 
     if number % 2 != 0:
         raise ValueError("Only an even number of images can be shown")
