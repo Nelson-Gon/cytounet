@@ -1,3 +1,6 @@
+![Stage](https://www.repostatus.org/badges/latest/wip.svg) 
+![Test Install](https://github.com/Nelson-Gon/unet/workflows/Test%20Install/badge.svg)
+![Travis Build](https://travis-ci.com/Nelson-Gon/unet.svg?branch=master)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Nelson-Gon/unet/graphs/commit-activity)
 [![GitHub last commit](https://img.shields.io/github/last-commit/Nelson-Gon/unet.svg)](https://github.com/Nelson-Gon/unet/commits/master)
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)

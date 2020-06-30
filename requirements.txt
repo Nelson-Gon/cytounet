@@ -1,7 +1,8 @@
-tensorflow==2.2.0
+tensorflow>=2.0.0 #actual 2.2.0
 matplotlib>=3.0.0 # actual is 3.2.1
-scikit-image==0.16.2
-numpy==1.18.5
-Keras==2.3.1
-Pillow==7.0.0
-opencv-python==4.2.0.32
+scikit-image>=0.15.0 # actual is 0.16.2
+numpy>=1.16.0 # actual is 1.18.1
+Keras>=2.2.0 # actual is 2.3.2
+Pillow>=6.0.0 # actual is 7.0.0
+opencv-python>=4.0.0.32 # actual is 4.2.0.32
+
