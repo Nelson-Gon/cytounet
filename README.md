@@ -21,6 +21,14 @@ git clone https://github.com/Nelson-Gon/unet.git
 
 ```
 
+Or:
+
+```python
+
+pip install git+https://github.com/Nelson-Gon/unet.git
+
+```
+
 **Sample Usage**
 
 Sample usage is shown in a Colab notebook available in the 

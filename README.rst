@@ -1,5 +1,20 @@
 
 
+.. image:: https://www.repostatus.org/badges/latest/wip.svg
+   :target: https://www.repostatus.org/badges/latest/wip.svg
+   :alt: Stage
+ 
+
+.. image:: https://github.com/Nelson-Gon/unet/workflows/Test%20Install/badge.svg
+   :target: https://github.com/Nelson-Gon/unet/workflows/Test%20Install/badge.svg
+   :alt: Test Install
+
+
+.. image:: https://travis-ci.com/Nelson-Gon/unet.svg?branch=master
+   :target: https://travis-ci.com/Nelson-Gon/unet.svg?branch=master
+   :alt: Travis Build
+
+
 .. image:: https://img.shields.io/badge/Maintained%3F-yes-green.svg
    :target: https://GitHub.com/Nelson-Gon/unet/graphs/commit-activity
    :alt: Maintenance
@@ -39,6 +54,13 @@ To install:
 .. code-block::
 
    git clone https://github.com/Nelson-Gon/unet.git
+
+Or:
+
+.. code-block:: python
+
+
+   pip install git+https://github.com/Nelson-Gon/unet.git
 
 **Sample Usage**
 
