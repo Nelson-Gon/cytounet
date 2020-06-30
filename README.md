@@ -23,6 +23,25 @@ git clone https://github.com/Nelson-Gon/unet.git
 Sample usage is shown in a Colab notebook available in the 
 examples [folder](https://github.com/Nelson-Gon/unet/blob/master/examples/example_usage.ipynb).
 
+**Is it supported?**
+
+A checked box indicates support. You can either add more feature requests here or tackle unchecked boxes and make
+a pull request to add such support. 
+
+- [x] Single class segmentation
+
+- [x] Grayscale images
+
+- [ ] Multi-class segmentation
+
+- [ ]  Colored image input
+
+- [ ] COCO Datasets 
+
+- [ ] CSV Based Annotations
+
+- [ ] XML Based Annotations 
+
 
 **To raise an issue or question**
 
@@ -44,10 +63,9 @@ to distribute it separately.
 
 This decision was taken in part due to the relative inactivity of the original implementation which would have made
 it harder to collaborate. Please take a look at the list of changes from the original implementation
-[here]https://github.com/Nelson-Gon/unet/blob/master/changelog.md). 
+[here](https://github.com/Nelson-Gon/unet/blob/master/changelog.md). 
 
-The Unet algorithm was introduced by Ronneberger et al. in their 
-[paper](http://lmb.informatik.uni-freiburg.de/people/ronneber/u-net/).
+The Unet algorithm was introduced by Ronneberger et al. in their [paper](http://lmb.informatik.uni-freiburg.de/people/ronneber/u-net/).
 
 
 
