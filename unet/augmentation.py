@@ -10,7 +10,7 @@ def show_images(directory="aug/mask", image_suffix="png",number=4, cmap="gray"):
     """
 
     :param directory: Directory holding images. Deafults to aug/mask to plot augmented masks.
-    Adjust as necessary
+    Adjust as necessary. Can be a list of images instead.
     :param image_suffix: Image format, defaults to png
     :param image_type: Masks or original. Defaults to masks
     :param number: Number of images to show, only even numbers are supported
@@ -19,7 +19,10 @@ def show_images(directory="aug/mask", image_suffix="png",number=4, cmap="gray"):
 
     """
     # should really use os and sys to join paths
-    images = ImageCollection(glob.glob(directory + "/*." + image_suffix))
+    if isinstance(directory, list):
+        images = directory
+    else:
+        images = ImageCollection(glob.glob(directory + "/*." + image_suffix))
 
     if number % 2 != 0:
         raise ValueError("Only an even number of images can be shown")
