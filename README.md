@@ -31,8 +31,15 @@ pip install git+https://github.com/Nelson-Gon/unet.git
 
 **Sample Usage**
 
-Sample usage is shown in a Colab notebook available in the 
-examples [folder](https://github.com/Nelson-Gon/unet/blob/master/examples/example_usage.ipynb).
+Please see the following examples:
+
+* Typical Pipeline available [here](https://github.com/Nelson-Gon/unet/blob/master/examples/example_usage.ipynb)
+
+* A biological example showing segmentation of DIC images of embryos available [here](https://github.com/Nelson-Gon/unet/blob/master/examples/embryos.ipynb)
+
+
+For more examples or to add your own, please see the 
+examples [folder](https://github.com/Nelson-Gon/unet/blob/master/examples).
 
 **Is it supported?**
 
