@@ -68,12 +68,15 @@ Thank you very much.
 
 **References**
 
-Mouse Embryos [Dataset obtained](https://github.com/Nelson-Gon/unet/tree/master/examples/BBBC003_v1) from Broad Bioimage Benchmark Collection.
+* Mouse Embryos [Dataset obtained](https://github.com/Nelson-Gon/unet/tree/master/examples/BBBC003_v1) from Broad Bioimage Benchmark Collection.
 [Source](https://data.broadinstitute.org/bbbc/BBBC003/).
+
+* Red Blood Cell [Images](https://github.com/Nelson-Gon/unet/tree/master/examples/BBBC009_v1) provided by Anne 
+Carpenter and Roger Wiegand, available [here](https://data.broadinstitute.org/bbbc/BBBC009/)
 
 **Credits**
 
-This repository started out as a clone of [zhuxihao](https://github.com/zhixuhao)'s  original 
+* This repository started out as a clone of [zhuxihao](https://github.com/zhixuhao)'s  original 
 unet [implementation](https://github.com/zhixuhao/unet/).
 
 This repository has considerably diverged from the original implementation hence the need
@@ -83,7 +86,7 @@ This decision was taken in part due to the relative inactivity of the original i
 it harder to collaborate. Please take a look at the list of changes from the original implementation
 [here](https://github.com/Nelson-Gon/unet/blob/master/changelog.md). 
 
-The Unet algorithm was introduced by Ronneberger et al. in their [paper](http://lmb.informatik.uni-freiburg.de/people/ronneber/u-net/).
+* The Unet algorithm was introduced by Ronneberger et al. in their [paper](http://lmb.informatik.uni-freiburg.de/people/ronneber/u-net/).
 
 
 
