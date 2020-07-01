@@ -64,9 +64,14 @@ Thank you very much.
 
 ---
 
+**References**
+
+Mouse Embryos [Dataset obtained](https://github.com/Nelson-Gon/unet/tree/master/examples/BBBC003_v1) from Broad Bioimage Benchmark Collection.
+[Source](https://data.broadinstitute.org/bbbc/BBBC003/).
+
 **Credits**
 
-This repository is a clone of [zhuxihao](https://github.com/zhixuhao)'s  original 
+This repository started out as a clone of [zhuxihao](https://github.com/zhixuhao)'s  original 
 unet [implementation](https://github.com/zhixuhao/unet/).
 
 This repository has considerably diverged from the original implementation hence the need
