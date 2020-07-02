@@ -2,15 +2,14 @@ from .data import *
 import glob
 from skimage.io import ImageCollection
 import matplotlib.pyplot as plt
-
-
+import numpy as np
 
 
 def show_images(directory="aug/mask", image_suffix="png",number=4, cmap="gray"):
     """
 
     :param directory: Directory holding images. Deafults to aug/mask to plot augmented masks.
-    Adjust as necessary. Can be a list of images instead.
+    Adjust as necessary. Can be a list of images or a numpy ndarray instead.
     :param image_suffix: Image format, defaults to png
     :param image_type: Masks or original. Defaults to masks
     :param number: Number of images to show, only even numbers are supported
@@ -19,8 +18,8 @@ def show_images(directory="aug/mask", image_suffix="png",number=4, cmap="gray"):
 
     """
     # should really use os and sys to join paths
-    if isinstance(directory, list):
-        images = directory
+    if isinstance(directory, list) or isinstance(directory, np.ndarray):
+        images = [image[:,:,0] for image in directory]
     else:
         images = ImageCollection(glob.glob(directory + "/*." + image_suffix))
 

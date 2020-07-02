@@ -89,7 +89,7 @@ a pull request to add such support.
   [x] Grayscale images
 
 * 
-  [ ] Model Validation
+  [x] Model Validation
 
 * 
   [ ] Multi-class segmentation

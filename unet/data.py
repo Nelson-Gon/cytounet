@@ -95,6 +95,36 @@ def testGenerator(test_path, num_image=30, target_size=(256, 256), image_suffix=
         yield img
 
 
+def validGenerator(batch_size, validation_path, image_folder, mask_folder, aug_dict, image_color_mode="grayscale",
+                   mask_color_mode="grayscale", image_save_prefix="image", mask_save_prefix="mask",
+                   save_to_dir=None, target_size=(256, 256), seed=1):
+    image_datagen = ImageDataGenerator(**aug_dict)
+    mask_datagen = ImageDataGenerator(**aug_dict)
+    image_generator = image_datagen.flow_from_directory(
+        validation_path,
+        classes=[image_folder],
+        class_mode=None,
+        color_mode=image_color_mode,
+        target_size=target_size,
+        batch_size=batch_size,
+        save_to_dir=save_to_dir,
+        save_prefix=image_save_prefix,
+        seed=seed)
+    mask_generator = mask_datagen.flow_from_directory(
+        validation_path,
+        classes=[mask_folder],
+        class_mode=None,
+        color_mode=mask_color_mode,
+        target_size=target_size,
+        batch_size=batch_size,
+        save_to_dir=save_to_dir,
+        save_prefix=mask_save_prefix,
+        seed=seed)
+    valid_generator = zip(image_generator, mask_generator)
+    for (img, mask) in valid_generator:
+        yield (img, mask)
+
+
 def LoadAugmented(image_path, mask_path,image_prefix="image", mask_prefix="mask"):
     image_name_arr = glob.glob(os.path.join(image_path, "{}*.png".format(image_prefix)))
     image_arr = []
