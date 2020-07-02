@@ -1,15 +1,15 @@
 from setuptools import setup, find_packages
 
 
-setup(name='unet',
+setup(name='cytounet',
       version="0.1.0",
-      description='A Keras-Tensorflow Segmentation Pipeline',
-      url="http://www.github.com/Nelson-Gon/unet",
+      description='A Keras-Tensorflow based Unet for Cyto Image Segmentation',
+      url="http://www.github.com/Nelson-Gon/cytounet",
       download_url=None,
       author='Nelson Gonzabato',
       author_email='gonzabato@hotmail.com',
       license='MIT',
-      keywords="keras tensorflow images image-analysis deep-learning",
+      keywords="keras tensorflow images image-analysis deep-learning biology",
       packages=find_packages(),
       long_description=open('README.md').read(),
       python_requires='>=3.6',

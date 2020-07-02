@@ -1,4 +1,12 @@
-# Changes to the original [implementation](https://github.com/zhixuhao/unet). 
+# cytounet's changelog. 
+
+* Renamed repository to `cytounet` to reflect the havy focus on biological images.
+
+* Initiated support for validation via `validGenerator`.
+
+* Fixed issues with `show_images` failing to load `numpy` `ndarray` images.   
+
+---
 
 * Initiated ability to install with `pip` and `setup.py`.
 

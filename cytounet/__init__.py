@@ -1,6 +1,6 @@
 """
 
-A Keras-Tensorflow Image Segmentation Pipeline
+A Keras-Tensorflow based Unet for Cyto Image Segmentation
 
 .. author: Nelson Gonzabato
 

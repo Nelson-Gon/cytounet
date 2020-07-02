@@ -1,6 +1,6 @@
 # Contributing to unet
 
-This document provides guidelines for contributions to unet.
+This document provides guidelines for contributions to `cytounet`.
 
 **Kinds of contribution**
 
@@ -17,7 +17,7 @@ Please also update the docs using `sphinx`
 
 **Pull Requests**
 
-* Please raise an issue for discussion and reproducibility checks at [issues](https://github.com/Nelson-Gon/unet/issues)
+* Please raise an issue for discussion and reproducibility checks at [issues](https://github.com/Nelson-Gon/cytounet/issues)
 
 * Once the bug/enhancement is approved, please create a Git branch for the pull request.
 
