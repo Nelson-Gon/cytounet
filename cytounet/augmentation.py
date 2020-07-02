@@ -18,8 +18,9 @@ def show_images(directory="aug/mask", image_suffix="png",number=4, cmap="gray"):
 
     """
     # should really use os and sys to join paths
-    if isinstance(directory, list) or isinstance(directory, np.ndarray):
-        images = [image[:,:,0] for image in directory]
+    if isinstance(directory, (list,  np.ndarray)):
+        # convert to viewable format by imshow, only considers len 3 for now
+        images = [image[:, :, 0] for image in directory]
     else:
         images = ImageCollection(glob.glob(directory + "/*." + image_suffix))
 
@@ -30,7 +31,7 @@ def show_images(directory="aug/mask", image_suffix="png",number=4, cmap="gray"):
 
     for i in range(number):
         plt.subplot(number / 2, number / 2, i + 1)
-        plt.imshow(images[i], cmap = cmap)
+        plt.imshow(images[i], cmap=cmap)
 
 
 plt.show()
