@@ -20,9 +20,9 @@
    :alt: Travis Build
 
 
-.. image:: https://badge.fury.io/cytounet.svg
-   :target: https://pypi.python.org/pypi/cytounet/
-   :alt: PyPI version fury.io
+.. image:: https://badge.fury.io/py/cytounet.svg
+   :target: https://badge.fury.io/py/cytounet
+   :alt: PyPI version
 
 
 .. image:: https://img.shields.io/pypi/l/cytounet.svg
@@ -40,7 +40,7 @@
    :alt: PyPI download week
 
 
-.. image:: https://img.shields.io/pypi/dd/pyautocv.svg
+.. image:: https://img.shields.io/pypi/dd/cytounet.svg
    :target: https://pypi.python.org/pypi/cytounet/
    :alt: PyPI download day
 
