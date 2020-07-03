@@ -1,5 +1,9 @@
 # cytounet's changelog. 
 
+* Release 0.1.0
+
+---
+
 * Renamed repository to `cytounet` to reflect the havy focus on biological images.
 
 * Initiated support for validation via `validGenerator`.

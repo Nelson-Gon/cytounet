@@ -1,23 +1,37 @@
 ![Stage](https://www.repostatus.org/badges/latest/wip.svg) 
 ![Test Install](https://github.com/Nelson-Gon/cytounet/workflows/Test%20Install/badge.svg)
 ![Travis Build](https://travis-ci.com/Nelson-Gon/cytounet.svg?branch=master)
+[![PyPI version fury.io](https://badge.fury.io/cytounet.svg)](https://pypi.python.org/pypi/cytounet/)
+[![PyPI license](https://img.shields.io/pypi/l/cytounet.svg)](https://pypi.python.org/pypi/cytounet/)
+[![PyPI download Month](https://img.shields.io/pypi/dm/cytounet.svg)](https://pypi.python.org/pypi/cytounet/)
+[![PyPI download week](https://img.shields.io/pypi/dw/cytounet.svg)](https://pypi.python.org/pypi/cytounet/)
+[![PyPI download day](https://img.shields.io/pypi/dd/pyautocv.svg)](https://pypi.python.org/pypi/cytounet/)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Nelson-Gon/cytounet/graphs/commit-activity)
 [![GitHub last commit](https://img.shields.io/github/last-commit/Nelson-Gon/cytounet.svg)](https://github.com/Nelson-Gon/cytounet/commits/master)
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
 [![GitHub issues](https://img.shields.io/github/issues/Nelson-Gon/cytounet.svg)](https://GitHub.com/Nelson-Gon/cytounet/issues/)
 [![GitHub issues-closed](https://img.shields.io/github/issues-closed/Nelson-Gon/cytounet.svg)](https://GitHub.com/Nelson-Gon/cytounet/issues?q=is%3Aissue+is%3Aclosed)
-[![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/Nelson-Gon/cytounet/blob/master/LICENSE)
+
 
 ---
 
 
 **Installation**
 
+From `PyPI`:
 
-To install:
+```
+
+pip install cytounet
+
+```
+
+
+From source or to use without installing locally:
 
 ```
 git clone https://github.com/Nelson-Gon/cytounet.git
+# proceed with usual source build procedure
 
 ```
 
