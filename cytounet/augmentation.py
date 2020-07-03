@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-def show_images(directory="aug/mask", image_suffix="png",number=4, cmap="gray"):
+def show_images(directory="aug/mask", image_suffix="png", number=4, cmap="gray"):
     """
 
     :param directory: Directory holding images. Deafults to aug/mask to plot augmented masks.
@@ -18,9 +18,9 @@ def show_images(directory="aug/mask", image_suffix="png",number=4, cmap="gray"):
 
     """
     # should really use os and sys to join paths
-    if isinstance(directory, (list,  np.ndarray)):
+    if isinstance(directory, (list, np.ndarray)):
         # convert to viewable format by imshow, only considers len 3 for now
-        images = [image[:, :, 0] for image in directory]
+        images = [image[:, :, 0] if len(image.shape) == 3 else image for image in directory]
     else:
         images = ImageCollection(glob.glob(directory + "/*." + image_suffix))
 

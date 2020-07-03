@@ -1,5 +1,11 @@
 # cytounet's changelog. 
 
+**Version 0.2.0**
+
+* Fixed issues with list input to `show_images`
+
+
+---
 * Release 0.1.0
 
 ---
