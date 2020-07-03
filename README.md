@@ -1,3 +1,4 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3928919.svg)](https://doi.org/10.5281/zenodo.3928919)
 ![Stage](https://www.repostatus.org/badges/latest/wip.svg) 
 ![Test Install](https://github.com/Nelson-Gon/cytounet/workflows/Test%20Install/badge.svg)
 ![Travis Build](https://travis-ci.com/Nelson-Gon/cytounet.svg?branch=master)
