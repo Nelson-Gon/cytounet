@@ -12,7 +12,7 @@ def show_images(directory="aug/mask", image_suffix="png", number=4, cmap="gray")
     Adjust as necessary. Can be a list of images or a numpy ndarray instead.
     :param image_suffix: Image format, defaults to png
     :param image_type: Masks or original. Defaults to masks
-    :param number: Number of images to show, only even numbers are supported
+    :param number: Number of images to show
     :param cmap: Plot color cmap(as provided by imshow from matplotlib). Defaults to gray
     :return: A plot of images as requested.
 
@@ -24,14 +24,12 @@ def show_images(directory="aug/mask", image_suffix="png", number=4, cmap="gray")
     else:
         images = ImageCollection(glob.glob(directory + "/*." + image_suffix))
 
-    if number % 2 != 0:
-        raise ValueError("Only an even number of images can be shown")
+    no_cols = number / 2 if number % 2 == 0 else number / 3
 
-    plt.figure(figsize=(10, 10))
+    # no_rows= number / 2 if number % 2 == 0 else number / 3
 
-    for i in range(number):
-        plt.subplot(number / 2, number / 2, i + 1)
-        plt.imshow(images[i], cmap=cmap)
-
-
-plt.show()
+    fig, axes = plt.subplots(nrows=2, ncols=int(no_cols))
+    fig.set_size_inches(10, 10)
+    for index, item in zip(np.arange(number), images):
+        axes.ravel()[index].imshow(item, cmap=cmap)
+        axes.ravel()[index].set_axis_off()
