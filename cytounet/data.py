@@ -10,28 +10,12 @@ from skimage import img_as_uint
 from PIL import Image
 import cv2
 
-Sky = [128, 128, 128]
-Building = [128, 0, 0]
-Pole = [192, 192, 128]
-Road = [128, 64, 128]
-Pavement = [60, 40, 222]
-Tree = [128, 128, 0]
-SignSymbol = [192, 128, 128]
-Fence = [64, 64, 128]
-Car = [64, 0, 128]
-Pedestrian = [64, 64, 0]
-Bicyclist = [0, 128, 192]
-Unlabelled = [0, 0, 0]
-
-COLOR_DICT = np.array([Sky, Building, Pole, Road, Pavement,
-                       Tree, SignSymbol, Fence, Car, Pedestrian, Bicyclist, Unlabelled])
-
 
 # https://blog.keras.io/building-powerful-image-classification-models-using-very-little-data.html
 
-def trainGenerator(batch_size, train_path, image_folder, mask_folder, aug_dict, image_color_mode="grayscale",
-                   mask_color_mode="grayscale", image_save_prefix="image", mask_save_prefix="mask",
-                   save_to_dir=None, target_size=(256, 256), seed=1):
+def generate_train_data(batch_size, train_path, image_folder, mask_folder, aug_dict, image_color_mode="grayscale",
+                        mask_color_mode="grayscale", image_save_prefix="image", mask_save_prefix="mask",
+                        save_to_dir=None, target_size=(256, 256), seed=1):
     """
 
     :param batch_size: tensorflow batch size
@@ -76,7 +60,7 @@ def trainGenerator(batch_size, train_path, image_folder, mask_folder, aug_dict, 
         yield (img, mask)
 
 
-def testGenerator(test_path, num_image=30, target_size=(256, 256), image_suffix="tif"):
+def generate_test_data(test_path, num_image=30, target_size=(256, 256), image_suffix="tif"):
     """
 
     :param test_path: Path to test images
@@ -95,9 +79,10 @@ def testGenerator(test_path, num_image=30, target_size=(256, 256), image_suffix=
         yield img
 
 
-def validGenerator(batch_size, validation_path, image_folder, mask_folder, aug_dict, image_color_mode="grayscale",
-                   mask_color_mode="grayscale", image_save_prefix="image", mask_save_prefix="mask",
-                   save_to_dir=None, target_size=(256, 256), seed=1):
+def generate_validation_data(batch_size, validation_path, image_folder, mask_folder, aug_dict,
+                             image_color_mode="grayscale",
+                             mask_color_mode="grayscale", image_save_prefix="image", mask_save_prefix="mask",
+                             save_to_dir=None, target_size=(256, 256), seed=1):
     image_datagen = ImageDataGenerator(**aug_dict)
     mask_datagen = ImageDataGenerator(**aug_dict)
     image_generator = image_datagen.flow_from_directory(
@@ -125,22 +110,23 @@ def validGenerator(batch_size, validation_path, image_folder, mask_folder, aug_d
         yield (img, mask)
 
 
-def LoadAugmented(image_path, mask_path,image_prefix="image", mask_prefix="mask"):
+def load_augmentations(image_path, mask_path, image_prefix="image", mask_prefix="mask"):
     image_name_arr = glob.glob(os.path.join(image_path, "{}*.png".format(image_prefix)))
     image_arr = []
     mask_arr = []
     for index, item in enumerate(image_name_arr):
-        img = image.load_img(item,color_mode="grayscale")
+        img = image.load_img(item, color_mode="grayscale")
         img = image.img_to_array(img)
-        img = img[:,:,0]
+        img = img[:, :, 0]
         img = np.expand_dims(img, axis=0)
-        img = img.transpose(2, 1, 0) # make channels last
-        mask = image.load_img(item.replace(image_path, mask_path).replace(image_prefix, mask_prefix),color_mode="grayscale")
+        img = img.transpose(2, 1, 0)  # make channels last
+        mask = image.load_img(item.replace(image_path, mask_path).replace(image_prefix, mask_prefix),
+                              color_mode="grayscale")
         mask = image.img_to_array(mask)
         mask = mask / 255.
-        mask = mask[:,:,0]
+        mask = mask[:, :, 0]
         mask = np.expand_dims(mask, axis=0)
-        mask = mask.transpose(2, 1, 0) # make channels last
+        mask = mask.transpose(2, 1, 0)  # make channels last
         image_arr.append(img)
         mask_arr.append(mask)
     image_arr = np.array(image_arr)
@@ -148,9 +134,7 @@ def LoadAugmented(image_path, mask_path,image_prefix="image", mask_prefix="mask"
     return image_arr, mask_arr
 
 
-
-
-def savePredictions(directory, images, image_prefix=None, image_suffix="tif"):
+def save_predictions(directory, images, image_prefix=None, image_suffix="tif"):
     """
 
 
@@ -163,12 +147,12 @@ def savePredictions(directory, images, image_prefix=None, image_suffix="tif"):
     """
     for index, item in enumerate(images):
         # needed for PIL
-        item = (item * 255) [:, :, 0] if len(item.shape) == 3 else (item * 255)
+        item = (item * 255)[:, :, 0] if len(item.shape) == 3 else (item * 255)
         read_image = Image.fromarray(item.astype(np.uint8))
         read_image.save(directory + "/" + image_prefix + str(index) + "." + image_suffix)
 
 
-def saveImages(directory, images, image_prefix=None, image_suffix="tif"):
+def save_images(directory, images, image_prefix=None, image_suffix="tif"):
     """
 
 
@@ -180,12 +164,12 @@ def saveImages(directory, images, image_prefix=None, image_suffix="tif"):
 
     """
     for index, item in enumerate(images):
-      item = item[:, :, 0] if len(item.shape) == 3 else item
-      read_image = Image.fromarray(item.astype(np.uint8))
-      read_image.save(directory + "/" + image_prefix + str(index) + "." + image_suffix)
+        item = item[:, :, 0] if len(item.shape) == 3 else item
+        read_image = Image.fromarray(item.astype(np.uint8))
+        read_image.save(directory + "/" + image_prefix + str(index) + "." + image_suffix)
 
 
-def thresholdImages(image_path, image_format="tif", thresh_val=127, thresh_max=255):
+def threshold_images(image_path, image_format="tif", thresh_val=127, thresh_max=255):
     """
     This is mostly useful as a wrapper for masks(labels)
 
