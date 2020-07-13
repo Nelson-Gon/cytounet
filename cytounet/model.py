@@ -42,18 +42,21 @@ def dice_coef_loss(y_true, y_pred):
 
 # https://en.wikipedia.org/wiki/Batch_normalization
 # https://github.com/zhixuhao/unet/issues/98
-def unet(pretrained_weights=None, input_size=(256, 256, 1), learning_rate=1e-4, loss=dice_coef_loss,
+def unet(pretrained_weights=None, input_size=(256, 256, 1),optimiser="SGD", learning_rate=1e-4, loss=dice_coef_loss,
          metrics=[dice_coef], dropout_rate = 0.2):
     """
 
     :param pretrained_weights: If a pretrained model exists, provide it here for fine tuning
     :param input_size: size of the first layer(input_layer). Defaults to (256, 256, 1)
+    :param optimiser: Optimiser to use. One of SGD or Adam. Defaults to SGD.
     :param learning_rate: Learning rate to use with the Adam optimiser. Defaults to 1e-4
     :param loss:  Loss function to use. Defaults to dice_coef_loss
     :param metrics: Metrics to use. Defaults to dice_coef
     :return: A unet model.
 
     """
+    # momentum chosen based on the original paper
+    optimiser_list = {'Adam': Adam(lr=learning_rate), 'SGD': SGD(learning_rate=learning_rate,momentum=0.99)}
     inputs = Input(input_size)
     conv1 = Conv2D(64, 3, activation='relu', padding='same', kernel_initializer='he_normal')(inputs)
     conv1 = BatchNormalization()(conv1)
@@ -120,7 +123,7 @@ def unet(pretrained_weights=None, input_size=(256, 256, 1), learning_rate=1e-4, 
 
     model = Model(inputs=inputs, outputs=conv10)
 
-    model.compile(optimizer=Adam(lr=learning_rate), loss=loss, metrics=metrics)
+    model.compile(optimizer=optimiser_list[optimiser], loss=loss, metrics=metrics)
 
     if pretrained_weights:
         model.load_weights(pretrained_weights)
