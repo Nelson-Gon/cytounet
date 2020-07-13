@@ -2,6 +2,8 @@
 
 **Version 0.2.0**
 
+* Initial support for SGD as the default optimiser
+
 * Moved from camelCase to snake_case, now using more descriptive function names. 
 
 * Fixed issues with list input to `show_images`
