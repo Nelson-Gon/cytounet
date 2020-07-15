@@ -87,11 +87,14 @@ a pull request to add such support.
 
 - [ ] XML Based Annotations 
 
+**Frequently Asked Questions**
+
+Please read our Wiki [Pages](https://github.com/Nelson-Gon/cytounet/wiki/General-Tips-and-Tricks)
 
 **To raise an issue or question**
 
-Please raise an issue [here](https://github.com/Nelson-Gon/cytounet/issues) if you have any discussion, criticism,
-
+If the [wiki](https://github.com/Nelson-Gon/cytounet/wiki/General-Tips-and-Tricks) does not answer your question,
+please raise a new issue [here](https://github.com/Nelson-Gon/cytounet/issues). You can also open an issue if you have any discussion, criticism,
 or bug reports. 
 
 Thank you very much. 
