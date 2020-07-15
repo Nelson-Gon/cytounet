@@ -1,4 +1,4 @@
-# Contributing to unet
+# Contributing to cytounet
 
 This document provides guidelines for contributions to `cytounet`.
 
