@@ -5,30 +5,15 @@
    :alt: DOI
 
 
-.. image:: https://www.repostatus.org/badges/latest/wip.svg
-   :target: https://www.repostatus.org/badges/latest/wip.svg
-   :alt: Stage
- 
-
-.. image:: https://github.com/Nelson-Gon/cytounet/workflows/Test%20Install/badge.svg
-   :target: https://github.com/Nelson-Gon/cytounet/workflows/Test%20Install/badge.svg
-   :alt: Test Install
-
-
-.. image:: https://travis-ci.com/Nelson-Gon/cytounet.svg?branch=master
-   :target: https://travis-ci.com/Nelson-Gon/cytounet.svg?branch=master
-   :alt: Travis Build
-
-
 .. image:: https://badge.fury.io/py/cytounet.svg
    :target: https://badge.fury.io/py/cytounet
    :alt: PyPI version
-
+ 
 
 .. image:: https://img.shields.io/pypi/l/cytounet.svg
    :target: https://pypi.python.org/pypi/cytounet/
    :alt: PyPI license
-
+ 
 
 .. image:: https://img.shields.io/pypi/dm/cytounet.svg
    :target: https://pypi.python.org/pypi/cytounet/
@@ -43,6 +28,21 @@
 .. image:: https://img.shields.io/pypi/dd/cytounet.svg
    :target: https://pypi.python.org/pypi/cytounet/
    :alt: PyPI download day
+
+
+.. image:: https://www.repostatus.org/badges/latest/wip.svg
+   :target: https://www.repostatus.org/badges/latest/wip.svg
+   :alt: Stage
+ 
+
+.. image:: https://github.com/Nelson-Gon/cytounet/workflows/Test%20Install/badge.svg
+   :target: https://github.com/Nelson-Gon/cytounet/workflows/Test%20Install/badge.svg
+   :alt: Test Install
+
+
+.. image:: https://travis-ci.com/Nelson-Gon/cytounet.svg?branch=master
+   :target: https://travis-ci.com/Nelson-Gon/cytounet.svg?branch=master
+   :alt: Travis Build
 
 
 .. image:: https://img.shields.io/badge/Maintained%3F-yes-green.svg
@@ -148,10 +148,14 @@ a pull request to add such support.
 * 
   [ ] XML Based Annotations 
 
+**Frequently Asked Questions**
+
+Please read our Wiki `Pages <https://github.com/Nelson-Gon/cytounet/wiki/General-Tips-and-Tricks>`_
+
 **To raise an issue or question**
 
-Please raise an issue `here <https://github.com/Nelson-Gon/cytounet/issues>`_ if you have any discussion, criticism,
-
+If the `wiki <https://github.com/Nelson-Gon/cytounet/wiki/General-Tips-and-Tricks>`_ does not answer your question,
+please raise a new issue `here <https://github.com/Nelson-Gon/cytounet/issues>`_. You can also open an issue if you have any discussion, criticism,
 or bug reports. 
 
 Thank you very much. 

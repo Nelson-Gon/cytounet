@@ -32,15 +32,13 @@ Please also update the docs using `sphinx`
 # The Makefile here is Windows specific
 
 # root of project
-python -m m2r README.md
-# answer yes to overwrite
+python -m m2r README.md --overwrite
+python -m m2r changelog.md --overwrite
 # copy changelog and README or get their diff and copy it to docs/source
-cd docs && sphinx-apidoc -o source/ ../unet && cp ../README.md ../changelog.md source
-cd source
-# make rst files as above, yes to overwrite
-python -m m2r changelog.md README.md
-# go back to docs
-cd ..
+# TODO
+cd ./README* ./changelog* docs/source
+
+cd docs
 # build docs
 sphinx-build source build
 # use make on *nix or if you have make on Windows
