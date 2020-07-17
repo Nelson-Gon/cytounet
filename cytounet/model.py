@@ -39,9 +39,52 @@ def dice_coef_loss(y_true, y_pred):
        """
     return 1 - dice_coef(y_true, y_pred)
 
+# bias variance tradeoff
+# https://blog.insightdatascience.com/bias-variance-tradeoff-explained-fa2bc28174c4
+def unet_simple(pretrained_weights=None, input_size=(256, 256, 1),optimiser="Adam",
+                learning_rate=3e-6, loss="binary_crossentropy",
+         metrics=["accuracy"],dropout_rate = 0.5):
+    """
+    :param pretrained_weights: If a pretrained model exists, provide it here for fine tuning
+    :param input_size: size of the first layer(input_layer). Defaults to (256, 256, 1)
+    :param optimiser: Optimiser to use. One of SGD or Adam. Defaults to Adam.
+    :param learning_rate: Learning rate to use with the Adam optimiser. Defaults to 3e-6
+    :param loss:  Loss function to use. Defaults to binary_crossentropy
+    :param metrics: Metrics to use. Defaults to dice_coef
+    :return: A simple(r) unet model.
 
-# https://en.wikipedia.org/wiki/Batch_normalization
-# https://github.com/zhixuhao/unet/issues/98
+    """
+    inputs = Input(shape=(256, 256, 1))
+    conv1 = Conv2D(64, 3, activation="relu", padding="same",kernel_initializer="he_normal")(inputs)
+    conv1 =BatchNormalization()(conv1)
+    conv1 = Conv2D(64, 3, activation="relu", padding="same",kernel_initializer="he_normal")(conv1)
+    conv1 =BatchNormalization()(conv1)
+
+    conv2 = Conv2D(128, 3, activation="relu", padding="same",kernel_initializer='he_normal')(conv1)
+    conv2 = BatchNormalization()(conv2)
+    conv2 = Conv2D(128, 3, activation="relu", padding="same",kernel_initializer='he_normal')(conv1)
+    conv2 = BatchNormalization()(conv2)
+    conv2 = Dropout(dropout_rate)(conv2)
+
+    up3 = Conv2D(64, 2, activation="relu", padding="same",kernel_initializer="he_normal")(conv2)
+    merge3 = concatenate([up3, conv1], axis=3)
+    conv4 = Conv2D(1, 1, activation="relu")(conv2)
+
+    model = Model(inputs=inputs, outputs=conv4)
+
+    optimiser_list = {'Adam': Adam(lr=learning_rate),
+                      'SGD': SGD(learning_rate=learning_rate, momentum=0.99) }
+
+    model.compile(optimizer=optimiser_list[optimiser],
+                  loss=loss, metrics = metrics)
+
+    if pretrained_weights is not None:
+        model.load_weights(pretrained_weights)
+
+    return model
+
+
+
 def unet(pretrained_weights=None, input_size=(256, 256, 1),optimiser="SGD", learning_rate=1e-4, loss=dice_coef_loss,
          metrics=[dice_coef], dropout_rate = 0.2):
     """

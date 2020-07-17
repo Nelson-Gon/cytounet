@@ -185,3 +185,5 @@ def threshold_images(image_path, image_format="tif", thresh_val=127, thresh_max=
     thresholded = [cv2.threshold(x, thresh_val, thresh_max,
                                  cv2.THRESH_BINARY + cv2.THRESH_OTSU)[1] for x in masks_arrays]
     return thresholded
+
+
