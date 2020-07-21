@@ -62,13 +62,13 @@ def unet_simple(pretrained_weights=None, input_size=(256, 256, 1),optimiser="Ada
 
     conv2 = Conv2D(128, 3, activation="relu", padding="same",kernel_initializer='he_normal')(conv1)
     conv2 = BatchNormalization()(conv2)
-    conv2 = Conv2D(128, 3, activation="relu", padding="same",kernel_initializer='he_normal')(conv1)
+    conv2 = Conv2D(128, 3, activation="relu", padding="same",kernel_initializer='he_normal')(conv2)
     conv2 = BatchNormalization()(conv2)
     conv2 = Dropout(dropout_rate)(conv2)
 
     up3 = Conv2D(64, 2, activation="relu", padding="same",kernel_initializer="he_normal")(conv2)
     merge3 = concatenate([up3, conv1], axis=3)
-    conv4 = Conv2D(1, 1, activation="relu")(conv2)
+    conv4 = Conv2D(1, 1, activation="relu")(merge3)
 
     model = Model(inputs=inputs, outputs=conv4)
 
