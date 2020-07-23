@@ -41,7 +41,7 @@ def dice_coef_loss(y_true, y_pred):
 
 # bias variance tradeoff
 # https://blog.insightdatascience.com/bias-variance-tradeoff-explained-fa2bc28174c4
-def unet_simple(pretrained_weights=None, input_size=(256, 256, 1), optimiser="Adam",
+def unet_simple(pretrained_weights=None, metrics=['accuracy'], input_size=(256, 256, 1), optimiser="Adam",
                 learning_rate=3e-6, loss="binary_crossentropy"):
     """
     :param pretrained_weights: If a pretrained model exists, provide it here for fine tuning
