@@ -6,6 +6,12 @@ cytounet's changelog.
 
 
 * 
+  Initial support for a simpler model to optimise the bias-variance trade off for small(er) datasets.
+
+* 
+  Removed ``Dropout`` since this is known to have no improvement over Batch Normalisation. 
+
+* 
   Initial support for SGD as the default optimiser
 
 * 

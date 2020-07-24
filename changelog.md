@@ -2,6 +2,11 @@
 
 **Version 0.2.0**
 
+
+* Initial support for a simpler model to optimise the bias-variance trade off for small(er) datasets.
+
+* Removed `Dropout` since this is known to have no improvement over Batch Normalisation. 
+
 * Initial support for SGD as the default optimiser
 
 * Moved from camelCase to snake_case, now using more descriptive function names. 
