@@ -88,12 +88,15 @@ Or:
 
 Please see the following examples:
 
+**Kaggle Notebooks**
 
-* 
-  Typical Pipeline available `here <https://github.com/Nelson-Gon/cytounet/blob/master/examples/example_usage.ipynb>`_
 
-* 
-  A biological example showing segmentation of DIC images of embryos available `here <https://github.com/Nelson-Gon/cytounet/blob/master/examples/embryos.ipynb>`_
+* `Predictiing Embryonic DIC Image Labels with Keras <https://www.kaggle.com/gonnel/predicting-embryonic-dic-image-labels-with-keras>`_
+
+**Google Colab Notebooks**
+
+
+* DIC image segmentation available `here <https://github.com/Nelson-Gon/cytounet/blob/caac1ceea85730d2a7c65bd2239caa1773eb9bdd/examples/embryos_dic.ipynb>`_
 
 For more examples or to add your own, please see the 
 examples `folder <https://github.com/Nelson-Gon/cytounet/blob/master/examples>`_.
@@ -103,6 +106,9 @@ examples `folder <https://github.com/Nelson-Gon/cytounet/blob/master/examples>`_
 A checked box indicates support. You can either add more feature requests here or tackle unchecked boxes and make
 a pull request to add such support. 
 
+
+* 
+  [ ] Custom Number of Layers
 
 * 
   [x] Single class segmentation
