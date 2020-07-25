@@ -91,12 +91,15 @@ Please see the following examples:
 **Kaggle Notebooks**
 
 
-* `Predictiing Embryonic DIC Image Labels with Keras <https://www.kaggle.com/gonnel/predicting-embryonic-dic-image-labels-with-keras>`_
+* `Predicting Embryonic DIC Image Labels with Keras <https://www.kaggle.com/gonnel/predicting-embryonic-dic-image-labels-with-keras>`_
 
 **Google Colab Notebooks**
 
 
 * DIC image segmentation available `here <https://github.com/Nelson-Gon/cytounet/blob/caac1ceea85730d2a7c65bd2239caa1773eb9bdd/examples/embryos_dic.ipynb>`_
+
+
+* Cell Membrane Segmentation available `here <https://github.com/Nelson-Gon/cytounet/blob/master/examples/example_usage.ipynb>`_
 
 For more examples or to add your own, please see the 
 examples `folder <https://github.com/Nelson-Gon/cytounet/blob/master/examples>`_.
