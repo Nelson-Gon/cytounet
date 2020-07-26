@@ -95,11 +95,11 @@ a pull request to add such support.
 
 **Frequently Asked Questions**
 
-Please read our Wiki [Pages](https://github.com/Nelson-Gon/cytounet/wiki/General-Tips-and-Tricks)
+Please read our Wiki [Pages](https://github.com/Nelson-Gon/cytounet/wiki)
 
 **To raise an issue or question**
 
-If the [wiki](https://github.com/Nelson-Gon/cytounet/wiki/General-Tips-and-Tricks) does not answer your question,
+If the [wiki](https://github.com/Nelson-Gon/cytounet/wiki) does not answer your question,
 please raise a new issue [here](https://github.com/Nelson-Gon/cytounet/issues). You can also open an issue if you have any discussion, criticism,
 or bug reports. 
 

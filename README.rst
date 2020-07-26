@@ -139,11 +139,11 @@ a pull request to add such support.
 
 **Frequently Asked Questions**
 
-Please read our Wiki `Pages <https://github.com/Nelson-Gon/cytounet/wiki/General-Tips-and-Tricks>`_
+Please read our Wiki `Pages <https://github.com/Nelson-Gon/cytounet/wiki>`_
 
 **To raise an issue or question**
 
-If the `wiki <https://github.com/Nelson-Gon/cytounet/wiki/General-Tips-and-Tricks>`_ does not answer your question,
+If the `wiki <https://github.com/Nelson-Gon/cytounet/wiki>`_ does not answer your question,
 please raise a new issue `here <https://github.com/Nelson-Gon/cytounet/issues>`_. You can also open an issue if you have any discussion, criticism,
 or bug reports. 
 
