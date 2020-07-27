@@ -12,12 +12,12 @@ from keras import backend as keras
 # https://stackoverflow.com/questions/49785133/keras-dice-coefficient-loss-function-is-negative-and-increasing-with-
 # https://stats.stackexchange.com/questions/195006/is-the-dice-coefficient-the-same-as-
 # https://stackoverflow.com/questions/52946110/u-net-low-contrast-test-images-predict-output-is-grey-box
-smooth = 1
 
 
-def dice_coef(y_true, y_pred):
+
+def dice_coef(y_true, y_pred, smooth = 1):
     """
-
+    :param smooth Prevent zero division error
     :param y_true: Train ground truth
     :param y_pred: Predicted
     :return: Returns the dice coefficient
