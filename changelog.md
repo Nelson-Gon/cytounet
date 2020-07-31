@@ -2,6 +2,7 @@
 
 **Version 0.2.0**
 
+* Model complexity has been increased. 
 
 * Initial support for a simpler model to optimise the bias-variance trade off for small(er) datasets.
 
