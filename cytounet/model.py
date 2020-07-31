@@ -7,15 +7,15 @@ from keras.models import *
 from keras.layers import *
 from keras.optimizers import *
 from keras.callbacks import ModelCheckpoint, LearningRateScheduler
-from keras import backend as keras
+from keras import backend as K
+
 
 # https://stackoverflow.com/questions/49785133/keras-dice-coefficient-loss-function-is-negative-and-increasing-with-
 # https://stats.stackexchange.com/questions/195006/is-the-dice-coefficient-the-same-as-
 # https://stackoverflow.com/questions/52946110/u-net-low-contrast-test-images-predict-output-is-grey-box
 
 
-
-def dice_coef(y_true, y_pred, smooth = 1):
+def dice_coef(y_true, y_pred, smooth=1):
     """
     :param smooth Prevent zero division error
     :param y_true: Train ground truth
@@ -39,17 +39,19 @@ def dice_coef_loss(y_true, y_pred):
        """
     return 1 - dice_coef(y_true, y_pred)
 
+
 # bias variance tradeoff
 # https://blog.insightdatascience.com/bias-variance-tradeoff-explained-fa2bc28174c4
 def unet_simple(pretrained_weights=None, metrics=['accuracy'], input_size=(256, 256, 1), optimiser="Adam",
-                learning_rate=3e-6, loss="binary_crossentropy"):
+                learning_rate=3e-6, loss="binary_crossentropy", model_name="unet_simple"):
     """
     :param pretrained_weights: If a pretrained model exists, provide it here for fine tuning
     :param input_size: size of the first layer(input_layer). Defaults to (256, 256, 1)
     :param optimiser: Optimiser to use. One of SGD or Adam. Defaults to Adam.
     :param learning_rate: Learning rate to use with the Adam optimiser. Defaults to 3e-6
     :param loss:  Loss function to use. Defaults to binary_crossentropy
-    :param metrics: Metrics to use. Defaults to dice_coef
+    :param metrics: Metrics to use. Defaults to accuracy
+    :param model_name Name of the model, defaults to unet_simple
     :return: A simple(r) unet model.
     """
     inputs = Input(shape=input_size)
@@ -73,6 +75,7 @@ def unet_simple(pretrained_weights=None, metrics=['accuracy'], input_size=(256, 
 
     model.compile(optimizer=optimiser_list[optimiser],
                   loss=loss, metrics=metrics)
+    model.name = model_name
 
     if pretrained_weights is not None:
         model.load_weights(pretrained_weights)
@@ -80,21 +83,22 @@ def unet_simple(pretrained_weights=None, metrics=['accuracy'], input_size=(256, 
     return model
 
 
-def unet(pretrained_weights=None, input_size=(256, 256, 1), optimiser="SGD", learning_rate=1e-4, loss=dice_coef_loss,
-         metrics=[dice_coef]):
+def unet(pretrained_weights=None, metrics=['accuracy'], input_size=(256, 256, 1), optimiser="Adam",
+         learning_rate=3e-6, loss="binary_crossentropy", model_name = "unet_complex"):
     """
-    :param pretrained_weights: If a pretrained model exists, provide it here for fine tuning
-    :param input_size: size of the first layer(input_layer). Defaults to (256, 256, 1)
-    :param optimiser: Optimiser to use. One of SGD or Adam. Defaults to SGD.
-    :param learning_rate: Learning rate to use with the Adam optimiser. Defaults to 1e-4
-    :param loss:  Loss function to use. Defaults to dice_coef_loss
-    :param metrics: Metrics to use. Defaults to dice_coef
-    :return: A unet model.
-    """
+  :param pretrained_weights: If a pretrained model exists, provide it here for fine tuning
+  :param input_size: size of the first layer(input_layer). Defaults to (256, 256, 1)
+  :param optimiser: Optimiser to use. One of SGD or Adam. Defaults to Adam.
+  :param learning_rate: Learning rate to use with the Adam optimiser. Defaults to 3e-6
+  :param loss:  Loss function to use. Defaults to binary_crossentropy
+  :param metrics: Metrics to use. Defaults to accuracy
+  :param model_name Defaults to unet_complex
+  :return: A failry complex unet model.
+  """
     # momentum chosen based on the original paper
-    optimiser_list = {'Adam': Adam(lr=learning_rate), 'SGD': SGD(learning_rate=learning_rate, momentum=0.99)}
+    optimiser_list = {'Adam': Adam(lr=learning_rate), 'SGD': SGD(learning_rate=learning_rate, momentum=0.90)}
 
-    inputs = Input(input_size, name='true_input')
+    inputs = Input(input_size)
 
     conv1 = Conv2D(64, 3, activation='relu', padding='same', kernel_initializer='he_normal')(inputs)
     conv1 = Conv2D(64, 3, activation='relu', padding='same', kernel_initializer='he_normal')(conv1)
@@ -107,7 +111,7 @@ def unet(pretrained_weights=None, input_size=(256, 256, 1), optimiser="SGD", lea
     pool3 = MaxPooling2D(pool_size=(2, 2))(conv3)
     conv4 = Conv2D(512, 3, activation='relu', padding='same', kernel_initializer='he_normal')(pool3)
     conv4 = Conv2D(512, 3, activation='relu', padding='same', kernel_initializer='he_normal')(conv4)
-    bnorm4= BatchNormalization()(conv4)
+    bnorm4 = BatchNormalization()(conv4)
     pool4 = MaxPooling2D(pool_size=(2, 2))(bnorm4)
 
     conv5 = Conv2D(1024, 3, activation='relu', padding='same', kernel_initializer='he_normal')(pool4)
@@ -143,13 +147,10 @@ def unet(pretrained_weights=None, input_size=(256, 256, 1), optimiser="SGD", lea
 
     model.compile(optimizer=optimiser_list[optimiser], loss=loss, metrics=metrics)
 
+    model.name = model_name
     return model
-
-
 
     if pretrained_weights:
         model.load_weights(pretrained_weights)
 
     return model
-
-
