@@ -157,9 +157,9 @@ def unet(pretrained_weights=None, metrics=['accuracy'], input_size=(256, 256, 1)
     return model
 
 
-def predict(test_path, model_weights=None, image_length=None, target_size=(256, 256), image_suffix="tif"):
+def predict(model_object=None, test_path, model_weights=None, image_length=None, target_size=(256, 256), image_suffix="tif"):
     """
-
+    :param model_object: Model object eg unet() or unet_simple()
     :param test_path: Path to test file
     :param model_weights: A pretrained hdf5 model
     :param image_length: Number of images in test
@@ -171,7 +171,8 @@ def predict(test_path, model_weights=None, image_length=None, target_size=(256, 
     generate_test = generate_test_data(test_path=test_path, num_image=image_length, image_suffix=image_suffix,
                                        target_size=target_size)
     # init model
-    model = unet(pretrained_weights=model_weights)
+    model = model_object
+    model.load_weights(model_weights)
     # predictions
     return model.predict_generator(generate_test, image_length, verbose=1)
 
