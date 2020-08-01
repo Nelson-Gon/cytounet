@@ -157,7 +157,8 @@ def unet(pretrained_weights=None, metrics=['accuracy'], input_size=(256, 256, 1)
     return model
 
 
-def predict(model_object=None, test_path, model_weights=None, image_length=None, target_size=(256, 256), image_suffix="tif"):
+def predict(model_object=None, test_path=None, model_weights=None, image_length=None, target_size=(256, 256),
+            image_suffix="tif"):
     """
     :param model_object: Model object eg unet() or unet_simple()
     :param test_path: Path to test file
