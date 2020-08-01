@@ -8,6 +8,7 @@ from keras.layers import *
 from keras.optimizers import *
 from keras.callbacks import ModelCheckpoint, LearningRateScheduler
 from keras import backend as K
+from ..cytounet.data import generate_test_data
 
 
 # https://stackoverflow.com/questions/49785133/keras-dice-coefficient-loss-function-is-negative-and-increasing-with-
@@ -154,3 +155,22 @@ def unet(pretrained_weights=None, metrics=['accuracy'], input_size=(256, 256, 1)
         model.load_weights(pretrained_weights)
 
     return model
+
+
+def predict(test_path, model_weights=None, image_length=None, target_size=(256, 256), image_suffix="tif"):
+    """
+
+    :param test_path: Path to test file
+    :param model_weights: A pretrained hdf5 model
+    :param image_length: Number of images in test
+    :param target_size: Target output image size
+    :param image_suffix: Defaults to tif
+    :return: Predictions
+
+    """
+    generate_test = generate_test_data(test_path=test_path, num_image=image_length, image_suffix=image_suffix,
+                                       target_size=target_size)
+    # init model
+    model = unet(pretrained_weights=model_weights)
+    # predictions
+    return model.predict_generator(generate_test, image_length, verbose=1)

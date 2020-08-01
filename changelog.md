@@ -2,6 +2,8 @@
 
 **Version 0.2.0**
 
+* Added `predict` to reduce code repetition and make predicting easier. 
+
 * Model complexity has been increased. 
 
 * Initial support for a simpler model to optimise the bias-variance trade off for small(er) datasets.

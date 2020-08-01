@@ -6,6 +6,9 @@ cytounet's changelog.
 
 
 * 
+  Added ``predict`` to reduce code repetition and make predicting easier. 
+
+* 
   Model complexity has been increased. 
 
 * 
