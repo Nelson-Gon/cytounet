@@ -69,14 +69,14 @@ def unet_simple(pretrained_weights=None, metrics=['accuracy'], input_size=(256, 
     merge3 = concatenate([up3, conv1], axis=3)
     conv4 = Conv2D(1, 1, activation="relu")(merge3)
 
-    model = Model(inputs=inputs, outputs=conv4)
+    model = Model(inputs=inputs, outputs=conv4, name=model_name)
 
     optimiser_list = {'Adam': Adam(lr=learning_rate),
                       'SGD': SGD(learning_rate=learning_rate, momentum=0.99)}
 
     model.compile(optimizer=optimiser_list[optimiser],
                   loss=loss, metrics=metrics)
-    model.name = model_name
+    #model.name = model_name
 
     if pretrained_weights is not None:
         model.load_weights(pretrained_weights)
@@ -144,11 +144,11 @@ def unet(pretrained_weights=None, metrics=['accuracy'], input_size=(256, 256, 1)
     conv9 = Conv2D(64, 3, activation='relu', padding='same', kernel_initializer='he_normal')(conv9)
     conv10 = Conv2D(1, 1, activation='relu')(conv9)
 
-    model = Model(inputs=inputs, outputs=conv10)
+    model = Model(inputs=inputs, outputs=conv10, name=model_name)
 
     model.compile(optimizer=optimiser_list[optimiser], loss=loss, metrics=metrics)
 
-    model.name = model_name
+    #model.name = model_name
     return model
 
     if pretrained_weights:
