@@ -6,6 +6,12 @@ cytounet's changelog.
 
 
 * 
+  Updated to latest API ie ``predict`` vs ``predict_generator``
+
+* 
+  Added ``train`` to simplify model fitting.
+
+* 
   Added ``predict`` to reduce code repetition and make predicting easier. 
 
 * 

@@ -175,6 +175,23 @@ def predict(model_object=None, test_path=None, model_weights=None, image_length=
     model = model_object
     model.load_weights(model_weights)
     # predictions
-    return model.predict_generator(generate_test, image_length, verbose=1)
+    return model.predict(generate_test, image_length, verbose=1)
+
+
+def train(model_object=None, steps_per_epochs=300, epochs=50,save_as=None,**kwargs):
+    """
+
+    :param model_object: model_object: Model object eg unet() or unet_simple()
+    :param steps_per_epochs: See Model.fit
+    :param epochs: see Model.fit
+    :param save_as: If not None, saves model weights
+    :param kwargs: Other arguments to Model.fit
+    :return: A model object
+
+    """
+    model_object.fit(steps_per_epochs=steps_per_epochs, epochs=epochs,**kwargs)
+
+    if save_as is not None:
+        model_object.save(save_as)
 
 

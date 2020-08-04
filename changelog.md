@@ -2,6 +2,10 @@
 
 **Version 0.2.0**
 
+* Updated to latest API ie `predict` vs `predict_generator`
+
+* Added `train` to simplify model fitting.
+
 * Added `predict` to reduce code repetition and make predicting easier. 
 
 * Model complexity has been increased. 
