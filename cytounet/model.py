@@ -175,22 +175,22 @@ def predict(model_object=None, test_path=None, model_weights=None, image_length=
     model = model_object
     model.load_weights(model_weights)
     # predictions
-    return model.predict(generate_test, image_length, verbose=1)
+    return model.predict(generate_test,verbose=1, batch_size=None, steps = image_length)
 
 
-def train(model_object=None, train_generator=None, batch_size=5, steps_per_epoch=200,epochs=5,save_as=None,**kwargs):
+def train(model_object=None, train_generator=None, steps_per_epoch=200, epochs=5, save_as=None, **kwargs):
     """
 
     :param train_generator: From generate_train_data
     :param model_object: model_object: Model object eg unet() or unet_simple()
-    :param batch_size: See Model.fit
+
     :param epochs: see Model.fit
     :param save_as: If not None, saves model weights
     :param kwargs: Other arguments to Model.fit
     :return: A model object
 
     """
-    model_object.fit(train_generator,batch_size=batch_size,steps_per_epoch=steps_per_epoch, epochs=epochs,**kwargs)
+    model_object.fit(train_generator, steps_per_epoch=steps_per_epoch, epochs=epochs, **kwargs)
 
     if save_as is not None:
         model_object.save(save_as)
