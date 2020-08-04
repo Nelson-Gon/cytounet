@@ -2,6 +2,8 @@
 
 **Version 0.2.0**
 
+* Changed outputs to `sigmoid` instead of `ReLU`
+
 * Updated to latest API ie `predict` vs `predict_generator`
 
 * Added `train` to simplify model fitting.

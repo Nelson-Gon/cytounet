@@ -6,6 +6,9 @@ cytounet's changelog.
 
 
 * 
+  Changed outputs to ``sigmoid`` instead of ``ReLU``
+
+* 
   Updated to latest API ie ``predict`` vs ``predict_generator``
 
 * 
