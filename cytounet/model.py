@@ -178,9 +178,10 @@ def predict(model_object=None, test_path=None, model_weights=None, image_length=
     return model.predict(generate_test, image_length, verbose=1)
 
 
-def train(model_object=None, steps_per_epochs=300, epochs=50,save_as=None,**kwargs):
+def train(model_object=None, train_generator=None, steps_per_epochs=300, epochs=50,save_as=None,**kwargs):
     """
 
+    :param train_generator: From generate_train_data
     :param model_object: model_object: Model object eg unet() or unet_simple()
     :param steps_per_epochs: See Model.fit
     :param epochs: see Model.fit
@@ -189,7 +190,7 @@ def train(model_object=None, steps_per_epochs=300, epochs=50,save_as=None,**kwar
     :return: A model object
 
     """
-    model_object.fit(steps_per_epochs=steps_per_epochs, epochs=epochs,**kwargs)
+    model_object.fit(train_generator,steps_per_epochs=steps_per_epochs, epochs=epochs,**kwargs)
 
     if save_as is not None:
         model_object.save(save_as)
