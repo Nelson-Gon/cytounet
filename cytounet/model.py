@@ -178,7 +178,7 @@ def predict(model_object=None, test_path=None, model_weights=None, image_length=
     return model.predict(generate_test, image_length, verbose=1)
 
 
-def train(model_object=None, train_generator=None, batch_size=5, epochs=50,save_as=None,**kwargs):
+def train(model_object=None, train_generator=None, batch_size=5, steps_per_epoch=200,epochs=5,save_as=None,**kwargs):
     """
 
     :param train_generator: From generate_train_data
@@ -190,7 +190,7 @@ def train(model_object=None, train_generator=None, batch_size=5, epochs=50,save_
     :return: A model object
 
     """
-    model_object.fit(train_generator,batch_size=batch_size, epochs=epochs,**kwargs)
+    model_object.fit(train_generator,batch_size=batch_size,steps_per_epoch=steps_per_epoch, epochs=epochs,**kwargs)
 
     if save_as is not None:
         model_object.save(save_as)
