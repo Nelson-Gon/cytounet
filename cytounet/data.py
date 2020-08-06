@@ -169,7 +169,7 @@ def save_images(directory, images, image_prefix=None, image_suffix="tif"):
         read_image.save(directory + "/" + image_prefix + str(index) + "." + image_suffix)
 
 
-def threshold_images(image_path, image_format="tif", thresh_val=127, thresh_max=255):
+def threshold_images(image_path, image_format="tif", thresh_val=128, thresh_max=255):
     """
     This is mostly useful as a wrapper for masks(labels)
 
@@ -183,7 +183,7 @@ def threshold_images(image_path, image_format="tif", thresh_val=127, thresh_max=
     masks = glob.glob(image_path + "/*." + image_format)
     masks_arrays = [cv2.imread(x, cv2.IMREAD_GRAYSCALE) for x in masks]
     thresholded = [cv2.threshold(x, thresh_val, thresh_max,
-                                 cv2.THRESH_BINARY + cv2.THRESH_OTSU)[1] for x in masks_arrays]
+                                 cv2.THRESH_BINARY | cv2.THRESH_OTSU)[1] for x in masks_arrays]
     return thresholded
 
 
