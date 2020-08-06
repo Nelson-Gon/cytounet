@@ -62,10 +62,10 @@ Please see the following examples:
 **Google Colab Notebooks**
 
 
-* DIC image segmentation available [here](https://github.com/Nelson-Gon/cytounet/blob/caac1ceea85730d2a7c65bd2239caa1773eb9bdd/examples/embryos_dic.ipynb)
+* DIC image segmentation available [here](https://github.com/Nelson-Gon/cytounet/blob/1da0236fcde90a8b5c1d27348f566c08a36ced35/examples/embryos_dic.ipynb)
 
 
-* Cell Membrane Segmentation available [here](https://github.com/Nelson-Gon/cytounet/blob/master/examples/example_usage.ipynb)
+* Cell Membrane Segmentation available [here](https://github.com/Nelson-Gon/cytounet/blob/1da0236fcde90a8b5c1d27348f566c08a36ced35/examples/example_usage.ipynb)
 
 For more examples or to add your own, please see the 
 examples [folder](https://github.com/Nelson-Gon/cytounet/blob/master/examples).
