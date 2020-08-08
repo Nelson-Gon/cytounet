@@ -96,10 +96,10 @@ Please see the following examples:
 **Google Colab Notebooks**
 
 
-* DIC image segmentation available `here <https://github.com/Nelson-Gon/cytounet/blob/caac1ceea85730d2a7c65bd2239caa1773eb9bdd/examples/embryos_dic.ipynb>`_
+* DIC image segmentation available `here <https://github.com/Nelson-Gon/cytounet/blob/1da0236fcde90a8b5c1d27348f566c08a36ced35/examples/embryos_dic.ipynb>`_
 
 
-* Cell Membrane Segmentation available `here <https://github.com/Nelson-Gon/cytounet/blob/master/examples/example_usage.ipynb>`_
+* Cell Membrane Segmentation available `here <https://github.com/Nelson-Gon/cytounet/blob/1da0236fcde90a8b5c1d27348f566c08a36ced35/examples/example_usage.ipynb>`_
 
 For more examples or to add your own, please see the 
 examples `folder <https://github.com/Nelson-Gon/cytounet/blob/master/examples>`_.
@@ -165,7 +165,7 @@ Thank you very much.
 **Credits**
 
 
-* This repository started out as a clone of `zhuxihao <https://github.com/zhixuhao>`_\ 's  original 
+* This repository started out as a clone of `zhixuhao <https://github.com/zhixuhao>`_\ 's  original 
   unet `implementation <https://github.com/zhixuhao/unet/>`_.
 
 This repository has considerably diverged from the original implementation hence the need

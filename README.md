@@ -117,7 +117,7 @@ Carpenter and Roger Wiegand, available [here](https://data.broadinstitute.org/bb
 
 **Credits**
 
-* This repository started out as a clone of [zhuxihao](https://github.com/zhixuhao)'s  original 
+* This repository started out as a clone of [zhixuhao](https://github.com/zhixuhao)'s  original 
 unet [implementation](https://github.com/zhixuhao/unet/).
 
 This repository has considerably diverged from the original implementation hence the need
