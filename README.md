@@ -67,6 +67,14 @@ Please see the following examples:
 
 * Cell Membrane Segmentation available [here](https://github.com/Nelson-Gon/cytounet/blob/1da0236fcde90a8b5c1d27348f566c08a36ced35/examples/example_usage.ipynb)
 
+Visually:
+
+![Images](https://www.github.com/Nelson-Gon/cytounet/examples/legacy/images.png)
+
+Result:
+
+![Results](https://www.github.com/Nelson-Gon/cytounet/examples/legacy/masks.png)
+
 For more examples or to add your own, please see the 
 examples [folder](https://github.com/Nelson-Gon/cytounet/blob/master/examples).
 
