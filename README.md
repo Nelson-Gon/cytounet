@@ -65,7 +65,7 @@ Please see the following examples:
 * DIC image segmentation available [here](https://github.com/Nelson-Gon/cytounet/blob/1da0236fcde90a8b5c1d27348f566c08a36ced35/examples/embryos_dic.ipynb)
 
 
-* Cell Membrane Segmentation available [here](https://github.com/Nelson-Gon/cytounet/blob/1da0236fcde90a8b5c1d27348f566c08a36ced35/examples/example_usage.ipynb)
+* Cell Membrane Segmentation available [here](https://github.com/Nelson-Gon/cytounet/blob/2b828097576d7c9874f7ae27c1d630f81276fe54/examples/example_usage.ipynb)
 
 Visually:
 

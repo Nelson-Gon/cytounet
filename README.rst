@@ -99,7 +99,23 @@ Please see the following examples:
 * DIC image segmentation available `here <https://github.com/Nelson-Gon/cytounet/blob/1da0236fcde90a8b5c1d27348f566c08a36ced35/examples/embryos_dic.ipynb>`_
 
 
-* Cell Membrane Segmentation available `here <https://github.com/Nelson-Gon/cytounet/blob/1da0236fcde90a8b5c1d27348f566c08a36ced35/examples/example_usage.ipynb>`_
+* Cell Membrane Segmentation available `here <https://github.com/Nelson-Gon/cytounet/blob/2b828097576d7c9874f7ae27c1d630f81276fe54/examples/example_usage.ipynb>`_
+
+Visually:
+
+
+.. image:: https://www.github.com/Nelson-Gon/cytounet/examples/legacy/images.png
+   :target: https://www.github.com/Nelson-Gon/cytounet/examples/legacy/images.png
+   :alt: Images
+
+
+Result:
+
+
+.. image:: https://www.github.com/Nelson-Gon/cytounet/examples/legacy/masks.png
+   :target: https://www.github.com/Nelson-Gon/cytounet/examples/legacy/masks.png
+   :alt: Results
+
 
 For more examples or to add your own, please see the 
 examples `folder <https://github.com/Nelson-Gon/cytounet/blob/master/examples>`_.
