@@ -69,11 +69,11 @@ Please see the following examples:
 
 Visually:
 
-![Images](https://www.github.com/Nelson-Gon/cytounet/examples/legacy/images.png)
+![Images](https://github.com/Nelson-Gon/cytounet/blob/master/examples/legacy/images.png?raw=true)
 
 Result:
 
-![Results](https://www.github.com/Nelson-Gon/cytounet/examples/legacy/masks.png)
+![Results](https://github.com/Nelson-Gon/cytounet/blob/master/examples/legacy/masks.png?raw=true)
 
 For more examples or to add your own, please see the 
 examples [folder](https://github.com/Nelson-Gon/cytounet/blob/master/examples).

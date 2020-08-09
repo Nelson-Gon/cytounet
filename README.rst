@@ -104,16 +104,16 @@ Please see the following examples:
 Visually:
 
 
-.. image:: https://www.github.com/Nelson-Gon/cytounet/examples/legacy/images.png
-   :target: https://www.github.com/Nelson-Gon/cytounet/examples/legacy/images.png
+.. image:: https://github.com/Nelson-Gon/cytounet/blob/master/examples/legacy/images.png?raw=true
+   :target: https://github.com/Nelson-Gon/cytounet/blob/master/examples/legacy/images.png?raw=true
    :alt: Images
 
 
 Result:
 
 
-.. image:: https://www.github.com/Nelson-Gon/cytounet/examples/legacy/masks.png
-   :target: https://www.github.com/Nelson-Gon/cytounet/examples/legacy/masks.png
+.. image:: https://github.com/Nelson-Gon/cytounet/blob/master/examples/legacy/masks.png?raw=true
+   :target: https://github.com/Nelson-Gon/cytounet/blob/master/examples/legacy/masks.png?raw=true
    :alt: Results
 
 
