@@ -96,7 +96,7 @@ Please see the following examples:
 **Google Colab Notebooks**
 
 
-* DIC image segmentation available `here <https://github.com/Nelson-Gon/cytounet/examples/embryos_dic.ipynb>`_
+* DIC image segmentation available `here <https://github.com/Nelson-Gon/cytounet/blob/aedf8d52af4e3e9f2cd426de90b4c5dea2a4e11c/examples/embryos_dic.ipynb>`_
 
 
 * Cell Membrane Segmentation available `here <https://github.com/Nelson-Gon/cytounet/blob/2b828097576d7c9874f7ae27c1d630f81276fe54/examples/example_usage.ipynb>`_
