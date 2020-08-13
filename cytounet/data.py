@@ -111,18 +111,32 @@ def generate_validation_data(batch_size, validation_path, image_folder, mask_fol
         yield (img, mask)
 
 
-def load_augmentations(image_path, mask_path, image_prefix="image",mask_prefix="mask", image_suffix="png"):
+def load_augmentations(image_path, mask_path, image_prefix="image",mask_prefix="mask", image_suffix="png",
+                       target_size = (512, 512)):
+    """
+
+    :param image_path: Path to augmented images
+    :param mask_path: Path to augmented masks
+    :param image_prefix: Image filename prefix. Defaults to image
+    :param mask_prefix: Mask filename prefix. Defaults to mask
+    :param image_suffix: Image format. Defaults to tif
+    :param target_size: Size to set. Defaults to (512, 512). Should be the same size as that defined for the model
+    input
+    :return: A tuple of images and masks
+
+    """
+
     image_name_arr = glob.glob(os.path.join(image_path, "{}*.{}".format(image_prefix,image_suffix)))
     image_arr = []
     mask_arr = []
     for index, item in enumerate(image_name_arr):
-        img = image.load_img(item, color_mode="grayscale", target_size = (512, 512))
+        img = image.load_img(item, color_mode="grayscale", target_size = target_size)
         img = image.img_to_array(img)
         # img = img[:, :, 0]
         # img = np.expand_dims(img, axis=0)
         # img = img.transpose(2, 1, 0)  # make channels last
         mask = image.load_img(item.replace(image_path, mask_path).replace(image_prefix, mask_prefix),
-                              color_mode="grayscale", target_size = (512, 512))
+                              color_mode="grayscale", target_size = target_size)
         mask = image.img_to_array(mask)
         # mask = mask / 255.
         # mask = mask[:, :, 0]
