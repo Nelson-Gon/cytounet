@@ -74,8 +74,9 @@ def generate_test_data(test_path, num_image=30, target_size=(256, 256), image_su
         img = image.load_img(glob.glob(test_path + "/*." + image_suffix)[i],
                              target_size=(img_width, img_height), color_mode="grayscale")
         img = image.img_to_array(img)
-        img = img / 255.
         img = np.expand_dims(img, axis=0)
+        img = img / 255.
+
         yield img
 
 
@@ -110,23 +111,23 @@ def generate_validation_data(batch_size, validation_path, image_folder, mask_fol
         yield (img, mask)
 
 
-def load_augmentations(image_path, mask_path, image_prefix="image", mask_prefix="mask"):
-    image_name_arr = glob.glob(os.path.join(image_path, "{}*.png".format(image_prefix)))
+def load_augmentations(image_path, mask_path, image_prefix="image",mask_prefix="mask", image_suffix="png"):
+    image_name_arr = glob.glob(os.path.join(image_path, "{}*.{}".format(image_prefix,image_suffix)))
     image_arr = []
     mask_arr = []
     for index, item in enumerate(image_name_arr):
-        img = image.load_img(item, color_mode="grayscale")
+        img = image.load_img(item, color_mode="grayscale", target_size = (512, 512))
         img = image.img_to_array(img)
-        img = img[:, :, 0]
-        img = np.expand_dims(img, axis=0)
-        img = img.transpose(2, 1, 0)  # make channels last
+        # img = img[:, :, 0]
+        # img = np.expand_dims(img, axis=0)
+        # img = img.transpose(2, 1, 0)  # make channels last
         mask = image.load_img(item.replace(image_path, mask_path).replace(image_prefix, mask_prefix),
-                              color_mode="grayscale")
+                              color_mode="grayscale", target_size = (512, 512))
         mask = image.img_to_array(mask)
-        mask = mask / 255.
-        mask = mask[:, :, 0]
-        mask = np.expand_dims(mask, axis=0)
-        mask = mask.transpose(2, 1, 0)  # make channels last
+        # mask = mask / 255.
+        # mask = mask[:, :, 0]
+        # mask = np.expand_dims(mask, axis=0)
+        # mask = mask.transpose(2, 1, 0)  # make channels last
         image_arr.append(img)
         mask_arr.append(mask)
     image_arr = np.array(image_arr)

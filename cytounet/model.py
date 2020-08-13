@@ -199,4 +199,3 @@ def train(model_object=None, train_generator=None, steps_per_epoch=200, epochs=5
     if save_as is not None:
         model_object.save(save_as)
 
-

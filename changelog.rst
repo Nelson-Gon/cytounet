@@ -6,6 +6,9 @@ cytounet's changelog.
 
 
 * 
+  Fixed a bug related to ``load_augmentations`` that led to image flipping. 
+
+* 
   Changed outputs to ``sigmoid`` instead of ``ReLU``
 
 * 
