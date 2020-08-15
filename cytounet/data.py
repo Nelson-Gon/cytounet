@@ -43,6 +43,7 @@ def generate_train_data(batch_size, train_path, image_folder, mask_folder, aug_d
         target_size=target_size,
         batch_size=batch_size,
         save_to_dir=save_to_dir,
+        shuffle=True,
         save_prefix=image_save_prefix,
         seed=seed)
     mask_generator = mask_datagen.flow_from_directory(
@@ -53,6 +54,7 @@ def generate_train_data(batch_size, train_path, image_folder, mask_folder, aug_d
         target_size=target_size,
         batch_size=batch_size,
         save_to_dir=save_to_dir,
+        shuffle=True,
         save_prefix=mask_save_prefix,
         seed=seed)
     train_generator = zip(image_generator, mask_generator)
@@ -60,24 +62,24 @@ def generate_train_data(batch_size, train_path, image_folder, mask_folder, aug_d
         yield (img, mask)
 
 
-def generate_test_data(test_path, num_image=30, target_size=(256, 256), image_suffix="tif"):
+def generate_test_data(test_path, train_seed, target_size=(256, 256)):
     """
 
     :param test_path: Path to test images
-    :param num_image: Number of test images. Defaults to 30 for legacy reasons
-    :param target_size: Target size(same as trainGenerator and unet layer 1)
-    :param image_suffix: Image format. Defaults to tif
-    :return: A test image generator object to feed to keras' predict_generator
+    :param train_seed: Same seed used in generate_train_data
+    :param target_size: Target size(same as generate_train_data and unet's input layer)
+    :return: A test image generator object to feed to keras' predict
     """
-    img_width, img_height = target_size
-    for i in range(num_image):
-        img = image.load_img(glob.glob(test_path + "/*." + image_suffix)[i],
-                             target_size=(img_width, img_height), color_mode="grayscale")
-        img = image.img_to_array(img)
-        img = np.expand_dims(img, axis=0)
-        img = img / 255.
-
-        yield img
+    test_data_gen = ImageDataGenerator(rescale=1 / 255.)
+    test_data_gen = test_data_gen.flow_from_directory(directory=test_path,
+                                                      target_size=target_size,
+                                                      class_mode=None,
+                                                      batch_size=1,
+                                                      color_mode="grayscale",
+                                                      seed=train_seed,
+                                                      shuffle=False)
+    for test_img in test_data_gen:
+        yield test_img
 
 
 def generate_validation_data(batch_size, validation_path, image_folder, mask_folder, aug_dict,
@@ -111,8 +113,8 @@ def generate_validation_data(batch_size, validation_path, image_folder, mask_fol
         yield (img, mask)
 
 
-def load_augmentations(image_path, mask_path, image_prefix="image",mask_prefix="mask", image_suffix="png",
-                       target_size = (512, 512)):
+def load_augmentations(image_path, mask_path, image_prefix="image", mask_prefix="mask", image_suffix="png",
+                       target_size=(512, 512)):
     """
 
     :param image_path: Path to augmented images
@@ -126,17 +128,17 @@ def load_augmentations(image_path, mask_path, image_prefix="image",mask_prefix="
 
     """
 
-    image_name_arr = glob.glob(os.path.join(image_path, "{}*.{}".format(image_prefix,image_suffix)))
+    image_name_arr = glob.glob(os.path.join(image_path, "{}*.{}".format(image_prefix, image_suffix)))
     image_arr = []
     mask_arr = []
     for index, item in enumerate(image_name_arr):
-        img = image.load_img(item, color_mode="grayscale", target_size = target_size)
+        img = image.load_img(item, color_mode="grayscale", target_size=target_size)
         img = image.img_to_array(img)
         # img = img[:, :, 0]
         # img = np.expand_dims(img, axis=0)
         # img = img.transpose(2, 1, 0)  # make channels last
         mask = image.load_img(item.replace(image_path, mask_path).replace(image_prefix, mask_prefix),
-                              color_mode="grayscale", target_size = target_size)
+                              color_mode="grayscale", target_size=target_size)
         mask = image.img_to_array(mask)
         # mask = mask / 255.
         # mask = mask[:, :, 0]
@@ -200,5 +202,3 @@ def threshold_images(image_path, image_format="tif", thresh_val=128, thresh_max=
     thresholded = [cv2.threshold(x, thresh_val, thresh_max,
                                  cv2.THRESH_BINARY | cv2.THRESH_OTSU)[1] for x in masks_arrays]
     return thresholded
-
-

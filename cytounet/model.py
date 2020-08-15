@@ -4,6 +4,7 @@ import skimage.io as io
 import skimage.transform as trans
 import numpy as np
 from keras.models import *
+from tensorflow.keras.models import load_model
 from keras.layers import *
 from keras.optimizers import *
 from keras.callbacks import ModelCheckpoint, LearningRateScheduler
@@ -76,7 +77,7 @@ def unet_simple(pretrained_weights=None, metrics=['accuracy'], input_size=(256, 
 
     model.compile(optimizer=optimiser_list[optimiser],
                   loss=loss, metrics=metrics)
-    #model.name = model_name
+    # model.name = model_name
 
     if pretrained_weights is not None:
         model.load_weights(pretrained_weights)
@@ -85,7 +86,7 @@ def unet_simple(pretrained_weights=None, metrics=['accuracy'], input_size=(256, 
 
 
 def unet(pretrained_weights=None, metrics=['accuracy'], input_size=(256, 256, 1), optimiser="Adam",
-         learning_rate=3e-6, loss="binary_crossentropy", model_name = "unet_complex"):
+         learning_rate=3e-6, loss="binary_crossentropy", model_name="unet_complex"):
     """
   :param pretrained_weights: If a pretrained model exists, provide it here for fine tuning
   :param input_size: size of the first layer(input_layer). Defaults to (256, 256, 1)
@@ -148,11 +149,11 @@ def unet(pretrained_weights=None, metrics=['accuracy'], input_size=(256, 256, 1)
     conv9 = Conv2D(16, 3, activation='relu', kernel_initializer='he_normal', padding='same')(conv9)
     outputs = Conv2D(1, 1, activation='sigmoid', padding='same')(conv9)
 
-    model = Model(inputs=inputs, outputs=outputs, name= model_name)
+    model = Model(inputs=inputs, outputs=outputs, name=model_name)
 
     model.compile(optimizer=optimiser_list[optimiser], loss=loss, metrics=metrics)
 
-    #model.name = model_name
+    # model.name = model_name
     return model
 
     if pretrained_weights:
@@ -161,25 +162,24 @@ def unet(pretrained_weights=None, metrics=['accuracy'], input_size=(256, 256, 1)
     return model
 
 
-def predict(model_object=None, test_path=None, model_weights=None, image_length=None, target_size=(256, 256),
-            image_suffix="tif"):
+def predict(test_path=None, model_weights=None, train_seed=None, target_size=(256, 256),
+            custom_loss=None):
     """
-    :param model_object: Model object eg unet() or unet_simple()
+    :type custom_loss: dict
+    :param custom_loss: If using a custom loss function, provide a dict with these functions e.g. \
+     {'dice_coef':dice_coef,'dice_coef_loss':dice_coef_loss}
+    :param train_seed: Same seed as used in generate_train_data
     :param test_path: Path to test file
     :param model_weights: A pretrained hdf5 model
-    :param image_length: Number of images in test
     :param target_size: Target output image size
-    :param image_suffix: Defaults to tif
     :return: Predictions
 
     """
-    generate_test = generate_test_data(test_path=test_path, num_image=image_length, image_suffix=image_suffix,
-                                       target_size=target_size)
-    # init model
-    model = model_object
-    model.load_weights(model_weights)
-    # predictions
-    return model.predict(generate_test,verbose=1, batch_size=None, steps = image_length)
+    generated_test = generate_test_data(test_path=test_path, train_seed=train_seed, target_size=target_size)
+
+    model = load_model(model_weights, custom_objects=custom_loss)
+
+    return model.predict(generated_test)
 
 
 def train(model_object=None, train_generator=None, steps_per_epoch=200, epochs=5, save_as=None, **kwargs):
@@ -198,4 +198,3 @@ def train(model_object=None, train_generator=None, steps_per_epoch=200, epochs=5
 
     if save_as is not None:
         model_object.save(save_as)
-

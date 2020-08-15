@@ -2,6 +2,9 @@
 
 **Version 0.2.0**
 
+* Changes to prediction generation were made. We now use `ImageDataGenerator` for
+test time data generation. 
+
 * Fixed a bug related to `load_augmentations` that led to image flipping. 
 
 * Changed outputs to `sigmoid` instead of `ReLU`
