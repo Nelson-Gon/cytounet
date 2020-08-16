@@ -7,6 +7,9 @@ assignees: ''
 
 ---
 
+- [ ] I have read the [wiki](https://github.com/Nelson-Gon/cytounet/wiki) and my issue is not 
+handled (sufficiently) there or is not answered at all.
+
 **Describe the bug**
 Please describe the bug in one sentence.
 
