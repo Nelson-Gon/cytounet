@@ -78,9 +78,7 @@ def generate_test_data(test_path, train_seed, target_size=(256, 256)):
                                                       color_mode="grayscale",
                                                       seed=train_seed,
                                                       shuffle=False)
-    for test_img in test_data_gen:
-        yield test_img
-
+    return test_data_gen
 
 def generate_validation_data(batch_size, validation_path, image_folder, mask_folder, aug_dict,
                              image_color_mode="grayscale",

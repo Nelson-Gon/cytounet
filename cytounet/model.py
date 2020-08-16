@@ -4,7 +4,8 @@ import skimage.io as io
 import skimage.transform as trans
 import numpy as np
 from keras.models import *
-from tensorflow.keras.models import load_model
+# Just need to be explicit * imports can be ambiguous.
+from keras.models import load_model
 from keras.layers import *
 from keras.optimizers import *
 from keras.callbacks import ModelCheckpoint, LearningRateScheduler
