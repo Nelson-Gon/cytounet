@@ -15,9 +15,10 @@ import cv2
 
 def generate_train_data(batch_size, train_path, image_folder, mask_folder, aug_dict, image_color_mode="grayscale",
                         mask_color_mode="grayscale", image_save_prefix="image", mask_save_prefix="mask",
-                        save_to_dir=None, target_size=(256, 256), seed=1):
+                        save_to_dir=None, target_size=(256, 256), seed=1, show_names=True):
     """
 
+    :param show_names: Boolean. Should filenames be printed? Defaults to True
     :param batch_size: tensorflow batch size
     :param train_path: Path to training images
     :param image_folder: Path to a folder in train_path that holds the actual images
@@ -57,14 +58,18 @@ def generate_train_data(batch_size, train_path, image_folder, mask_folder, aug_d
         shuffle=True,
         save_prefix=mask_save_prefix,
         seed=seed)
+    if show_names:
+        print(image_generator.filenames)
+        print(mask_generator.filenames)
     train_generator = zip(image_generator, mask_generator)
     for (img, mask) in train_generator:
-        yield (img, mask)
+        yield img, mask
 
 
-def generate_test_data(test_path, train_seed, target_size=(256, 256)):
+def generate_test_data(test_path, train_seed, target_size=(256, 256), show_names=True):
     """
 
+    :param show_names: Boolean. Should filenames be printed? Defaults to True
     :param test_path: Path to test images
     :param train_seed: Same seed used in generate_train_data
     :param target_size: Target size(same as generate_train_data and unet's input layer)
@@ -78,6 +83,8 @@ def generate_test_data(test_path, train_seed, target_size=(256, 256)):
                                                       color_mode="grayscale",
                                                       seed=train_seed,
                                                       shuffle=False)
+    if show_names:
+        print(test_data_gen.filenames)
     return test_data_gen
 
 def generate_validation_data(batch_size, validation_path, image_folder, mask_folder, aug_dict,

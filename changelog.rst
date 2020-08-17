@@ -6,6 +6,10 @@ cytounet's changelog.
 
 
 * 
+  Added filename printing to data generators to make it easier to show what order the files are
+  being read in. This can be disabled by setting ``show_names`` to ``False``. 
+
+* 
   Changes to prediction generation were made. We now use ``ImageDataGenerator`` for
   test time data generation. 
 
