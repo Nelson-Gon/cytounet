@@ -6,6 +6,9 @@ cytounet's changelog.
 
 
 * 
+  Fixed issues with inconsistent image order in ``show_images`` when reading from a directory.
+
+* 
   Added filename printing to data generators to make it easier to show what order the files are
   being read in. This can be disabled by setting ``show_names`` to ``False``. 
 

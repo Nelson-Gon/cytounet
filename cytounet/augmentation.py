@@ -22,7 +22,7 @@ def show_images(directory="aug/mask", image_suffix="png", number=4, cmap="gray")
         # convert to viewable format by imshow, only considers len 3 for now
         images = [image[:, :, 0] if len(image.shape) == 3 else image for image in directory]
     else:
-        images = ImageCollection(glob.glob(directory + "/*." + image_suffix))
+        images = ImageCollection(sorted(glob.glob(directory + "/*." + image_suffix)))
 
     no_cols = number / 2 if number % 2 == 0 else number / 3
 
