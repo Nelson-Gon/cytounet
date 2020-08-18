@@ -133,7 +133,7 @@ def load_augmentations(image_path, mask_path, image_prefix="image", mask_prefix=
 
     """
 
-    image_name_arr = glob.glob(os.path.join(image_path, "{}*.{}".format(image_prefix, image_suffix)))
+    image_name_arr = sorted(glob.glob(os.path.join(image_path, "{}*.{}".format(image_prefix, image_suffix))))
     image_arr = []
     mask_arr = []
     for index, item in enumerate(image_name_arr):
@@ -202,7 +202,7 @@ def threshold_images(image_path, image_format="tif", thresh_val=128, thresh_max=
     :return: thresholded images
 
     """
-    masks = glob.glob(image_path + "/*." + image_format)
+    masks = sorted(glob.glob(image_path + "/*." + image_format))
     masks_arrays = [cv2.imread(x, cv2.IMREAD_GRAYSCALE) for x in masks]
     thresholded = [cv2.threshold(x, thresh_val, thresh_max,
                                  cv2.THRESH_BINARY | cv2.THRESH_OTSU)[1] for x in masks_arrays]
