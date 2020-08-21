@@ -11,8 +11,6 @@ from PIL import Image
 import cv2
 
 
-# https://blog.keras.io/building-powerful-image-classification-models-using-very-little-data.html
-
 def generate_train_data(batch_size, train_path, image_folder, mask_folder, aug_dict, image_color_mode="grayscale",
                         mask_color_mode="grayscale", image_save_prefix="image", mask_save_prefix="mask",
                         save_to_dir=None, target_size=(256, 256), seed=1, show_names=True):
@@ -74,6 +72,7 @@ def generate_test_data(test_path, train_seed, target_size=(256, 256), show_names
     :param train_seed: Same seed used in generate_train_data
     :param target_size: Target size(same as generate_train_data and unet's input layer)
     :return: A test image generator object to feed to keras' predict
+
     """
     test_data_gen = ImageDataGenerator(rescale=1 / 255.)
     test_data_gen = test_data_gen.flow_from_directory(directory=test_path,
@@ -87,10 +86,28 @@ def generate_test_data(test_path, train_seed, target_size=(256, 256), show_names
         print(test_data_gen.filenames)
     return test_data_gen
 
+
 def generate_validation_data(batch_size, validation_path, image_folder, mask_folder, aug_dict,
                              image_color_mode="grayscale",
                              mask_color_mode="grayscale", image_save_prefix="image", mask_save_prefix="mask",
-                             save_to_dir=None, target_size=(256, 256), seed=1):
+                             save_to_dir=None, target_size=(256, 256), seed=1, show_names=True):
+    """
+    :param show_names: Boolean. Should filenames be printed? Defaults to True
+    :param batch_size: tensorflow batch size
+    :param validation_path: Path to training images
+    :param image_folder: Path to a folder in train_path that holds the actual images
+    :param mask_folder: Path to a folder in train_path that holds the masks
+    :param aug_dict: An augmentation dict(see keras ImageDataGenerator for more)
+    :param image_color_mode: One of rgb or grayscale. Defaults to grayscale
+    :param mask_color_mode: One of rgb or grayscale. Defaults to grayscale
+    :param image_save_prefix: Prefix to to add to augmented images
+    :param mask_save_prefix: Prefix to add to augmented masks
+    :param save_to_dir: If you needed to save augmented images, path to the target directory
+    :param target_size: Size of images(reshape to this size). Defaults to (256, 256)
+    :param seed: Reproducibility. May also affect results. Defaults to 1
+    :return: A generator object to supply to the validation_data argument of keras fit or previously fit_generator
+
+    """
     image_datagen = ImageDataGenerator(**aug_dict)
     mask_datagen = ImageDataGenerator(**aug_dict)
     image_generator = image_datagen.flow_from_directory(
@@ -114,8 +131,12 @@ def generate_validation_data(batch_size, validation_path, image_folder, mask_fol
         save_prefix=mask_save_prefix,
         seed=seed)
     valid_generator = zip(image_generator, mask_generator)
+    if show_names:
+        print(image_generator.filenames)
+        print(mask_generator.filenames)
+
     for (img, mask) in valid_generator:
-        yield (img, mask)
+        yield img, mask
 
 
 def load_augmentations(image_path, mask_path, image_prefix="image", mask_prefix="mask", image_suffix="png",
