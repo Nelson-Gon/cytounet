@@ -6,3 +6,4 @@ Keras>=2.2.0 # actual is 2.3.2
 Pillow>=6.0.0 # actual is 7.0.0
 opencv-python>=4.0.0.32 # actual is 4.2.0.32
 
+

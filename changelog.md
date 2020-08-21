@@ -2,6 +2,8 @@
 
 **Version 0.2.0**
 
+* `show_images` and `read_images` are now imported from `pyautocv` >= 0.2.2
+
 * Fixed issues with inconsistent image order in `show_images` when reading from a directory.
 
 * Added filename printing to data generators to make it easier to show what order the files are

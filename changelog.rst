@@ -6,6 +6,9 @@ cytounet's changelog.
 
 
 * 
+  ``show_images`` and ``read_images`` are now imported from ``pyautocv`` >= 0.2.2
+
+* 
   Fixed issues with inconsistent image order in ``show_images`` when reading from a directory.
 
 * 

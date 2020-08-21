@@ -1,35 +1,55 @@
-from .data import *
-import glob
-from skimage.io import ImageCollection
+# These functions were originally part of pyautocv. To prevent excessive dependencies
+# and because pyautocv was not yet released, I kept these functions here.
+# In the future, they will be removed and imported from pyautocv instead
+
 import matplotlib.pyplot as plt
-import numpy as np
+from itertools import chain
+from skimage.io import imread, imread_collection
+import glob
+from os import pathsep
 
 
-def show_images(directory="aug/mask", image_suffix="png", number=4, cmap="gray"):
-    """
-
-    :param directory: Directory holding images. Deafults to aug/mask to plot augmented masks.
-    Adjust as necessary. Can be a list of images or a numpy ndarray instead.
-    :param image_suffix: Image format, defaults to png
-    :param image_type: Masks or original. Defaults to masks
-    :param number: Number of images to show
-    :param cmap: Plot color cmap(as provided by imshow from matplotlib). Defaults to gray
-    :return: A plot of images as requested.
+def read_images(directory, image_suffix="tif"):
+    # This currently only supports grayscale images, see pyautocv for better support
 
     """
-    # should really use os and sys to join paths
-    if isinstance(directory, (list, np.ndarray)):
-        # convert to viewable format by imshow, only considers len 3 for now
-        images = [image[:, :, 0] if len(image.shape) == 3 else image for image in directory]
+
+    :return: Returns a multidimensional array containing arrays that represent images in a directory
+
+    """
+    # read png and jpg from current directory
+    if image_suffix == "tif":
+        images_list = sorted(glob.glob(directory + "/*.tif"))
+        return [imread(x, plugin='pil') for x in images_list]
     else:
-        images = ImageCollection(sorted(glob.glob(directory + "/*." + image_suffix)))
+        if image_suffix not in ["png", "jpg"]:
+            raise ValueError("Only tif, png, and jpg are currently supported")
+        return list(imread_collection(directory + "/*.jpg" + pathsep + "/*.png"))
 
-    no_cols = number / 2 if number % 2 == 0 else number / 3
 
-    # no_rows= number / 2 if number % 2 == 0 else number / 3
+def show_images(original_images=None, processed_images=None, cmap="gray", number=None, figure_size=(20, 20)):
+    """
+    :param figure_size: Size of the plot shown. Defaults to (20,20)
+    :param original_images: Original Images from read_images()
+    :param processed_images: Images that have been converted eg from detect_edges()
+    :param cmap: Color cmap from matplotlib. Defaults to gray
+    :param number: optional Number of images to show
+    """
+    # need to figure out how any works in python
+    if original_images is None or processed_images is None:
+        raise ValueError("Both original and processed image lists are required.")
+    if number is not None:
+        original_images = original_images[:number]
+        processed_images = processed_images[:number]
 
-    fig, axes = plt.subplots(nrows=2, ncols=int(no_cols))
-    fig.set_size_inches(10, 10)
-    for index, item in zip(np.arange(number), images):
-        axes.ravel()[index].imshow(item, cmap=cmap)
-        axes.ravel()[index].set_axis_off()
+    image_list = list(chain(*zip(original_images, processed_images)))
+
+    if len(image_list) % 2 == 0:
+        ncols = len(image_list) / 2
+    else:
+        ncols = len(image_list)
+
+    fig, axes = plt.subplots(nrows=2, ncols=int(ncols), figsize=figure_size)
+    for ind, image in enumerate(image_list):
+        axes.ravel()[ind].imshow(image_list[ind], cmap=cmap)
+        axes.ravel()[ind].set_axis_off()
