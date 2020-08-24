@@ -17,7 +17,7 @@ def reshape_images(image_list):
     :return: Images that can be plotted with show_images
 
     """
-    final_list = [img[:, :, 0] if img.shape == 3 else img for img in image_list]
+    final_list = [img[:, :, 0] if len(img.shape == 3) else img for img in image_list]
     return final_list
 
 
@@ -54,7 +54,7 @@ def show_images(original_images=None, processed_images=None, cmap="gray", number
     :param cmap: Color cmap from matplotlib. Defaults to gray
     :param number: optional Number of images to show
     """
-    # need to figure out how any works in python
+
     if original_images is None or processed_images is None:
         raise ValueError("Both original and processed image lists are required.")
     if number is not None:
