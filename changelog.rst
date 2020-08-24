@@ -6,6 +6,9 @@ cytounet's changelog.
 
 
 * 
+  Fixed issues with reading mixed ``jpg`` and ``png`` images. 
+
+* 
   Added ``reshape_images`` and ``resize_images``. These are helper functions that may be useful when plotting
   or restoring original image size. 
 

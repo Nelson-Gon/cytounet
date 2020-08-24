@@ -21,12 +21,17 @@ def reshape_images(image_list):
     return final_list
 
 
-def read_images(directory, image_suffix="tif"):
-    # This currently only supports grayscale images, see pyautocv for better support
+def read_images(directory, image_suffix="tif", other_directory=None):
 
+    # This currently only supports grayscale images, see pyautocv for better support
     """
 
-    :return: Returns a multidimensional array containing arrays that represent images in a directory
+    :param directory: Directory containing tiff only or mixed png/jpg images to be read
+    :param image_suffix: Suffix of images in the folder. Currently only supports tif, png, and jpg
+    :param other_directory: If images exist in another folder/sub folder, please provide it here. Leave blank if
+    mixed file formats(jpg and png) exist in the same folder
+
+    :return: A list containing arrays of images
 
     """
     # read png and jpg from current directory
@@ -36,7 +41,9 @@ def read_images(directory, image_suffix="tif"):
     else:
         if image_suffix not in ["png", "jpg"]:
             raise ValueError("Only tif, png, and jpg are currently supported")
-        return list(imread_collection(directory + "/*.jpg" + pathsep + "/*.png"))
+        if other_directory is None:
+            other_directory = directory
+        return list(imread_collection(directory + "/*.jpg" + pathsep + other_directory + "/*.png"))
 
 
 def show_images(original_images=None, processed_images=None, cmap="gray", number=None, figure_size=(20, 20)):
