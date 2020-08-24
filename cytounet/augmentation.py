@@ -5,8 +5,20 @@
 import matplotlib.pyplot as plt
 from itertools import chain
 from skimage.io import imread, imread_collection
+from skimage.transform import resize
 import glob
 from os import pathsep
+
+
+def reshape_images(image_list):
+    """
+
+    :param image_list: A list of images to reshape for plotting
+    :return: Images that can be plotted with show_images
+
+    """
+    final_list = [img[:, :, 0] if img.shape == 3 else img for img in image_list]
+    return final_list
 
 
 def read_images(directory, image_suffix="tif"):
@@ -39,8 +51,8 @@ def show_images(original_images=None, processed_images=None, cmap="gray", number
     if original_images is None or processed_images is None:
         raise ValueError("Both original and processed image lists are required.")
     if number is not None:
-        original_images = original_images[:number]
-        processed_images = processed_images[:number]
+        original_images = reshape_images(original_images[:number])
+        processed_images = reshape_images(processed_images[:number])
 
     image_list = list(chain(*zip(original_images, processed_images)))
 
@@ -53,3 +65,19 @@ def show_images(original_images=None, processed_images=None, cmap="gray", number
     for ind, image in enumerate(image_list):
         axes.ravel()[ind].imshow(image_list[ind], cmap=cmap)
         axes.ravel()[ind].set_axis_off()
+
+
+def resize_images(image_list, target_size):
+    """
+
+    :param image_list: A list of images or image that needs to be resized
+    :param target_size: New target image size
+    :return: Image or list of images that have been resized.
+
+
+    """
+
+    return [resize(x, target_size) for x in image_list]
+
+
+
