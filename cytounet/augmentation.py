@@ -17,12 +17,11 @@ def reshape_images(image_list):
     :return: Images that can be plotted with show_images
 
     """
-    final_list = [img[:, :, 0] if len(img.shape) == 3 else img for img in image_list]
+    final_list = [img[:, :, 0] if len(img.shape) == 3 and img.shape[2] != 3 else img for img in image_list]
     return final_list
 
 
 def read_images(directory, image_suffix="tif", other_directory=None):
-
     # This currently only supports grayscale images, see pyautocv for better support
     """
 
@@ -85,6 +84,3 @@ def resize_images(image_list, target_size):
     """
 
     return [resize(x, target_size) for x in image_list]
-
-
-
