@@ -2,6 +2,9 @@
 
 **Version 0.2.0**
 
+* `show_images` now shows titles. These functions will be removed later and imported from `pyautocv`
+instead. 
+
 * Fixed issues with reading mixed `jpg` and `png` images. 
 
 * Added `reshape_images` and `resize_images`. These are helper functions that may be useful when plotting

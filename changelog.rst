@@ -6,6 +6,10 @@ cytounet's changelog.
 
 
 * 
+  ``show_images`` now shows titles. These functions will be removed later and imported from ``pyautocv``
+  instead. 
+
+* 
   Fixed issues with reading mixed ``jpg`` and ``png`` images. 
 
 * 
