@@ -183,19 +183,18 @@ def predict(test_path=None, model_weights=None, train_seed=None, target_size=(25
     return model.predict(generated_test)
 
 
-def train(model_object=None, train_generator=None, steps_per_epoch=200, epochs=5, save_as=None, **kwargs):
+def train(model_object=None, train_generator=None, steps_per_epoch=200, epochs=5, **kwargs):
     """
 
     :param train_generator: From generate_train_data
     :param model_object: model_object: Model object eg unet() or unet_simple()
-
     :param epochs: see Model.fit
-    :param save_as: If not None, saves model weights
-    :param kwargs: Other arguments to Model.fit
+    :param kwargs: Other arguments to Model.fit. Of interest is validation_data and validation_steps that can be \
+    helpful when using a validation dataset. Also useful is the callbacks argument that allows you to add callbacks \
+    like ModelCheckpoint which may be useful to save a given model.
     :return: A model object
 
     """
-    model_object.fit(train_generator, steps_per_epoch=steps_per_epoch, epochs=epochs, **kwargs)
+    return model_object.fit(train_generator, steps_per_epoch=steps_per_epoch, epochs=epochs, **kwargs)
 
-    if save_as is not None:
-        model_object.save(save_as)
+

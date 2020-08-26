@@ -6,6 +6,9 @@ cytounet's changelog.
 
 
 * 
+  ``save_as`` was removed from ``train``. Use ModelCheckpoint instead and provide it as a callback. 
+
+* 
   ``show_images`` now shows titles. These functions will be removed later and imported from ``pyautocv``
   instead. 
 
