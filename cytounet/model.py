@@ -1,14 +1,8 @@
-import numpy as np
-import os
-import skimage.io as io
-import skimage.transform as trans
-import numpy as np
 from keras.models import *
 # Just need to be explicit * imports can be ambiguous.
 from keras.models import load_model
 from keras.layers import *
 from keras.optimizers import *
-from keras.callbacks import ModelCheckpoint, LearningRateScheduler
 from keras import backend as K
 from data import generate_test_data
 
@@ -45,7 +39,7 @@ def dice_coef_loss(y_true, y_pred):
 
 # bias variance tradeoff
 # https://blog.insightdatascience.com/bias-variance-tradeoff-explained-fa2bc28174c4
-def unet_simple(pretrained_weights=None, metrics=['accuracy'], input_size=(256, 256, 1), optimiser="Adam",
+def unet_simple(pretrained_weights=None, metrics=None, input_size=(256, 256, 1), optimiser="Adam",
                 learning_rate=3e-6, loss="binary_crossentropy", model_name="unet_simple"):
     """
     :param pretrained_weights: If a pretrained model exists, provide it here for fine tuning
@@ -57,6 +51,8 @@ def unet_simple(pretrained_weights=None, metrics=['accuracy'], input_size=(256, 
     :param model_name Name of the model, defaults to unet_simple
     :return: A simple(r) unet model.
     """
+    if metrics is None:
+        metrics = ['accuracy']
     inputs = Input(shape=input_size)
     conv1 = Conv2D(64, 3, activation="relu", padding="same", kernel_initializer="he_normal")(inputs)
     conv1 = BatchNormalization()(conv1)
@@ -86,19 +82,20 @@ def unet_simple(pretrained_weights=None, metrics=['accuracy'], input_size=(256, 
     return model
 
 
-def unet(pretrained_weights=None, metrics=['accuracy'], input_size=(256, 256, 1), optimiser="Adam",
+def unet(metrics=None, input_size=(256, 256, 1), optimiser="Adam",
          learning_rate=3e-6, loss="binary_crossentropy", model_name="unet_complex"):
     """
-  :param pretrained_weights: If a pretrained model exists, provide it here for fine tuning
   :param input_size: size of the first layer(input_layer). Defaults to (256, 256, 1)
   :param optimiser: Optimiser to use. One of SGD or Adam. Defaults to Adam.
   :param learning_rate: Learning rate to use with the Adam optimiser. Defaults to 3e-6
   :param loss:  Loss function to use. Defaults to binary_crossentropy
   :param metrics: Metrics to use. Defaults to accuracy
   :param model_name Defaults to unet_complex
-  :return: A failry complex unet model.
+  :return: A fairly complex unet model.
   """
     # momentum chosen based on the original paper
+    if metrics is None:
+        metrics = ['accuracy']
     optimiser_list = {'Adam': Adam(lr=learning_rate), 'SGD': SGD(learning_rate=learning_rate, momentum=0.90)}
 
     inputs = Input(input_size)
@@ -154,12 +151,6 @@ def unet(pretrained_weights=None, metrics=['accuracy'], input_size=(256, 256, 1)
 
     model.compile(optimizer=optimiser_list[optimiser], loss=loss, metrics=metrics)
 
-    # model.name = model_name
-    return model
-
-    if pretrained_weights:
-        model.load_weights(pretrained_weights)
-
     return model
 
 
@@ -186,6 +177,7 @@ def predict(test_path=None, model_weights=None, train_seed=None, target_size=(25
 def train(model_object=None, train_generator=None, steps_per_epoch=200, epochs=5, **kwargs):
     """
 
+    :param steps_per_epoch: Steps to use for each training epoch, defaults to 200.
     :param train_generator: From generate_train_data
     :param model_object: model_object: Model object eg unet() or unet_simple()
     :param epochs: see Model.fit
@@ -196,5 +188,3 @@ def train(model_object=None, train_generator=None, steps_per_epoch=200, epochs=5
 
     """
     return model_object.fit(train_generator, steps_per_epoch=steps_per_epoch, epochs=epochs, **kwargs)
-
-

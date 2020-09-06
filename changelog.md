@@ -1,6 +1,9 @@
-# cytounet's changelog. 
+# Changes to cytounet 
 
 **Version 0.2.0**
+
+* `pretrained_weights` was dropped as an argument to `unet`. Use a `callback` instead. A future
+version wil include a fine tuning function. 
 
 * `save_as` was removed from `train`. Use ModelCheckpoint instead and provide it as a callback. 
 
@@ -50,7 +53,7 @@ test time data generation.
 
 ---
 
-* Renamed repository to `cytounet` to reflect the havy focus on biological images.
+* Renamed repository to `cytounet` to reflect the heavy focus on biological images.
 
 * Initiated support for validation via `validGenerator`.
 

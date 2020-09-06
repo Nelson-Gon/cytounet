@@ -4,9 +4,6 @@ from tensorflow.keras.preprocessing import image
 import numpy as np
 import os
 import glob
-import skimage.io as io
-import skimage.transform as trans
-from skimage import img_as_uint
 from PIL import Image
 import cv2
 
