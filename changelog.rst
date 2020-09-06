@@ -6,6 +6,9 @@ Changes to cytounet
 
 
 * 
+  Regularization is now supported. It is currently limited to L1 and L2.
+
+* 
   ``pretrained_weights`` was dropped as an argument to ``unet``. Use a ``callback`` instead. A future
   version wil include a fine tuning function. 
 
