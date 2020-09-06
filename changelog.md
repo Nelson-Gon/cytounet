@@ -37,7 +37,7 @@ test time data generation.
 
 * Added `predict` to reduce code repetition and make predicting easier. 
 
-* Model complexity has been increased. 
+* `unet` was rewritten to increase complexity and solve issues with blank predictions. It now also uses `Conv2DTranspose` instead of `UpSampling2D`. 
 
 * Initial support for a simpler model to optimise the bias-variance trade off for small(er) datasets.
 
