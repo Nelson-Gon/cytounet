@@ -6,6 +6,9 @@ Changes to cytounet
 
 
 * 
+  Added a new data set from BBBC. 
+
+* 
   ``finetune`` is a new function dedicated to the finetuning workflow. 
 
 * 

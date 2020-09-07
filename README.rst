@@ -159,6 +159,10 @@ Thank you very much.
   Red Blood Cell `Images <https://github.com/Nelson-Gon/cytounet/tree/master/examples/BBBC009_v1>`_ provided by Anne 
   Carpenter and Roger Wiegand, available `here <https://data.broadinstitute.org/bbbc/BBBC009/>`_
 
+* 
+  Chinese Hamster Ovary `Cells <https://github.com/Nelson-Gon/cytounet/tree/master/examples/BBBC030_v1>`_ provided by 
+  Koos et al.(2016), available `here <https://bbbc.broadinstitute.org/BBBC030>`_
+
 **Credits**
 
 

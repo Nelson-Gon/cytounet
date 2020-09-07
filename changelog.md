@@ -2,6 +2,8 @@
 
 **Version 0.2.0**
 
+* Added a new data set from BBBC. 
+
 * `finetune` is a new function dedicated to the finetuning workflow. 
 
 * Regularization is now supported. It is currently limited to L1 and L2.
