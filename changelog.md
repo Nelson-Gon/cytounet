@@ -2,6 +2,8 @@
 
 **Version 0.2.0**
 
+* `finetune` is a new function dedicated to the finetuning workflow. 
+
 * Regularization is now supported. It is currently limited to L1 and L2.
 
 * `pretrained_weights` was dropped as an argument to `unet`. Use a `callback` instead. A future

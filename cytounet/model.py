@@ -6,11 +6,7 @@ from keras.optimizers import *
 from keras import backend as K
 from data import generate_test_data
 from keras.regularizers import l1, l2, l1_l2
-
-
-# https://stackoverflow.com/questions/49785133/keras-dice-coefficient-loss-function-is-negative-and-increasing-with-
-# https://stats.stackexchange.com/questions/195006/is-the-dice-coefficient-the-same-as-
-# https://stackoverflow.com/questions/52946110/u-net-low-contrast-test-images-predict-output-is-grey-box
+from keras.callbacks import ModelCheckpoint
 
 
 def dice_coef(y_true, y_pred, smooth=1):
@@ -200,6 +196,7 @@ def predict(test_path=None, model_weights=None, train_seed=None, target_size=(25
 def train(model_object=None, train_generator=None, steps_per_epoch=200, epochs=5, **kwargs):
     """
 
+
     :param steps_per_epoch: Steps to use for each training epoch, defaults to 200.
     :param train_generator: From generate_train_data
     :param model_object: model_object: Model object eg unet() or unet_simple()
@@ -211,3 +208,26 @@ def train(model_object=None, train_generator=None, steps_per_epoch=200, epochs=5
 
     """
     return model_object.fit(train_generator, steps_per_epoch=steps_per_epoch, epochs=epochs, **kwargs)
+
+
+def finetune(pretrained_weights, model_object=None, train_generator=None, steps_per_epoch=200, epochs=5,
+             monitor_metric="loss", save_best_only=True, **kwargs):
+    """
+
+
+
+      :param save_best_only: Save only the best weights? Defaults to True
+      :param pretrained_weights: An hdf5 file containing pretrained weights.
+      :param monitor_metric: Metric to monitor. Determines if weights are saved at the end of an epoch
+      :param steps_per_epoch: Steps to use for each training epoch, defaults to 200.
+      :param train_generator: From generate_train_data
+      :param model_object: model_object: Model object eg unet() or unet_simple()
+      :param epochs: see Model.fit
+      :param kwargs: Other arguments to Model.fit. Of interest is validation_data and validation_steps that can be \
+      helpful when using a validation dataset. Also useful is the callbacks argument that allows you to add callbacks \
+      like ModelCheckpoint which may be useful to save a given model.
+      :return: A model object
+
+      """
+    chkpoint = ModelCheckpoint(pretrained_weights, monitor=monitor_metric, verbose=1, save_best_only=save_best_only)
+    train(model_object, train_generator, steps_per_epoch, epochs, callbacks=[chkpoint], **kwargs)

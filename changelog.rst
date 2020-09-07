@@ -6,6 +6,9 @@ Changes to cytounet
 
 
 * 
+  ``finetune`` is a new function dedicated to the finetuning workflow. 
+
+* 
   Regularization is now supported. It is currently limited to L1 and L2.
 
 * 
