@@ -6,6 +6,9 @@ Changes to cytounet
 
 
 * 
+  Kernel regularization can now be turned off via a boolean argument(use_regularizer)
+
+* 
   Added a new data set from BBBC. 
 
 * 

@@ -3,7 +3,7 @@ from keras.models import *
 from keras.models import load_model
 from keras.layers import *
 from keras.optimizers import *
-from keras import backend as K
+from keras import backend as keras_backend
 from data import generate_test_data
 from keras.regularizers import l1, l2, l1_l2
 from keras.callbacks import ModelCheckpoint
@@ -17,10 +17,10 @@ def dice_coef(y_true, y_pred, smooth=1):
     :return: Returns the dice coefficient
 
     """
-    y_true_f = K.flatten(y_true)
-    y_pred_f = K.flatten(y_pred)
-    intersection = K.sum(y_true_f * y_pred_f)
-    return (2. * intersection + smooth) / (K.sum(y_true_f) + K.sum(y_pred_f) + smooth)
+    y_true_f = keras_backend.flatten(y_true)
+    y_pred_f = keras_backend.flatten(y_pred)
+    intersection = keras_backend.sum(y_true_f * y_pred_f)
+    return (2. * intersection + smooth) / (keras_backend.sum(y_true_f) + keras_backend.sum(y_pred_f) + smooth)
 
 
 def dice_coef_loss(y_true, y_pred):
@@ -81,89 +81,93 @@ def unet_simple(pretrained_weights=None, metrics=None, input_size=(256, 256, 1),
 
 def unet(metrics=None, input_size=(256, 256, 1), optimiser="Adam",
          learning_rate=3e-6, loss="binary_crossentropy", model_name="unet_complex",
-         regularizer="l2", regularizer_rate=1e-2):
+         use_regularizer=False, regularizer="l2", regularizer_rate=1e-2):
     """
-   :param regularizer_rate: Regularization rate. Defaults to 1e-2.
-  :param regularizer: Regularizer to use for penalizing weights(kernel_regularizer). Supports l1 and l2.
-  :param input_size: size of the first layer(input_layer). Defaults to (256, 256, 1)
-  :param optimiser: Optimiser to use. One of SGD or Adam. Defaults to Adam.
-  :param learning_rate: Learning rate to use with the Adam optimiser. Defaults to 3e-6
-  :param loss:  Loss function to use. Defaults to binary_crossentropy
-  :param metrics: Metrics to use. Defaults to accuracy
-  :param model_name Defaults to unet_complex
-  :return: A fairly complex unet model.
+    :param regularizer_rate: If using a regularizer, provide regularization rate here.
+    :param use_regularizer: Boolean. Should kernel regularization be used? Defaults to False
+    :param regularizer: One of l1 or l2 to use as the kernel regularizer
+    :param input_size: size of the first layer(input_layer). Defaults to (256, 256, 1)
+    :param optimiser: Optimiser to use. One of SGD or Adam. Defaults to Adam.
+    :param learning_rate: Learning rate to use with the Adam optimiser. Defaults to 3e-6
+    :param loss:  Loss function to use. Defaults to binary_crossentropy
+    :param metrics: Metrics to use. Defaults to accuracy
+    :param model_name Defaults to unet_complex
+    :return: A fairly complex unet model.
   """
-
+    # momentum chosen based on the original paper
     if metrics is None:
         metrics = ['accuracy']
     optimiser_list = {'Adam': Adam(lr=learning_rate), 'SGD': SGD(learning_rate=learning_rate, momentum=0.90)}
-    regularizer_list = {'l1': l1(regularizer_rate), 'l2': l2(regularizer_rate)}
-    use_regularizer = regularizer_list[regularizer]
+    chosen_regularizer = None
+    if use_regularizer:
+        print("Using {} for kernel regularization".format(regularizer))
+        regularizer_list = {'l1': l1(regularizer_rate), 'l2': l2(regularizer_rate)}
+        chosen_regularizer = regularizer_list[regularizer]
     inputs = Input(input_size)
     conv1 = Conv2D(16, 3, activation='relu', kernel_initializer='he_normal', padding='same',
-                   kernel_regularizer=use_regularizer)(inputs)
+                   kernel_regularizer=chosen_regularizer)(inputs)
     conv1 = BatchNormalization()(conv1)
     conv1 = Conv2D(16, 3, activation='relu', kernel_initializer='he_normal', padding='same',
-                   kernel_regularizer=use_regularizer)(conv1)
+                   kernel_regularizer=chosen_regularizer)(conv1)
     pool1 = MaxPooling2D((2, 2))(conv1)
 
     conv2 = Conv2D(32, 3, activation='relu', kernel_initializer='he_normal', padding='same',
-                   kernel_regularizer=use_regularizer)(pool1)
+                   kernel_regularizer=chosen_regularizer)(pool1)
     conv2 = BatchNormalization()(conv2)
     conv2 = Conv2D(32, 3, activation='relu', kernel_initializer='he_normal', padding='same',
-                   kernel_regularizer=use_regularizer)(conv2)
+                   kernel_regularizer=chosen_regularizer)(conv2)
     pool2 = MaxPooling2D((2, 2))(conv2)
 
     conv3 = Conv2D(64, 3, activation='relu', kernel_initializer='he_normal', padding='same',
-                   kernel_regularizer=use_regularizer)(pool2)
+                   kernel_regularizer=chosen_regularizer)(pool2)
     conv3 = BatchNormalization()(conv3)
     conv3 = Conv2D(64, (3, 3), activation='relu', kernel_initializer='he_normal', padding='same',
-                   kernel_regularizer=use_regularizer)(conv3)
+                   kernel_regularizer=chosen_regularizer)(conv3)
     pool3 = MaxPooling2D((2, 2))(conv3)
 
     conv4 = Conv2D(128, 3, activation='relu', kernel_initializer='he_normal', padding='same',
-                   kernel_regularizer=use_regularizer)(pool3)
+                   kernel_regularizer=chosen_regularizer)(pool3)
     conv4 = BatchNormalization()(conv4)
     conv4 = Conv2D(128, 3, activation='relu', kernel_initializer='he_normal', padding='same',
-                   kernel_regularizer=use_regularizer)(conv4)
+                   kernel_regularizer=chosen_regularizer)(conv4)
     pool4 = MaxPooling2D(pool_size=(2, 2))(conv4)
 
     conv5 = Conv2D(256, 3, activation='relu', kernel_initializer='he_normal', padding='same',
-                   kernel_regularizer=use_regularizer)(pool4)
+                   kernel_regularizer=chosen_regularizer)(pool4)
     conv5 = BatchNormalization()(conv5)
     conv5 = Conv2D(256, 3, activation='relu', kernel_initializer='he_normal', padding='same',
-                   kernel_regularizer=use_regularizer)(conv5)
+                   kernel_regularizer=chosen_regularizer)(conv5)
 
     up6 = Conv2DTranspose(128, 2, strides=(2, 2), padding='same')(conv5)
     up6 = concatenate([up6, conv4], axis=3)
     conv6 = Conv2D(128, 3, activation='relu', kernel_initializer='he_normal', padding='same',
-                   kernel_regularizer=use_regularizer)(up6)
+                   kernel_regularizer=chosen_regularizer)(up6)
     conv6 = BatchNormalization()(conv6)
     conv6 = Conv2D(128, 3, activation='relu', kernel_initializer='he_normal', padding='same',
-                   kernel_regularizer=use_regularizer)(conv6)
+                   kernel_regularizer=chosen_regularizer)(conv6)
 
     up7 = Conv2DTranspose(64, 2, strides=(2, 2), padding='same')(conv6)
     up7 = concatenate([up7, conv3])
     conv7 = Conv2D(64, 2, activation='relu', kernel_initializer='he_normal', padding='same',
-                   kernel_regularizer=use_regularizer)(up7)
+                   kernel_regularizer=chosen_regularizer)(up7)
     conv7 = BatchNormalization()(conv7)
     conv7 = Conv2D(64, 3, activation='relu', kernel_initializer='he_normal', padding='same',
-                   kernel_regularizer=use_regularizer)(conv7)
+                   kernel_regularizer=chosen_regularizer)(conv7)
 
     up8 = Conv2DTranspose(32, 3, strides=(2, 2), padding='same')(conv7)
     up8 = concatenate([up8, conv2])
     conv8 = Conv2D(32, 3, activation='relu', kernel_initializer='he_normal', padding='same',
-                   kernel_regularizer=use_regularizer)(up8)
+                   kernel_regularizer=chosen_regularizer)(up8)
     conv8 = BatchNormalization()(conv8)
     conv8 = Conv2D(32, 3, activation='relu', kernel_initializer='he_normal', padding='same',
-                   kernel_regularizer=use_regularizer)(conv8)
+                   kernel_regularizer=chosen_regularizer)(conv8)
 
     up9 = Conv2DTranspose(16, 3, strides=(2, 2), padding='same')(conv8)
     up9 = concatenate([up9, conv1], axis=3)
     conv9 = Conv2D(16, 3, activation='relu', kernel_initializer='he_normal', padding='same',
-                   kernel_regularizer=use_regularizer)(up9)
+                   kernel_regularizer=chosen_regularizer)(up9)
     conv9 = Conv2D(16, 3, activation='relu', kernel_initializer='he_normal', padding='same',
-                   kernel_regularizer=use_regularizer)(conv9)
+                   kernel_regularizer=chosen_regularizer)(conv9)
     outputs = Conv2D(1, 1, activation='sigmoid', padding='same')(conv9)
 
     model = Model(inputs=inputs, outputs=outputs, name=model_name)
