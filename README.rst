@@ -88,18 +88,33 @@ Or:
 
 Please see the following examples:
 
-**Kaggle Notebooks**
-
 
 * `Predicting Embryonic DIC Image Labels with Keras <https://www.kaggle.com/gonnel/predicting-embryonic-dic-image-labels-with-keras>`_
 
-**Google Colab Notebooks**
+
+.. image:: https://img.shields.io/badge/view%20on-nbviewer-brightgreen.svg
+   :target: https://nbviewer.jupyter.org/github/Nelson-Gon/cytounet/blob/aedf8d52af4e3e9f2cd426de90b4c5dea2a4e11c/examples/embryos_dic.ipynb
+   :alt: nbviewer
 
 
-* DIC image segmentation available `here <https://github.com/Nelson-Gon/cytounet/blob/aedf8d52af4e3e9f2cd426de90b4c5dea2a4e11c/examples/embryos_dic.ipynb>`_
 
-For more examples or to add your own, please see the 
-examples `folder <https://github.com/Nelson-Gon/cytounet/blob/master/examples>`_.
+* Chinese Hamster Ovary Segmentation\ `here <https://github.com/Nelson-Gon/cytounet/blob/f1af3b16d4f49babe45f84b5bb29a6ee139e4814/examples/example_usage.ipynb>`_
+
+
+.. image:: https://img.shields.io/badge/view%20on-nbviewer-brightgreen.svg
+   :target: https://nbviewer.jupyter.org/github/Nelson-Gon/cytounet/blob/f1af3b16d4f49babe45f84b5bb29a6ee139e4814/examples/example_usage.ipynb
+   :alt: nbviewer
+
+
+Visually:
+
+
+.. image:: https://raw.githubusercontent.com/Nelson-Gon/cytounet/master/examples/example_results.png
+   :target: https://raw.githubusercontent.com/Nelson-Gon/cytounet/master/examples/example_results.png
+   :alt: CHO
+
+
+For more examples or to add your own, please see the examples `folder <https://github.com/Nelson-Gon/cytounet/blob/master/examples>`_.
 
 **Is it supported?**
 
