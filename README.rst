@@ -102,7 +102,7 @@ Please see the following examples:
 
 
 .. image:: https://img.shields.io/badge/view%20on-nbviewer-brightgreen.svg
-   :target: https://nbviewer.jupyter.org/github.com/Nelson-Gon/cytounet/blob/ff5ce0c2cc97e35baf1edacbc994661583200884/examples/example_usage.ipynb
+   :target: https://nbviewer.jupyter.org/github/Nelson-Gon/cytounet/blob/ff5ce0c2cc97e35baf1edacbc994661583200884/examples/example_usage.ipynb
    :alt: nbviewer
 
 
