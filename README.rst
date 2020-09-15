@@ -5,8 +5,8 @@
    :alt: DOI
 
 
-.. image:: https://www.repostatus.org/badges/latest/wip.svg
-   :target: https://www.repostatus.org/badges/latest/wip.svg
+.. image:: https://www.repostatus.org/badges/latest/active.svg
+   :target: https://www.repostatus.org/badges/latest/active.svg
    :alt: Stage
  
 

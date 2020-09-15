@@ -2,6 +2,7 @@
 
 **Version 0.2.0**
 
+
 * Kernel regularization can now be turned off via a boolean argument(use_regularizer)
 
 * Added a new data set from BBBC. 

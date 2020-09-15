@@ -1,4 +1,3 @@
-from __future__ import print_function
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.preprocessing import image
 import numpy as np
