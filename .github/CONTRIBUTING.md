@@ -37,7 +37,7 @@ python -m m2r changelog.md --overwrite
 # copy changelog and README or get their diff and copy it to docs/source
 # TODO
 cd ./README* ./changelog* docs/source
-
+# if not done before, use sphnix-autostart and edit the corresponding files ie conf.py 
 cd docs
 # build docs
 sphinx-build source build
