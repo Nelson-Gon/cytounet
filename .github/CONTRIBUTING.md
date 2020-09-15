@@ -50,3 +50,10 @@ Please note that the 'pyfdc' project is released with a
 By contributing to this project, you agree to abide by its terms.
 
 [See also](https://samnicholls.net/2016/06/15/how-to-sphinx-readthedocs/) for a guide on Sphinx documentation.
+
+* Releasing
+ - Make `dist` with `python setup.py sdist` at the very minimum. Ensure everything necessary is included in
+ `Manifest.in`. 
+ - Upload `dist` to test.pypi.org with `twine upload --repository-url https://test.pypi.org/legacy/ dist/*`
+ - If everything looks good, upload to pypi.org with `twine upload dist/*`
+ 
