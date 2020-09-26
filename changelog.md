@@ -1,5 +1,12 @@
 # Changes to cytounet 
 
+**Version 0.2.1**
+
+- Added `find_contours` and `draw_contours`, useful methods for area determination.
+
+- Added `read_image_spec` for use only for post modeling processing. This fixes issues with incorrect
+shapes when using `read_images`
+
 **Version 0.2.0**
 
 
