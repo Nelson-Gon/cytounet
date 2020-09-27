@@ -47,12 +47,17 @@ pip install git+https://github.com/Nelson-Gon/cytounet.git
 from cytounet.model import *
 from cytounet.data import *
 from cytounet.augmentation import *
+from cytounet.post_model import *
 
 ```
 
 **Detailed Sample Usage**
 
 Please see the following examples:
+
+* Typical Usage [Segmentation](https://github.com/Nelson-Gon/cytounet/blob/7fd42a27be1b5730eb05e60cb98d5b7e825a0087/examples/example_usage.ipynb)
+
+[![nbviewer](https://img.shields.io/badge/view%20on-nbviewer-brightgreen.svg)](https://nbviewer.jupyter.org/github/Nelson-Gon/cytounet/blob/7fd42a27be1b5730eb05e60cb98d5b7e825a0087/examples/example_usage.ipynb)
 
 
 * [Predicting Embryonic DIC Image Labels with Keras](https://www.kaggle.com/gonnel/predicting-embryonic-dic-image-labels-with-keras)
@@ -61,15 +66,16 @@ Please see the following examples:
 
 
 
-* Chinese Hamster Ovary [Segmentation](https://github.com/Nelson-Gon/cytounet/blob/ff5ce0c2cc97e35baf1edacbc994661583200884/examples/example_usage.ipynb)
 
-[![nbviewer](https://img.shields.io/badge/view%20on-nbviewer-brightgreen.svg)](https://nbviewer.jupyter.org/github/Nelson-Gon/cytounet/blob/ff5ce0c2cc97e35baf1edacbc994661583200884/examples/example_usage.ipynb)
 
 
 Visually:
 
 ![CHO](https://raw.githubusercontent.com/Nelson-Gon/cytounet/master/examples/example_results.png)
 
+Sample Object Area Visualization(see the typical usage notebook above for detailed usage)
+
+![Area Determination](https://raw.githubusercontent.com/Nelson-Gon/cytounet/master/examples/areas.png)
 
 For more examples or to add your own, please see the examples [folder](https://github.com/Nelson-Gon/cytounet/blob/master/examples).
 
@@ -78,13 +84,17 @@ For more examples or to add your own, please see the examples [folder](https://g
 A checked box indicates support. You can either add more feature requests here or tackle unchecked boxes and make
 a pull request to add such support. 
 
-- [ ] Custom Number of Layers
+
 
 - [x] Single class segmentation
 
 - [x] Grayscale images
 
 - [x] Model Validation
+
+- [x] Determining areas of objects in an image
+
+- [ ] Custom Number of Layers
 
 - [ ] Multi-class segmentation
 

@@ -83,10 +83,20 @@ Or:
    from cytounet.model import *
    from cytounet.data import *
    from cytounet.augmentation import *
+   from cytounet.post_model import *
 
 **Detailed Sample Usage**
 
 Please see the following examples:
+
+
+* Typical Usage `Segmentation <https://github.com/Nelson-Gon/cytounet/blob/7fd42a27be1b5730eb05e60cb98d5b7e825a0087/examples/example_usage.ipynb>`_
+
+
+.. image:: https://img.shields.io/badge/view%20on-nbviewer-brightgreen.svg
+   :target: https://nbviewer.jupyter.org/github/Nelson-Gon/cytounet/blob/7fd42a27be1b5730eb05e60cb98d5b7e825a0087/examples/example_usage.ipynb
+   :alt: nbviewer
+
 
 
 * `Predicting Embryonic DIC Image Labels with Keras <https://www.kaggle.com/gonnel/predicting-embryonic-dic-image-labels-with-keras>`_
@@ -94,15 +104,6 @@ Please see the following examples:
 
 .. image:: https://img.shields.io/badge/view%20on-nbviewer-brightgreen.svg
    :target: https://nbviewer.jupyter.org/github/Nelson-Gon/cytounet/blob/aedf8d52af4e3e9f2cd426de90b4c5dea2a4e11c/examples/embryos_dic.ipynb
-   :alt: nbviewer
-
-
-
-* Chinese Hamster Ovary `Segmentation <https://github.com/Nelson-Gon/cytounet/blob/ff5ce0c2cc97e35baf1edacbc994661583200884/examples/example_usage.ipynb>`_
-
-
-.. image:: https://img.shields.io/badge/view%20on-nbviewer-brightgreen.svg
-   :target: https://nbviewer.jupyter.org/github/Nelson-Gon/cytounet/blob/ff5ce0c2cc97e35baf1edacbc994661583200884/examples/example_usage.ipynb
    :alt: nbviewer
 
 
@@ -114,6 +115,14 @@ Visually:
    :alt: CHO
 
 
+Sample Object Area Visualization(see the typical usage notebook above for detailed usage)
+
+
+.. image:: https://raw.githubusercontent.com/Nelson-Gon/cytounet/master/examples/areas.png
+   :target: https://raw.githubusercontent.com/Nelson-Gon/cytounet/master/examples/areas.png
+   :alt: Area Determination
+
+
 For more examples or to add your own, please see the examples `folder <https://github.com/Nelson-Gon/cytounet/blob/master/examples>`_.
 
 **Is it supported?**
@@ -123,9 +132,6 @@ a pull request to add such support.
 
 
 * 
-  [ ] Custom Number of Layers
-
-* 
   [x] Single class segmentation
 
 * 
@@ -133,6 +139,12 @@ a pull request to add such support.
 
 * 
   [x] Model Validation
+
+* 
+  [x] Determining areas of objects in an image
+
+* 
+  [ ] Custom Number of Layers
 
 * 
   [ ] Multi-class segmentation
