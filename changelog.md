@@ -2,6 +2,12 @@
 
 **Version 0.2.1**
 
+- Fixed issues with original images being overwritten. It is now possible to return a copy of non 
+overwritten images. 
+
+- Made `draw_contours` more flexible. Specifically, it is now possible to turn off text display as 
+this makes the image crowded. 
+
 - Added `find_contours` and `draw_contours`, useful methods for area determination.
 
 - Added `read_image_spec` for use only for post modeling processing. This fixes issues with incorrect

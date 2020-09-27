@@ -2,6 +2,7 @@
 # Load need libraries
 import cv2
 from .augmentation import *
+from copy import deepcopy
 
 
 # Read an Image
@@ -23,7 +24,6 @@ def read_image_spec(directory, image_suffix="png", load_format=None, verbose=Tru
     if verbose:
         [print("Reading {}".format(x)) for x in to_read]
     return [cv2.imread(file_name) for file_name in to_read]
-
 
 
 def find_contours(image_list, threshold_val=20, max_threshold=255, retr_mode=None, return_edges=False):
@@ -62,27 +62,27 @@ def find_contours(image_list, threshold_val=20, max_threshold=255, retr_mode=Non
     return final_return
 
 
-
-
-
-
-
 # Draw contours that meet a minimum(or maximum) area
 # Minimum chosen since it is a binary image
 
-def draw_contours(areas_list, contours_list, original_images, min_area=0, number=None, **kwargs):
+def draw_contours(areas_list, contours_list, original_images, min_area=0, font_size=2,
+                  number=None, show_text=True, **kwargs):
     """
     :param areas_list A list/array containing areas from find_contours
     :param contours_list A list/array containing contours from find_contours
-    :param original_images Images on which to draw contours
+    :param images_list Images on which to draw contours
+    :param original_images A copy of the same images as images_list, this is useful for visualization purposes.
     :param min_area Minimum area required for a contour to be drawn onto the image
     :param number Number of images to show, defaults to 4.
+    :param font_size Font Size for the text displayed.
+    :show_text Should the area be displayed on the image? Defaults to True
     :return A matplotlib plot of objects(contours) and their areas
 
     """
     if number is None:
         number = len(original_images)
-    original_images_copy = original_images[:number].copy()
+
+    original_images_copy = deepcopy(original_images[:number])
     slice_images = original_images[:number]
     slice_contours = contours_list[:number]
     slice_areas = areas_list[:number]
@@ -95,14 +95,8 @@ def draw_contours(areas_list, contours_list, original_images, min_area=0, number
             if specific_area > min_area:
                 cv2.drawContours(img, specific_contour, -1, (255, 140, 0), 3)
                 x_value, y_value, width, height = cv2.boundingRect(specific_contour)
-                cv2.putText(img, str(specific_area), (x_value, y_value), cv2.FONT_HERSHEY_SIMPLEX, 1.5,
+                if show_text:
+                    cv2.putText(img, str(specific_area), (x_value, y_value), cv2.FONT_HERSHEY_SIMPLEX, int(font_size),
                             (255, 255, 255), 3)
     print("Returning {} images as requested".format(number))
-    return show_images(original_images, original_images_copy, **kwargs)
-
-
-
-
-
-
-
+    return show_images(original_images_copy,original_images, **kwargs), original_images_copy
