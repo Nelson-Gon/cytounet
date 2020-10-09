@@ -79,7 +79,21 @@ Sample Object Area Visualization(see the typical usage notebook above for detail
 
 For more examples or to add your own, please see the examples [folder](https://github.com/Nelson-Gon/cytounet/blob/master/examples).
 
-**Is it supported?**
+**Experiments/Benchmarks**
+
+This section shows some experimental results based on publicly available data. 
+
+* Comparison of low vs high quality masks on the model's output
+
+This notebook shows the effects of "filled holes"(outlines whose area is filled with some colour e.g white)
+on the model's quality. The results in general show that filled masks which are also better seen by the human eye
+result in better quality output. 
+
+The [notebook](https://github.com/Nelson-Gon/cytounet/blob/9781a45260bd8cdb82b37e07a26254ecf01af5c7/examples/example_usage.ipynb) can be accessed via this [link](https://nbviewer.jupyter.org/github/Nelson-Gon/cytounet/blob/9781a45260bd8cdb82b37e07a26254ecf01af5c7/examples/example_usage.ipynb).
+
+
+
+**TODO List**
 
 A checked box indicates support. You can either add more feature requests here or tackle unchecked boxes and make
 a pull request to add such support. 

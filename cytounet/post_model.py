@@ -1,5 +1,5 @@
 # Steps Taken
-# Load need libraries
+# Load relevant libraries
 import cv2
 from .augmentation import *
 from copy import deepcopy
