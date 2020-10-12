@@ -20,6 +20,11 @@
    :alt: PyPI version
  
 
+.. image:: https://img.shields.io/pypi/dm/cytounet.svg
+   :target: https://pypi.python.org/pypi/cytounet/
+   :alt: PyPI Downloads Month
+
+
 .. image:: https://img.shields.io/pypi/l/cytounet.svg
    :target: https://pypi.python.org/pypi/cytounet/
    :alt: PyPI license

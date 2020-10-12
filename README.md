@@ -2,6 +2,7 @@
 ![Stage](https://www.repostatus.org/badges/latest/active.svg) 
 ![Test Install](https://github.com/Nelson-Gon/cytounet/workflows/Test%20Install/badge.svg)
 [![PyPI version](https://badge.fury.io/py/cytounet.svg)](https://badge.fury.io/py/cytounet) 
+[![PyPI Downloads Month](https://img.shields.io/pypi/dm/cytounet.svg)](https://pypi.python.org/pypi/cytounet/)
 [![PyPI license](https://img.shields.io/pypi/l/cytounet.svg)](https://pypi.python.org/pypi/cytounet/) 
 ![Travis Build](https://travis-ci.com/Nelson-Gon/cytounet.svg?branch=master)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Nelson-Gon/cytounet/graphs/commit-activity)
