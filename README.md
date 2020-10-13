@@ -24,7 +24,7 @@ Sample data(10 random images each of train, validate, test sets) is provided in 
 
 A complete a549 cancer cell segmentation [notebook](https://github.com/Nelson-Gon/cytounet/blob/20435549e6b4c3d15979c2117445c4c19ab51bdf/examples/a549_sampler.ipynb) is also provided. 
 
-Finally, pre-trained [weights](https://github.com/Nelson-Gon/cytounet/models/a549_scratch.hdf5) are provided that can be used for transfer learning. These were trained on considerably more data
+Finally, pre-trained [weights](https://github.com/Nelson-Gon/cytounet/blob/56694553e5014e3f479807de244f5ddeabbcbf80/models/a549_scratch.hdf5) are provided that can be used for transfer learning. These were trained on considerably more data
 and for more epochs. 
 
 **Note**
