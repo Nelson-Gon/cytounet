@@ -13,6 +13,32 @@
 
 ---
 
+**Background about this project**
+
+This project was largely done as a summer intern in Dr. Mikael [Bjorklund](https://person.zju.edu.cn/en/H118035)'s  lab.
+
+The aim was to automate [a549](https://en.wikipedia.org/wiki/A549_cell) cancer cell
+segmentation and size determination. 
+
+Sample data(10 random images each of train, validate, test sets) is provided in [original_data](https://github.com/Nelson-Gon/cytounet/tree/master/examples/original_data/a549).
+
+A complete a549 cancer cell segmentation [notebook](https://github.com/Nelson-Gon/cytounet/blob/20435549e6b4c3d15979c2117445c4c19ab51bdf/examples/a549_sampler.ipynb) is also provided. 
+
+Finally, pre-trained [weights](https://github.com/Nelson-Gon/cytounet/models/a549_scratch.hdf5) are provided that can be used for transfer learning. These were trained on considerably more data
+and for more epochs. 
+
+**Note**
+ 
+* To generate masks(labels) provided here `a549` cancer cells were stained and imaged with fluorescence microscopy. These 
+fluorescent images were then thresholded with `threshold_images` with a threshold value of 83. The images were then saved 
+with `save_images`. The original fluorescent images are not provided here mainly due to the already huge size of the 
+project. 
+
+* This project is not limited to cancer cells. The model can be trained on almost any object, living and non-living.
+More examples are given below. 
+
+
+---
 
 **Installation**
 

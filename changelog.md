@@ -2,6 +2,8 @@
 
 **Version 0.2.1**
 
+- Added original a549 sample data, notebook, and pre-trained weights. 
+
 - Added experimental results to the README. 
 
 - Fixed issues with original images being overwritten. It is now possible to return a copy of non 

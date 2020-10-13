@@ -6,6 +6,9 @@ Changes to cytounet
 
 
 * 
+  Added original a549 sample data, notebook, and pre-trained weights. 
+
+* 
   Added experimental results to the README. 
 
 * 
