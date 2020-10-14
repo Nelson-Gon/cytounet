@@ -57,7 +57,7 @@
 
 ----
 
-**Background about this project**
+**Background**
 
 
 .. image:: examples/project_workflow.png
@@ -65,17 +65,25 @@
    :alt: Project Workflow
 
 
-This project was largely done as a summer intern in Dr. Mikael `Bjorklund <https://person.zju.edu.cn/en/H118035>`_\ 's  lab.
+This project was largely done as a summer intern in Dr. Mikael `Bjorklund <https://person.zju.edu.cn/en/H118035>`_\ 's  lab, 
+whose guidance, resources, and time I am grateful for. 
 
-The aim was to automate `a549 <https://en.wikipedia.org/wiki/A549_cell>`_ cancer cell
-segmentation and size determination. 
+The aim was to automate `a549 <https://en.wikipedia.org/wiki/A549_cell>`_ and `rpe <https://en.wikipedia.org/wiki/Retinal_pigment_epithelium>`_ 
+cancer cell segmentation and size determination. 
+
+
+.. image:: examples/rpe_sample.png
+   :target: examples/rpe_sample.png
+   :alt: RPE Sample
+
 
 Sample data(10 random images each of train, validate, test sets) is provided in `original_data <https://github.com/Nelson-Gon/cytounet/tree/master/examples/original_data/a549>`_.
 
 A complete a549 cancer cell segmentation `notebook <https://github.com/Nelson-Gon/cytounet/blob/20435549e6b4c3d15979c2117445c4c19ab51bdf/examples/a549_sampler.ipynb>`_ is also provided. 
 
-Finally, pre-trained `weights <https://github.com/Nelson-Gon/cytounet/blob/56694553e5014e3f479807de244f5ddeabbcbf80/models/a549_scratch.hdf5>`_ are provided that can be used for transfer learning. These were trained on considerably more data
-and for more epochs. 
+Finally, pre-trained `weights <https://github.com/Nelson-Gon/cytounet/blob/56694553e5014e3f479807de244f5ddeabbcbf80/models/a549_scratch.hdf5>`_ are provided that can be used for transfer learning. 
+These were trained on considerably more data and for more epochs. For more pre-trained weights and/or data, 
+please `contact <https://nelson-gon.github.io/contact>`_ the author. 
 
 **Note**
 
@@ -110,14 +118,14 @@ From source or to use without installing locally:
 
 Or:
 
-.. code-block:: python
+.. code-block::
 
 
    pip install git+https://github.com/Nelson-Gon/cytounet.git
 
 **Import**
 
-.. code-block:: python
+.. code-block::
 
 
    from cytounet.model import *
@@ -258,3 +266,21 @@ from the original implementation.
 
 
 * The Unet algorithm was introduced by Ronneberger et al. in their `paper <http://lmb.informatik.uni-freiburg.de/people/ronneber/u-net/>`_.
+
+----
+
+If you would like to cite this work, please use:
+
+Nelson Gonzabato(2020) cytounet: Deep Learning Based Cell Segmentation, https://github.com/Nelson-Gon/cytounet
+
+BibTex:
+
+@misc{Gonzabato2020,
+  author = {Gonzabato, N},
+  title = {cytounet: Deep Learning Based Cell Segmentation},
+  year = {2013},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  howpublished = {\url{https://github.com/Nelson-Gon/cytounet}},
+  commit = {7a537f34b618f822bef9b3af73b16858768cd412}
+} 

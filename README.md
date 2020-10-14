@@ -13,21 +13,25 @@
 
 ---
 
-**Background about this project**
+**Background**
 
 ![Project Workflow](examples/project_workflow.png)
 
-This project was largely done as a summer intern in Dr. Mikael [Bjorklund](https://person.zju.edu.cn/en/H118035)'s  lab.
+This project was largely done as a summer intern in Dr. Mikael [Bjorklund](https://person.zju.edu.cn/en/H118035)'s  lab, 
+whose guidance, resources, and time I am grateful for. 
 
-The aim was to automate [a549](https://en.wikipedia.org/wiki/A549_cell) cancer cell
-segmentation and size determination. 
+The aim was to automate [a549](https://en.wikipedia.org/wiki/A549_cell) and [rpe](https://en.wikipedia.org/wiki/Retinal_pigment_epithelium) 
+cancer cell segmentation and size determination. 
+
+![RPE Sample](examples/rpe_sample.png)
 
 Sample data(10 random images each of train, validate, test sets) is provided in [original_data](https://github.com/Nelson-Gon/cytounet/tree/master/examples/original_data/a549).
 
 A complete a549 cancer cell segmentation [notebook](https://github.com/Nelson-Gon/cytounet/blob/20435549e6b4c3d15979c2117445c4c19ab51bdf/examples/a549_sampler.ipynb) is also provided. 
 
-Finally, pre-trained [weights](https://github.com/Nelson-Gon/cytounet/blob/56694553e5014e3f479807de244f5ddeabbcbf80/models/a549_scratch.hdf5) are provided that can be used for transfer learning. These were trained on considerably more data
-and for more epochs. 
+Finally, pre-trained [weights](https://github.com/Nelson-Gon/cytounet/blob/56694553e5014e3f479807de244f5ddeabbcbf80/models/a549_scratch.hdf5) are provided that can be used for transfer learning. 
+These were trained on considerably more data and for more epochs. For more pre-trained weights and/or data, 
+please [contact](https://nelson-gon.github.io/contact) the author. 
 
 **Note**
  
@@ -63,7 +67,7 @@ git clone https://github.com/Nelson-Gon/cytounet.git
 
 Or:
 
-```python
+```
 
 pip install git+https://github.com/Nelson-Gon/cytounet.git
 
@@ -71,7 +75,7 @@ pip install git+https://github.com/Nelson-Gon/cytounet.git
 
 **Import**
 
-```python
+```
 
 from cytounet.model import *
 from cytounet.data import *
@@ -190,3 +194,20 @@ from the original implementation.
 
 
 
+---
+
+If you would like to cite this work, please use:
+
+Nelson Gonzabato(2020) cytounet: Deep Learning Based Cell Segmentation, https://github.com/Nelson-Gon/cytounet
+
+BibTex:
+
+@misc{Gonzabato2020,
+  author = {Gonzabato, N},
+  title = {cytounet: Deep Learning Based Cell Segmentation},
+  year = {2013},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  howpublished = {\url{https://github.com/Nelson-Gon/cytounet}},
+  commit = {7a537f34b618f822bef9b3af73b16858768cd412}
+} 
