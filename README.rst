@@ -59,6 +59,12 @@
 
 **Background about this project**
 
+
+.. image:: examples/project_workflow.png
+   :target: examples/project_workflow.png
+   :alt: Project Workflow
+
+
 This project was largely done as a summer intern in Dr. Mikael `Bjorklund <https://person.zju.edu.cn/en/H118035>`_\ 's  lab.
 
 The aim was to automate `a549 <https://en.wikipedia.org/wiki/A549_cell>`_ cancer cell
