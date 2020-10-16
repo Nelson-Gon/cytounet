@@ -273,14 +273,17 @@ If you would like to cite this work, please use:
 
 Nelson Gonzabato(2020) cytounet: Deep Learning Based Cell Segmentation, https://github.com/Nelson-Gon/cytounet
 
-BibTex:
+BibTex
 
-@misc{Gonzabato2020,
-  author = {Gonzabato, N},
-  title = {cytounet: Deep Learning Based Cell Segmentation},
-  year = {2020},
-  publisher = {GitHub},
-  journal = {GitHub repository},
-  howpublished = {\url{https://github.com/Nelson-Gon/cytounet}},
-  commit = {7a537f34b618f822bef9b3af73b16858768cd412}
-} 
+.. code-block::
+
+
+   @misc{Gonzabato2020,
+     author = {Gonzabato, N},
+     title = {cytounet: Deep Learning Based Cell Segmentation},
+     year = {2020},
+     publisher = {GitHub},
+     journal = {GitHub repository},
+     howpublished = {\url{https://github.com/Nelson-Gon/cytounet}},
+     commit = {7a537f34b618f822bef9b3af73b16858768cd412}
+   }
