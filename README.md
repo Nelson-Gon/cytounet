@@ -1,5 +1,6 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3928919.svg)](https://doi.org/10.5281/zenodo.3928919)
 ![Stage](https://www.repostatus.org/badges/latest/active.svg) 
+[![Documentation Status](https://readthedocs.org/projects/cytounet/badge/?version=latest)](https://cytounet.readthedocs.io/en/latest/?badge=latest)
 ![Test Install](https://github.com/Nelson-Gon/cytounet/workflows/Test%20Install/badge.svg)
 [![PyPI version](https://badge.fury.io/py/cytounet.svg)](https://badge.fury.io/py/cytounet) 
 [![PyPI Downloads Month](https://img.shields.io/pypi/dm/cytounet.svg)](https://pypi.python.org/pypi/cytounet/)
