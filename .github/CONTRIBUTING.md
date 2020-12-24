@@ -40,13 +40,19 @@ cd ./README* ./changelog* docs/source
 # if not done before, use sphnix-autostart and edit the corresponding files ie conf.py 
 cd docs
 # build docs
+# Ensure that you can import modules
+# Due to hardware limits, I used mock imports but that should ideally be 
+# avoided
 sphinx-build source build
 # use make on *nix or if you have make on Windows
+# Check that the batch file points to the right directories 
 make.bat html
+# Check built docs
+sphinx-build source -W -b linkcheck -d build/doctrees build/html
 
 ```
-Please note that the 'pyfdc' project is released with a
-[Contributor Code of Conduct](.github/CODE_OF_CONDUCT.md).
+Please note that the 'cytounet' project is released with a
+[Contributor Code of Conduct](https://github/com/Nelson-Gon/cytounet/.github/CODE_OF_CONDUCT.md).
 By contributing to this project, you agree to abide by its terms.
 
 [See also](https://samnicholls.net/2016/06/15/how-to-sphinx-readthedocs/) for a guide on Sphinx documentation.

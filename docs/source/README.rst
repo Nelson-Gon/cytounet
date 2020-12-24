@@ -1,4 +1,5 @@
-
+cytounet: Deep Learning Based Cell Segmentation
+=================================================
 
 .. image:: https://zenodo.org/badge/DOI/10.5281/zenodo.3928919.svg
    :target: https://doi.org/10.5281/zenodo.3928919
@@ -31,7 +32,7 @@
 
 
 .. image:: https://img.shields.io/badge/Maintained%3F-yes-green.svg
-   :target: https://GitHub.com/Nelson-Gon/cytounet/graphs/commit-activity
+   :target: https://gitHub.com/Nelson-Gon/cytounet/graphs/commit-activity
    :alt: Maintenance
 
 
@@ -41,12 +42,12 @@
 
 
 .. image:: https://img.shields.io/github/issues/Nelson-Gon/cytounet.svg
-   :target: https://GitHub.com/Nelson-Gon/cytounet/issues/
+   :target: https://gitHub.com/Nelson-Gon/cytounet/issues/
    :alt: GitHub issues
 
 
 .. image:: https://img.shields.io/github/issues-closed/Nelson-Gon/cytounet.svg
-   :target: https://GitHub.com/Nelson-Gon/cytounet/issues?q=is%3Aissue+is%3Aclosed
+   :target: https://gitHub.com/Nelson-Gon/cytounet/issues?q=is%3Aissue+is%3Aclosed
    :alt: GitHub issues-closed
 
 
