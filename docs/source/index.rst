@@ -10,6 +10,7 @@ Welcome to cytounet's documentation!
    modules
    README
    changelog
+   CONTRIBUTING
 
 
 Indices and tables

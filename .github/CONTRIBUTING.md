@@ -28,28 +28,7 @@ Please also update the docs using `sphinx`
 * Do the following:
 
 ```
-
-# The Makefile here is Windows specific
-
-# root of project
-python -m m2r README.md --overwrite
-python -m m2r changelog.md --overwrite
-# copy changelog and README or get their diff and copy it to docs/source
-# TODO
-cd ./README* ./changelog* docs/source
-# if not done before, use sphnix-autostart and edit the corresponding files ie conf.py 
-cd docs
-# build docs
-# Ensure that you can import modules
-# Due to hardware limits, I used mock imports but that should ideally be 
-# avoided
-sphinx-build source build
-# use make on *nix or if you have make on Windows
-# Check that the batch file points to the right directories 
-make.bat html
-# Check built docs
-sphinx-build source -W -b linkcheck -d build/doctrees build/html
-
+bash scripts/mkdocs.sh
 ```
 Please note that the 'cytounet' project is released with a
 [Contributor Code of Conduct](https://github/com/Nelson-Gon/cytounet/.github/CODE_OF_CONDUCT.md).

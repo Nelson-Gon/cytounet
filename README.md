@@ -1,3 +1,5 @@
+# cytounet: Deep Learning Based Cell Segmentation 
+
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3928919.svg)](https://doi.org/10.5281/zenodo.3928919)
 ![Stage](https://www.repostatus.org/badges/latest/active.svg) 
 [![Documentation Status](https://readthedocs.org/projects/cytounet/badge/?version=latest)](https://cytounet.readthedocs.io/en/latest/?badge=latest)
@@ -14,9 +16,10 @@
 
 ---
 
+
 **Background**
 
-![Project Workflow](examples/project_workflow.png)
+![Project Workflow](https://github.com/Nelson-Gon/cytounet/blob/master/examples/project_workflow.png?raw=true)
 
 This project was largely done as a summer intern in Dr. Mikael [Bjorklund](https://person.zju.edu.cn/en/H118035)'s  lab, 
 whose guidance, resources, and time I am grateful for. 
@@ -24,11 +27,11 @@ whose guidance, resources, and time I am grateful for.
 The aim was to automate [a549](https://en.wikipedia.org/wiki/A549_cell) and [rpe](https://en.wikipedia.org/wiki/Retinal_pigment_epithelium) 
 cancer cell segmentation and size determination. 
 
-![RPE Sample](examples/rpe_sample.png)
+![RPE Sample](https://github.com/Nelson-Gon/cytounet/blob/master/examples/rpe_sample.png?raw=true)
 
 Sample data(10 random images each of train, validate, test sets) is provided in [original_data](https://github.com/Nelson-Gon/cytounet/tree/master/examples/original_data/a549).
 
-A complete a549 cancer cell segmentation [notebook](https://github.com/Nelson-Gon/cytounet/blob/20435549e6b4c3d15979c2117445c4c19ab51bdf/examples/a549_sampler.ipynb) is also provided. 
+A complete a549 cancer cell [segmentation notebook](https://github.com/Nelson-Gon/cytounet/blob/20435549e6b4c3d15979c2117445c4c19ab51bdf/examples/a549_sampler.ipynb) is also provided. 
 
 Finally, pre-trained [weights](https://github.com/Nelson-Gon/cytounet/blob/56694553e5014e3f479807de244f5ddeabbcbf80/models/a549_scratch.hdf5) are provided that can be used for transfer learning. 
 These were trained on considerably more data and for more epochs. For more pre-trained weights and/or data, 
@@ -119,7 +122,7 @@ This section shows some experimental results based on publicly available data.
 
 * Comparison of low vs high quality masks on the model's output
 
-This notebook shows the effects of "filled holes"(outlines whose area is filled with some colour e.g white)
+This notebook shows the effects of "filled holes"(outlines whose area is filled with some colour e.g. white)
 on the model's quality. The results in general show that filled masks which are also better seen by the human eye
 result in better quality output. 
 

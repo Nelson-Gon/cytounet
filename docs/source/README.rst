@@ -1,4 +1,7 @@
 
+cytounet: Deep Learning Based Cell Segmentation
+===============================================
+
 
 .. image:: https://zenodo.org/badge/DOI/10.5281/zenodo.3928919.svg
    :target: https://doi.org/10.5281/zenodo.3928919
@@ -9,6 +12,11 @@
    :target: https://www.repostatus.org/badges/latest/active.svg
    :alt: Stage
  
+
+.. image:: https://readthedocs.org/projects/cytounet/badge/?version=latest
+   :target: https://cytounet.readthedocs.io/en/latest/?badge=latest
+   :alt: Documentation Status
+
 
 .. image:: https://github.com/Nelson-Gon/cytounet/workflows/Test%20Install/badge.svg
    :target: https://github.com/Nelson-Gon/cytounet/workflows/Test%20Install/badge.svg
@@ -60,8 +68,8 @@
 **Background**
 
 
-.. image:: examples/project_workflow.png
-   :target: examples/project_workflow.png
+.. image:: https://github.com/Nelson-Gon/cytounet/blob/master/examples/project_workflow.png?raw=true
+   :target: https://github.com/Nelson-Gon/cytounet/blob/master/examples/project_workflow.png?raw=true
    :alt: Project Workflow
 
 
@@ -72,14 +80,14 @@ The aim was to automate `a549 <https://en.wikipedia.org/wiki/A549_cell>`_ and `r
 cancer cell segmentation and size determination. 
 
 
-.. image:: examples/rpe_sample.png
-   :target: examples/rpe_sample.png
+.. image:: https://github.com/Nelson-Gon/cytounet/blob/master/examples/rpe_sample.png?raw=true
+   :target: https://github.com/Nelson-Gon/cytounet/blob/master/examples/rpe_sample.png?raw=true
    :alt: RPE Sample
 
 
 Sample data(10 random images each of train, validate, test sets) is provided in `original_data <https://github.com/Nelson-Gon/cytounet/tree/master/examples/original_data/a549>`_.
 
-A complete a549 cancer cell segmentation `notebook <https://github.com/Nelson-Gon/cytounet/blob/20435549e6b4c3d15979c2117445c4c19ab51bdf/examples/a549_sampler.ipynb>`_ is also provided. 
+A complete a549 cancer cell `segmentation notebook <https://github.com/Nelson-Gon/cytounet/blob/20435549e6b4c3d15979c2117445c4c19ab51bdf/examples/a549_sampler.ipynb>`_ is also provided. 
 
 Finally, pre-trained `weights <https://github.com/Nelson-Gon/cytounet/blob/56694553e5014e3f479807de244f5ddeabbcbf80/models/a549_scratch.hdf5>`_ are provided that can be used for transfer learning. 
 These were trained on considerably more data and for more epochs. For more pre-trained weights and/or data, 
@@ -180,7 +188,7 @@ This section shows some experimental results based on publicly available data.
 
 * Comparison of low vs high quality masks on the model's output
 
-This notebook shows the effects of "filled holes"(outlines whose area is filled with some colour e.g white)
+This notebook shows the effects of "filled holes"(outlines whose area is filled with some colour e.g. white)
 on the model's quality. The results in general show that filled masks which are also better seen by the human eye
 result in better quality output. 
 
