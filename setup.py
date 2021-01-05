@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 
 setup(name='cytounet',
-      version="0.2.0",
+      version="0.2.1",
       description='Deep Learning based Cell Segmentation',
       url="http://www.github.com/Nelson-Gon/cytounet",
       download_url="https://github.com/Nelson-Gon/cytounet/archive/v0.2.0.zip",
