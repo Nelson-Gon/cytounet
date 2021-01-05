@@ -6,6 +6,11 @@ if __name__ == "__main__":
     import argparse
     import os.path
 
+    # Run like this
+    # python scripts/sample.py -t "examples/original_data/a549" -i "images" -m "masks" -v
+    # "examples/original_data/a549/validation" -l "1e-8" -s 512 -e 10 -se 120 -b 8 -tt
+    # "examples/original_data/a549/test/images"
+
     # Add relevant arguments
 
     arg_parser = argparse.ArgumentParser()
@@ -21,7 +26,7 @@ if __name__ == "__main__":
                             required=True)
     arg_parser.add_argument("-v", "--validation", type=str, help="Path to validation directory",
                             required=True)
-    arg_parser.add_argument("-l", "--rate", type=int, help="Learning rate", required=True)
+    arg_parser.add_argument("-l", "--rate", type=str, help="Learning rate", required=True)
     arg_parser.add_argument("-s", "--size", type=int, help="Input size eg 512 for (512,512,1)", required=True)
     arg_parser.add_argument("-e", "--epochs", type=int, help="Number of train epochs", required=True)
     arg_parser.add_argument("-se", "--steps", type=int, help="Steps per epoch", required=True)
@@ -34,10 +39,6 @@ if __name__ == "__main__":
     # Control model saving
 
     arguments = arg_parser.parse_args()
-
-    os.path.join("Hi","there")
-
-
 
     # Read images
     x_train = read_images(os.path.join(arguments.train, arguments.image))
@@ -64,7 +65,7 @@ if __name__ == "__main__":
                                                target_size=(arguments.size, arguments.size))
 
     # Training
-    model = unet(learning_rate=arguments.rate, input_size=(arguments.size, arguments.size, 1),
+    model = unet(learning_rate=float(arguments.rate), input_size=(arguments.size, arguments.size, 1),
                  metrics=dice_coef, loss=dice_coef_loss, use_regularizer=False)
     history = train(model_object=model, train_generator=my_generator,
                     epochs=arguments.epochs, steps_per_epoch=arguments.steps, batch_size=arguments.batch)
