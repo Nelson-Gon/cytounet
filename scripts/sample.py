@@ -17,7 +17,7 @@ if __name__ == "__main__":
     arg_parser.add_argument("-i", "--image", type=str,
                             help="Name of train image directory. Uses the same for validation directory",
                             required=True)
-    arg_parser.add_argument("-m", "--mask", type=str, path="Name of train label/mask directory",
+    arg_parser.add_argument("-m", "--mask", type=str, help="Name of train label/mask directory",
                             required=True)
     arg_parser.add_argument("-v", "--validation", type=str, help="Path to validation directory",
                             required=True)
