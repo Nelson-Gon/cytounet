@@ -30,7 +30,5 @@ jobs:
     - name: Install package
       run: python3 setup.py install
 
-    - name: Run script
-      run: python3 scripts/sample.py
 
    
