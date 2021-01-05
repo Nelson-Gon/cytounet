@@ -98,6 +98,8 @@ python scripts/sample.py -t "examples/original_data/a549" -i "images" -m "masks"
 -tt "examples/original_data/a549/test/images"
 ```
 
+**Notebooks** 
+
 Please see the following examples:
 
 * [Typical Usage](https://github.com/Nelson-Gon/cytounet/blob/7fd42a27be1b5730eb05e60cb98d5b7e825a0087/examples/example_usage.ipynb)
