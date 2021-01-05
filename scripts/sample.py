@@ -15,7 +15,7 @@ if __name__ == "__main__":
     arg_parser.add_argument("-tt", "--test", type=str, help="Path to test directory",
                             required=True)
     arg_parser.add_argument("-i", "--image", type=str,
-                            path="Name of train image directory. Uses the same for validation directory",
+                            help="Name of train image directory. Uses the same for validation directory",
                             required=True)
     arg_parser.add_argument("-m", "--mask", type=str, path="Name of train label/mask directory",
                             required=True)
@@ -34,6 +34,10 @@ if __name__ == "__main__":
     # Control model saving
 
     arguments = arg_parser.parse_args()
+
+    os.path.join("Hi","there")
+
+
 
     # Read images
     x_train = read_images(os.path.join(arguments.train, arguments.image))
