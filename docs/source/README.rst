@@ -143,6 +143,14 @@ Or:
 
 **Detailed Sample Usage**
 
+**Script mode**
+
+.. code-block:: shell
+
+   python scripts/sample.py -t "examples/original_data/a549" -i "images" -m "masks" 
+   -v "examples/original_data/a549/validation" -l 1e-8 -s 512 -e 10 -se 120 -b 8 
+   -tt "examples/original_data/a549/test/images"
+
 Please see the following examples:
 
 

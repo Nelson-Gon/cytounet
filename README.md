@@ -90,6 +90,14 @@ from cytounet.post_model import *
 
 **Detailed Sample Usage**
 
+**Script mode**
+
+```shell
+python scripts/sample.py -t "examples/original_data/a549" -i "images" -m "masks" 
+-v "examples/original_data/a549/validation" -l 1e-8 -s 512 -e 10 -se 120 -b 8 
+-tt "examples/original_data/a549/test/images"
+```
+
 Please see the following examples:
 
 * [Typical Usage](https://github.com/Nelson-Gon/cytounet/blob/7fd42a27be1b5730eb05e60cb98d5b7e825a0087/examples/example_usage.ipynb)
