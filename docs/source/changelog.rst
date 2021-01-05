@@ -6,10 +6,10 @@ Changes to cytounet
 
 
 * 
-  Automate doc builds
+  Added a script only mode.
 
 * 
-  Init support for docs
+  Added support for docs. 
 
 * 
   Added original a549 sample data, notebook, and pre-trained weights. 
