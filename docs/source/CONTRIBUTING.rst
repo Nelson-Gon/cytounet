@@ -48,7 +48,14 @@ By contributing to this project, you agree to abide by its terms.
 
 * Releasing
 
-  * Make ``dist`` with ``python setup.py sdist`` at the very minimum. Ensure everything necessary is included in
-    ``Manifest.in``. 
-  * Upload ``dist`` to test.pypi.org with ``twine upload --repository-url https://test.pypi.org/legacy/ dist/*``
-  * If everything looks good, upload to pypi.org with ``twine upload dist/*``
+.. code-block:: shell
+
+   bash scripts/release.sh
+
+The above does the following:
+
+
+* Makes ``dist`` with ``python setup.py sdist`` at the very minimum. Ensure everything necessary is included in
+  ``Manifest.in``. 
+* Uploads ``dist`` to test.pypi.org with ``twine upload --repository-url https://test.pypi.org/legacy/ dist/*``
+* If everything looks good, asks you to upload to pypi.org with ``twine upload dist/*``
