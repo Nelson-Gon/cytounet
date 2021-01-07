@@ -192,6 +192,9 @@ def predict(test_path=None, model_weights=None, train_seed=None, target_size=(25
     """
     generated_test = generate_test_data(test_path=test_path, train_seed=train_seed, target_size=target_size)
 
+    if model_weights is None:
+        raise ValueError("An HDF5 file saved via model.save is required")
+
     model = load_model(model_weights, custom_objects=custom_loss)
 
     return model.predict(generated_test)

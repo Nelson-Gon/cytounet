@@ -8,8 +8,8 @@ if __name__ == "__main__":
 
     # Run like this
     # python scripts/sample.py -t "examples/original_data/a549" -i "images" -m "masks" -v
-    # "examples/original_data/a549/validation" -l "1e-8" -s 512 -e 10 -se 120 -b 8 -tt
-    # "examples/original_data/a549/test/images"
+    # "examples/original_data/a549/validation" -l "1e-8" -s 512 -e 5 -se 50 -b 8 -tt
+    # "examples/original_data/a549/test/images" -w "models/a549_test"
 
     # Add relevant arguments
 
@@ -26,7 +26,19 @@ if __name__ == "__main__":
                             required=True)
     arg_parser.add_argument("-v", "--validation", type=str, help="Path to validation directory",
                             required=True)
+    arg_parser.add_argument("-b", "--batch", type=int, help="Batch Size", required=True)
     arg_parser.add_argument("-l", "--rate", type=str, help="Learning rate", required=True)
+    arg_parser.add_argument("-o", "--optimizer", type=str, help="Optimizer, defaults to Adam", required=True,
+                            default="Adam")
+    arg_parser.add_argument("-m", "--metric", type=str, help="Metric to use, defaults to dice_coef", required=True,
+                            default="dice_coef")
+    arg_parser.add_argument("-ls", "--loss", type=str, help="Loss to minimize. Defaults to dice_coef_loss",
+                            required=True, default="dice_coef_loss")
+    arg_parser.add_argument("-sd", "--seed", type=str, help="Seed to use for the training/prediction. Defaults to 2",
+                            required=True, default=2)
+    arg_parser.add_argument("-w", "--weights", type=str, help="Path to save model weights to.",
+                            required=True)
+
     arg_parser.add_argument("-s", "--size", type=int, help="Input size eg 512 for (512,512,1)", required=True)
     arg_parser.add_argument("-e", "--epochs", type=int, help="Number of train epochs", required=True)
     arg_parser.add_argument("-se", "--steps", type=int, help="Steps per epoch", required=True)
@@ -56,24 +68,33 @@ if __name__ == "__main__":
                                fill_mode='nearest')
     my_generator = generate_train_data(arguments.batch, arguments.train, arguments.image, arguments.mask,
                                        data_generator_args,
-                                       save_to_dir=None, seed=2,
+                                       save_to_dir=None, seed=arguments.seed,
                                        target_size=(arguments.size, arguments.size))
     valid_generator = generate_validation_data(arguments.batch, arguments.validation, arguments.image,
                                                arguments.mask,
                                                data_generator_args,
-                                               save_to_dir=None, seed=12,
+                                               save_to_dir=None, seed=arguments.seed,
                                                target_size=(arguments.size, arguments.size))
+    use_loss = arguments.loss
+    use_metric = arguments.metric
+    use_custom_loss = None
 
-    # Training
-    model = unet(learning_rate=float(arguments.rate), input_size=(arguments.size, arguments.size, 1),
-                 metrics=dice_coef, loss=dice_coef_loss, use_regularizer=False)
+    if arguments.metric == "dice_coef":
+        use_loss = dice_coef_loss
+        use_metric = dice_coef
+        use_custom_loss = {'dice_coef': dice_coef,
+                           'dice_coef_loss': dice_coef_loss}
+
+    model = unet(optimiser=arguments.optimizer,
+                 learning_rate=float(arguments.rate), input_size=(arguments.size, arguments.size, 1),
+                 metrics=use_metric, loss=use_loss, use_regularizer=False)
     history = train(model_object=model, train_generator=my_generator,
                     epochs=arguments.epochs, steps_per_epoch=arguments.steps, batch_size=arguments.batch)
 
-    # Results
-    model.save("a549_scratch_github.hdf5")
-    results = predict(test_path="test", model_weights="a549_scratch_github.hdf5", train_seed=12,
-                      custom_loss={'dice_coef': dice_coef,
-                                   'dice_coef_loss': dice_coef_loss}, target_size=(arguments.size, arguments.size))
+    save_weights_as = os.path.join(arguments.weight, ".hdf5")
+    model.save(save_weights_as)
+    results = predict(test_path="test", model_weights=save_weights_as, train_seed=arguments.seed,
+                      custom_loss=use_custom_loss,
+                      target_size=(arguments.size, arguments.size))
 
     show_images(x_test, results, number=10, titles=['truth', 'predicted'], figure_size=(20, 20))
