@@ -92,7 +92,7 @@ if __name__ == "__main__":
     history = train(model_object=model, train_generator=my_generator,
                     epochs=arguments.epochs, steps_per_epoch=arguments.steps, batch_size=arguments.batch)
 
-    save_weights_as = os.path.join(arguments.weight, ".hdf5")
+    save_weights_as = os.path.join(arguments.weights, ".hdf5")
     model.save(save_weights_as)
     results = predict(test_path="test", model_weights=save_weights_as, train_seed=arguments.seed,
                       custom_loss=use_custom_loss,
