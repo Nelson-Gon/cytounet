@@ -30,7 +30,7 @@ if __name__ == "__main__":
     arg_parser.add_argument("-l", "--rate", type=str, help="Learning rate", required=True)
     arg_parser.add_argument("-o", "--optimizer", type=str, help="Optimizer, defaults to Adam", required=True,
                             default="Adam")
-    arg_parser.add_argument("-m", "--metric", type=str, help="Metric to use, defaults to dice_coef", required=True,
+    arg_parser.add_argument("-mt", "--metric", type=str, help="Metric to use, defaults to dice_coef", required=True,
                             default="dice_coef")
     arg_parser.add_argument("-ls", "--loss", type=str, help="Loss to minimize. Defaults to dice_coef_loss",
                             required=True, default="dice_coef_loss")
