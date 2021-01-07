@@ -9,7 +9,8 @@ if __name__ == "__main__":
     # Run like this
     # python scripts/sample.py -t "examples/original_data/a549" -i "images" -m "masks" -v
     # "examples/original_data/a549/validation" -l "1e-8" -s 512 -e 5 -se 50 -b 8 -tt
-    # "examples/original_data/a549/test/images" -w "models/a549_test"
+    # "examples/original_data/a549/test/images" -w "models/a549_test" -o "Adam" -mt "dice_coef"
+    # -ls "dice_coef_loss" -sd 2
 
     # Add relevant arguments
 
@@ -34,7 +35,7 @@ if __name__ == "__main__":
                             default="dice_coef")
     arg_parser.add_argument("-ls", "--loss", type=str, help="Loss to minimize. Defaults to dice_coef_loss",
                             required=True, default="dice_coef_loss")
-    arg_parser.add_argument("-sd", "--seed", type=str, help="Seed to use for the training/prediction. Defaults to 2",
+    arg_parser.add_argument("-sd", "--seed", type=int, help="Seed to use for the training/prediction. Defaults to 2",
                             required=True, default=2)
     arg_parser.add_argument("-w", "--weights", type=str, help="Path to save model weights to.",
                             required=True)
