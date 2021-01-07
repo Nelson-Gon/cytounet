@@ -42,7 +42,7 @@ if __name__ == "__main__":
     arg_parser.add_argument("-s", "--size", type=int, help="Input size eg 512 for (512,512,1)", required=True)
     arg_parser.add_argument("-e", "--epochs", type=int, help="Number of train epochs", required=True)
     arg_parser.add_argument("-se", "--steps", type=int, help="Steps per epoch", required=True)
-    arg_parser.add_argument("-b", "--batch", type=int, help="Batch Size", required=True)
+    
     # TODO
     # Boolean with dice vs other metrics
     # Regularization
