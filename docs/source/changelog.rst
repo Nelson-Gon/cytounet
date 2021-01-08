@@ -5,6 +5,7 @@ Changes to cytounet
 **Version 0.2.1**
 
 
+* Extended script to handle fine-tuning and from scratch-training 
 * 
   Added a script only mode.
 

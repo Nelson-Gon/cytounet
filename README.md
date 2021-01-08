@@ -93,7 +93,7 @@ from cytounet.post_model import *
 **Script mode**
 
 ```shell
-python scripts/sample.py -t "examples/original_data/a549/train" -i "images" -m "masks" -v
+python scripts/training.py -t "examples/original_data/a549/train" -i "images" -m "masks" -v
            "examples/original_data/a549/validation" -l "1e-8" -s 512 -e 5 -se 50 -b 8 -tt
            "examples/original_data/a549/test/images" -w "models/a549_test" -o "Adam" -mt "dice_coef"
            -ls "dice_coef_loss" -sd 2

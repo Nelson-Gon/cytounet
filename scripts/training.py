@@ -10,12 +10,15 @@ if __name__ == "__main__":
     # python scripts/sample.py -t "examples/original_data/a549" -i "images" -m "masks" -v
     # "examples/original_data/a549/validation" -l "1e-8" -s 512 -e 5 -se 50 -b 8 -tt
     # "examples/original_data/a549/test/images" -w "models/a549_test" -o "Adam" -mt "dice_coef"
-    # -ls "dice_coef_loss" -sd 2
+    # -ls "dice_coef_loss" -sd 2 -f 0
 
     # Add relevant arguments
 
     arg_parser = argparse.ArgumentParser()
-
+    arg_parser.add_argument("-f", "--finetune", type=bool, help="Are you fine tuning?", required=True,
+                            default=0)
+    arg_parser.add_argument("-p", "--plot", type=bool, help="Plot results?", required=True,
+                            default=0)
     arg_parser.add_argument("-t", "--train", type=str, help="Path to train directory",
                             required=True)
     arg_parser.add_argument("-tt", "--test", type=str, help="Path to test directory",
@@ -23,6 +26,8 @@ if __name__ == "__main__":
     arg_parser.add_argument("-i", "--image", type=str,
                             help="Name of train image directory. Uses the same for validation directory",
                             required=True)
+    arg_parser.add_argument("-e", "--extension", type=str, help='Image format, defaults to tif',
+                            required=False, default="tif")
     arg_parser.add_argument("-m", "--mask", type=str, help="Name of train label/mask directory",
                             required=True)
     arg_parser.add_argument("-v", "--validation", type=str, help="Path to validation directory",
@@ -43,13 +48,14 @@ if __name__ == "__main__":
     arg_parser.add_argument("-s", "--size", type=int, help="Input size eg 512 for (512,512,1)", required=True)
     arg_parser.add_argument("-e", "--epochs", type=int, help="Number of train epochs", required=True)
     arg_parser.add_argument("-se", "--steps", type=int, help="Steps per epoch", required=True)
-    
+
     # TODO
-    # Boolean with dice vs other metrics
+    # Boolean with dice vs other metrics --Done
     # Regularization
     # Control viewing of images read
     # Support different image extensions
-    # Control model saving
+    # Control model saving -- Done
+    # Fine tuning vs scratch training --Done
 
     arguments = arg_parser.parse_args()
 
@@ -89,13 +95,25 @@ if __name__ == "__main__":
     model = unet(optimiser=arguments.optimizer,
                  learning_rate=float(arguments.rate), input_size=(arguments.size, arguments.size, 1),
                  metrics=use_metric, loss=use_loss, use_regularizer=False)
+    print("Running training, as requested.")
     history = train(model_object=model, train_generator=my_generator,
                     epochs=arguments.epochs, steps_per_epoch=arguments.steps, batch_size=arguments.batch)
 
     save_weights_as = os.path.join(arguments.weights, ".hdf5")
     model.save(save_weights_as)
+    print("Returning predictions from training")
+
+    if arguments.finetune:
+        print("Fine tuning results, as requested")
+        history = finetune(save_weights_as, model, my_generator, epochs=arguments.epochs,
+                           steps_per_epoch=arguments.steps, verbose=1,
+                           validation_data=valid_generator, validation_steps=arguments.steps,
+                           monitor_metric="val_loss",
+                           save_best_only=True)
+
     results = predict(test_path="test", model_weights=save_weights_as, train_seed=arguments.seed,
                       custom_loss=use_custom_loss,
                       target_size=(arguments.size, arguments.size))
 
-    show_images(x_test, results, number=10, titles=['truth', 'predicted'], figure_size=(20, 20))
+    #if arguments.plot:
+        #show_images(y_test, results, number=10, titles=['truth', 'predicted'], figure_size=(20, 20))
