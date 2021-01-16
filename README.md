@@ -1,27 +1,24 @@
 # cytounet: Deep Learning Based Cell Segmentation 
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3928919.svg)](https://doi.org/10.5281/zenodo.3928919)
-![Stage](https://www.repostatus.org/badges/latest/active.svg) 
-[![Documentation Status](https://readthedocs.org/projects/cytounet/badge/?version=latest)](https://cytounet.readthedocs.io/en/latest/?badge=latest)
-![Test Install](https://github.com/Nelson-Gon/cytounet/workflows/Test%20Install/badge.svg)
 [![PyPI version](https://badge.fury.io/py/cytounet.svg)](https://badge.fury.io/py/cytounet) 
-[![PyPI Downloads Month](https://img.shields.io/pypi/dm/cytounet.svg)](https://pypi.python.org/pypi/cytounet/)
-[![PyPI license](https://img.shields.io/pypi/l/cytounet.svg)](https://pypi.python.org/pypi/cytounet/) 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3928919.svg)](https://doi.org/10.5281/zenodo.3928919)
+![Stage](https://www.repostatus.org/badges/latest/active.svg)
+![Test Install](https://github.com/Nelson-Gon/cytounet/workflows/Test%20Install/badge.svg)
 ![Travis Build](https://travis-ci.com/Nelson-Gon/cytounet.svg?branch=master)
+[![PyPI license](https://img.shields.io/pypi/l/cytounet.svg)](https://pypi.python.org/pypi/cytounet/) 
+[![Documentation Status](https://readthedocs.org/projects/cytounet/badge/?version=latest)](https://cytounet.readthedocs.io/en/latest/?badge=latest)
+[![PyPI Downloads Month](https://img.shields.io/pypi/dm/cytounet.svg)](https://pypi.python.org/pypi/cytounet/)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Nelson-Gon/cytounet/graphs/commit-activity)
 [![GitHub last commit](https://img.shields.io/github/last-commit/Nelson-Gon/cytounet.svg)](https://github.com/Nelson-Gon/cytounet/commits/master)
 [![GitHub issues](https://img.shields.io/github/issues/Nelson-Gon/cytounet.svg)](https://GitHub.com/Nelson-Gon/cytounet/issues/)
 [![GitHub issues-closed](https://img.shields.io/github/issues-closed/Nelson-Gon/cytounet.svg)](https://GitHub.com/Nelson-Gon/cytounet/issues?q=is%3Aissue+is%3Aclosed)
 
 
----
-
-
 **Background**
 
 ![Project Workflow](https://github.com/Nelson-Gon/cytounet/blob/master/examples/project_workflow.png?raw=true)
 
-This project was largely done as a summer intern in Dr. Mikael [Bjorklund](https://person.zju.edu.cn/en/H118035)'s  lab, 
+This project was largely done as a summer 2020 intern in Dr. Mikael [Bjorklund](https://person.zju.edu.cn/en/H118035)'s  lab, 
 whose guidance, resources, and time I am grateful for. 
 
 The aim was to automate [a549](https://en.wikipedia.org/wiki/A549_cell) and [rpe](https://en.wikipedia.org/wiki/Retinal_pigment_epithelium) 

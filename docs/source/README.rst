@@ -3,6 +3,11 @@ cytounet: Deep Learning Based Cell Segmentation
 ===============================================
 
 
+.. image:: https://badge.fury.io/py/cytounet.svg
+   :target: https://badge.fury.io/py/cytounet
+   :alt: PyPI version
+ 
+
 .. image:: https://zenodo.org/badge/DOI/10.5281/zenodo.3928919.svg
    :target: https://doi.org/10.5281/zenodo.3928919
    :alt: DOI
@@ -11,11 +16,6 @@ cytounet: Deep Learning Based Cell Segmentation
 .. image:: https://www.repostatus.org/badges/latest/active.svg
    :target: https://www.repostatus.org/badges/latest/active.svg
    :alt: Stage
- 
-
-.. image:: https://readthedocs.org/projects/cytounet/badge/?version=latest
-   :target: https://cytounet.readthedocs.io/en/latest/?badge=latest
-   :alt: Documentation Status
 
 
 .. image:: https://github.com/Nelson-Gon/cytounet/workflows/Test%20Install/badge.svg
@@ -23,14 +23,9 @@ cytounet: Deep Learning Based Cell Segmentation
    :alt: Test Install
 
 
-.. image:: https://badge.fury.io/py/cytounet.svg
-   :target: https://badge.fury.io/py/cytounet
-   :alt: PyPI version
- 
-
-.. image:: https://img.shields.io/pypi/dm/cytounet.svg
-   :target: https://pypi.python.org/pypi/cytounet/
-   :alt: PyPI Downloads Month
+.. image:: https://travis-ci.com/Nelson-Gon/cytounet.svg?branch=master
+   :target: https://travis-ci.com/Nelson-Gon/cytounet.svg?branch=master
+   :alt: Travis Build
 
 
 .. image:: https://img.shields.io/pypi/l/cytounet.svg
@@ -38,9 +33,14 @@ cytounet: Deep Learning Based Cell Segmentation
    :alt: PyPI license
  
 
-.. image:: https://travis-ci.com/Nelson-Gon/cytounet.svg?branch=master
-   :target: https://travis-ci.com/Nelson-Gon/cytounet.svg?branch=master
-   :alt: Travis Build
+.. image:: https://readthedocs.org/projects/cytounet/badge/?version=latest
+   :target: https://cytounet.readthedocs.io/en/latest/?badge=latest
+   :alt: Documentation Status
+
+
+.. image:: https://img.shields.io/pypi/dm/cytounet.svg
+   :target: https://pypi.python.org/pypi/cytounet/
+   :alt: PyPI Downloads Month
 
 
 .. image:: https://img.shields.io/badge/Maintained%3F-yes-green.svg
@@ -63,8 +63,6 @@ cytounet: Deep Learning Based Cell Segmentation
    :alt: GitHub issues-closed
 
 
-----
-
 **Background**
 
 
@@ -73,7 +71,7 @@ cytounet: Deep Learning Based Cell Segmentation
    :alt: Project Workflow
 
 
-This project was largely done as a summer intern in Dr. Mikael `Bjorklund <https://person.zju.edu.cn/en/H118035>`_\ 's  lab, 
+This project was largely done as a summer 2020 intern in Dr. Mikael `Bjorklund <https://person.zju.edu.cn/en/H118035>`_\ 's  lab, 
 whose guidance, resources, and time I am grateful for. 
 
 The aim was to automate `a549 <https://en.wikipedia.org/wiki/A549_cell>`_ and `rpe <https://en.wikipedia.org/wiki/Retinal_pigment_epithelium>`_ 
