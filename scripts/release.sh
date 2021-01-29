@@ -5,8 +5,12 @@ check_status (){
   case "$docs_answer" in
   [yY][eE][sS] | [yY] ) read -p "Have you updated the version number in all places?" version_answer
     case "$version_answer" in
-    [yY][eE][sS] | [yY] ) echo "Perfect. Removing dist and uploading to test.pypi";
-    rm -r dist;python setup.py sdist;python -m twine upload --repository-url https://test.pypi.org/legacy/ dist/*;;
+    [yY][eE][sS] | [yY] ) echo "Perfect. Cleaning up and uploading to test.pypi"
+    if [ -d dist ]
+    then
+      rm -r dist;
+    fi;
+    python setup.py sdist;python -m twine upload --repository-url https://test.pypi.org/legacy/ dist/*;;
     [nN][oO] ) echo "Please update version number first";exit 1;;
     esac;;
   [nN][oO] | [nN] ) echo "Please update docs first";;
