@@ -39,12 +39,6 @@ Please also update the docs using ``sphinx``
 
    bash scripts/mkdocs.sh
 
-Please note that the 'cytounet' project is released with a
-`Contributor Code of Conduct <https://github/com/Nelson-Gon/cytounet/.github/CODE_OF_CONDUCT.md>`_.
-By contributing to this project, you agree to abide by its terms.
-
-`See also <https://samnicholls.net/2016/06/15/how-to-sphinx-readthedocs/>`_ for a guide on Sphinx documentation.
-
 
 * Releasing
 
@@ -59,3 +53,9 @@ The above does the following:
   ``Manifest.in``. 
 * Uploads ``dist`` to test.pypi.org with ``twine upload --repository-url https://test.pypi.org/legacy/ dist/*``
 * If everything looks good, asks you to upload to pypi.org with ``twine upload dist/*``
+
+Please note that the 'cytounet' project is released with a
+`Contributor Code of Conduct <https://github/com/Nelson-Gon/cytounet/.github/CODE_OF_CONDUCT.md>`_.
+By contributing to this project, you agree to abide by its terms.
+
+`See also <https://samnicholls.net/2016/06/15/how-to-sphinx-readthedocs/>`_ for a guide on Sphinx documentation.

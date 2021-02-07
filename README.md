@@ -216,14 +216,14 @@ BibTex
 
 ```
 
-@misc{Gonzabato2020,
+@misc{Gonzabato2021,
   author = {Gonzabato, N},
   title = {cytounet: Deep Learning Based Cell Segmentation},
-  year = {2020},
+  year = {2021},
   publisher = {GitHub},
   journal = {GitHub repository},
   howpublished = {\url{https://github.com/Nelson-Gon/cytounet}},
-  commit = {7a537f34b618f822bef9b3af73b16858768cd412}
+  commit = {58bd951ef4417fc8542f8f3e277071e6cd6980ea}
 } 
 
 ```
