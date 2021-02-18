@@ -38,9 +38,19 @@ cytounet: Deep Learning Based Cell Segmentation
    :alt: Documentation Status
 
 
-.. image:: https://img.shields.io/pypi/dm/cytounet.svg
-   :target: https://pypi.python.org/pypi/cytounet/
-   :alt: PyPI Downloads Month
+.. image:: https://pepy.tech/badge/cytounet
+   :target: https://pepy.tech/project/cytounet
+   :alt: Total Downloads
+
+
+.. image:: https://pepy.tech/badge/cytounet/month
+   :target: https://pepy.tech/project/cytounet
+   :alt: Monthly Downloads
+
+
+.. image:: https://pepy.tech/badge/cytounet/week
+   :target: https://pepy.tech/project/cytounet
+   :alt: Weekly Downloads
 
 
 .. image:: https://img.shields.io/badge/Maintained%3F-yes-green.svg
