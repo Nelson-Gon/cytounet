@@ -20,8 +20,8 @@
 
 ![Project Workflow](https://github.com/Nelson-Gon/cytounet/blob/master/examples/project_workflow.png?raw=true)
 
-This project was largely done as a summer 2020 intern in Dr. Mikael [Bjorklund](https://person.zju.edu.cn/en/H118035)'s  lab, 
-whose guidance, resources, and time I am grateful for. 
+This project was largely done as a summer 2020 intern in Dr. Mikael [Bjorklund](https://person.zju.edu.cn/en/H118035)'s  
+lab, whose guidance, resources, and time I am grateful for. 
 
 The aim was to automate [a549](https://en.wikipedia.org/wiki/A549_cell) and [rpe](https://en.wikipedia.org/wiki/Retinal_pigment_epithelium) 
 cancer cell segmentation and size determination. 
@@ -30,9 +30,11 @@ cancer cell segmentation and size determination.
 
 Sample data(10 random images each of train, validate, test sets) is provided in [original_data](https://github.com/Nelson-Gon/cytounet/tree/master/examples/original_data/a549).
 
-A complete a549 cancer cell [segmentation notebook](https://github.com/Nelson-Gon/cytounet/blob/20435549e6b4c3d15979c2117445c4c19ab51bdf/examples/a549_sampler.ipynb) is also provided. 
+A complete a549 cancer cell [segmentation notebook](https://github.com/Nelson-Gon/cytounet/blob/20435549e6b4c3d15979c2117445c4c19ab51bdf/examples/a549_sampler.ipynb) 
+is also provided. 
 
-Finally, pre-trained [weights](https://github.com/Nelson-Gon/cytounet/blob/56694553e5014e3f479807de244f5ddeabbcbf80/models/a549_scratch.hdf5) are provided that can be used for transfer learning. 
+Finally, pre-trained [weights](https://github.com/Nelson-Gon/cytounet/blob/56694553e5014e3f479807de244f5ddeabbcbf80/models/a549_scratch.hdf5) 
+are provided that can be used for transfer learning. 
 These were trained on considerably more data and for more epochs. For more pre-trained weights and/or data, 
 please [contact](https://nelson-gon.github.io/contact) the author. 
 
@@ -174,8 +176,8 @@ Please read our Wiki [Pages](https://github.com/Nelson-Gon/cytounet/wiki)
 **To raise an issue or question**
 
 If the [wiki](https://github.com/Nelson-Gon/cytounet/wiki) does not answer your question,
-please raise a new [issue](https://github.com/Nelson-Gon/cytounet/issues). You can also open an issue if you have any discussion, criticism,
-or bug reports. 
+please raise a new [issue](https://github.com/Nelson-Gon/cytounet/issues). 
+You can also open an issue if you have any discussion, criticism, or bug reports. 
 
 Thank you very much. 
 
@@ -183,11 +185,11 @@ Thank you very much.
 
 **References**
 
-* Mouse Embryos [Dataset obtained](https://github.com/Nelson-Gon/cytounet/tree/master/examples/BBBC003_v1) from Broad Bioimage Benchmark Collection.
-[Source](https://data.broadinstitute.org/bbbc/BBBC003/).
+* Mouse Embryos [Dataset](https://github.com/Nelson-Gon/cytounet/tree/master/examples/BBBC003_v1)
+  from [Broad Bioimage Benchmark](https://data.broadinstitute.org/bbbc/BBBC003/).
 
 * Red Blood Cell [Images](https://github.com/Nelson-Gon/cytounet/tree/master/examples/BBBC009_v1) provided by Anne 
-Carpenter and Roger Wiegand, available [here](https://data.broadinstitute.org/bbbc/BBBC009/)
+Carpenter and Roger Wiegand, available [here](https://data.broadinstitute.org/bbbc/BBBC009/).
 
 * Chinese Hamster Ovary [Cells](https://github.com/Nelson-Gon/cytounet/tree/master/examples/BBBC030_v1) provided by 
 Koos et al.([2016](https://bbbc.broadinstitute.org/BBBC030))
@@ -201,10 +203,12 @@ This repository has considerably diverged from the original implementation hence
 to distribute it separately. 
 
 This decision was taken in part due to the relative inactivity of the original implementation which would have made
-it harder to collaborate. Please take a look at the list of [changes](https://github.com/Nelson-Gon/cytounet/blob/master/changelog.md) 
+it harder to collaborate. 
+Please take a look at the list of [changes](https://github.com/Nelson-Gon/cytounet/blob/master/changelog.md) 
 from the original implementation. 
 
-* The Unet algorithm was introduced by Ronneberger et al. in their [paper](http://lmb.informatik.uni-freiburg.de/people/ronneber/u-net/).
+* The Unet algorithm was introduced by Ronneberger et al. in their 
+  [paper](https://link.springer.com/chapter/10.1007%2F978-3-319-24574-4_28).
 
 
 
