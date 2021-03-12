@@ -1,11 +1,11 @@
 from setuptools import setup, find_packages
-
+from cytounet.version import __version__
 
 setup(name='cytounet',
-      version="0.2.1",
+      version=__version__,
       description='Deep Learning based Cell Segmentation',
       url="http://www.github.com/Nelson-Gon/cytounet",
-      download_url="https://github.com/Nelson-Gon/cytounet/archive/v0.2.1.zip",
+      download_url="https://github.com/Nelson-Gon/cytounet/",
       author='Nelson Gonzabato',
       author_email='gonzabato@hotmail.com',
       license='MIT',

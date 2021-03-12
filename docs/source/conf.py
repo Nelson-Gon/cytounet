@@ -18,7 +18,10 @@ import os
 autodoc_mock_imports = ["cytounet"]
 
 sys.path.insert(0, os.path.abspath('.'))
-sys.path.insert(0, os.path.abspath('../'))
+sys.path.insert(0, os.path.abspath('../..'))
+
+from cytounet.version import __version__
+
 
 # -- Project information -----------------------------------------------------
 
@@ -27,7 +30,7 @@ copyright = '2020, Nelson Gonzabato'
 author = 'Nelson Gonzabato'
 
 # The full version, including alpha/beta/rc tags
-release = '0.2.1'
+release = __version__
 
 source_suffix = ['.rst', '.md']
 

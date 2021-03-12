@@ -3,7 +3,7 @@
 check_status (){
   read -p "Have you updated documentation with mkdocs?!" docs_answer
   case "$docs_answer" in
-  [yY][eE][sS] | [yY] ) read -p "Have you updated the version number in all places?" version_answer
+  [yY][eE][sS] | [yY] ) read -p "Have you updated the version number in version.py?" version_answer
     case "$version_answer" in
     [yY][eE][sS] | [yY] ) echo "Perfect. Cleaning up and uploading to test.pypi"
     if [ -d dist ]
