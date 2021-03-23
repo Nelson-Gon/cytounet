@@ -4,7 +4,7 @@ from tensorflow.keras.models import load_model
 from tensorflow.keras.layers import *
 from tensorflow.keras.optimizers import *
 from tensorflow.keras import backend as keras_backend
-from .data import generate_test_data
+from data import generate_test_data
 from tensorflow.keras.regularizers import l1, l2
 from tensorflow.keras.callbacks import ModelCheckpoint
 
