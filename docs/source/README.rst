@@ -160,10 +160,15 @@ Or:
 
 .. code-block:: shell
 
-   python scripts/training.py -t "examples/original_data/a549/train" -i "images" -m "masks" -v
-              "examples/original_data/a549/validation" -l "1e-8" -s 512 -e 5 -se 50 -b 8 -tt
-              "examples/original_data/a549/test/images" -w "models/a549_test" -o "Adam" -mt "dice_coef"
-              -ls "dice_coef_loss" -sd 2
+   python -m cytounet -t "examples/original_data/a549/train" -i "images" -m "masks" -v 
+   "examples/original_data/a549/validation" -l "1e-8" -s 512 -ep 5 -se 250 -b 8 -tt "examples/original_data/a549/test/" 
+   -w "models/a549_test/test_model" -o "Adam" -mt "dice_coef" -ls "dice_coef_loss" -sd 2 -f 0 -p 0
+
+To get help:
+
+.. code-block:: shell
+
+   python -m cytounet -h
 
 **Notebooks** 
 
