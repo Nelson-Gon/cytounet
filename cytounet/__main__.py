@@ -122,7 +122,7 @@ def main():
                            monitor_metric="val_loss",
                            save_best_only=True)
 
-    results = predict(test_path="test", model_weights=save_weights_as,
+    results = predict(test_path=arguments.test, model_weights=save_weights_as,
                       train_seed=arguments.seed,
                       custom_loss=use_custom_loss,
                       target_size=(arguments.size, arguments.size))

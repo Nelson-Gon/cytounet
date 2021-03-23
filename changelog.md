@@ -2,6 +2,8 @@
 
 **Version 0.2.2**
 
+- Fixed a bug in setting test paths when using script mode. 
+
 - Versioning is now automated, as is linking to the GitHub release. Please ensure you release in the 
   form `v#versionnumberhere`. 
 
