@@ -1,8 +1,7 @@
-if __name__ == "__main__":
-    from cytounet.model import *
-    from cytounet.augmentation import *
-    from cytounet.data import *
-    from cytounet.post_model import *
+def main():
+    from model import unet, dice_coef, dice_coef_loss
+    from augmentation import read_images
+    from data import generate_train_data, generate_validation_data, train, finetune, predict
     import argparse
     import os.path
 
@@ -115,5 +114,9 @@ if __name__ == "__main__":
                       custom_loss=use_custom_loss,
                       target_size=(arguments.size, arguments.size))
 
-    #if arguments.plot:
-        #show_images(y_test, results, number=10, titles=['truth', 'predicted'], figure_size=(20, 20))
+    # if arguments.plot:
+    # show_images(y_test, results, number=10, titles=['truth', 'predicted'], figure_size=(20, 20))
+
+
+if __name__ == "__main__":
+    main()

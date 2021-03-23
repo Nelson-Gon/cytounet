@@ -1,12 +1,12 @@
-from keras.models import *
+from tensorflow.keras.models import *
 # Just need to be explicit * imports can be ambiguous.
-from keras.models import load_model
-from keras.layers import *
-from keras.optimizers import *
-from keras import backend as keras_backend
-from data import generate_test_data
-from keras.regularizers import l1, l2, l1_l2
-from keras.callbacks import ModelCheckpoint
+from tensorflow.keras.models import load_model
+from tensorflow.keras.layers import *
+from tensorflow.keras.optimizers import *
+from tensorflow.keras import backend as keras_backend
+from .data import generate_test_data
+from tensorflow.keras.regularizers import l1, l2
+from tensorflow.keras.callbacks import ModelCheckpoint
 
 
 def dice_coef(y_true, y_pred, smooth=1):
