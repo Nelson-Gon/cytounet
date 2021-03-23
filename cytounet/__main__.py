@@ -1,27 +1,28 @@
 def main():
     from model import unet, dice_coef, dice_coef_loss
-    from augmentation import read_images
-    from data import generate_train_data, generate_validation_data, train, finetune, predict
+    from augmentation import read_images, show_images
+    from data import generate_train_data, generate_validation_data, generate_test_data
+    from model import train, predict, finetune
     import argparse
     import os.path
 
     # Run like this
-    # python scripts/sample.py -t "examples/original_data/a549" -i "images" -m "masks" -v
-    # "examples/original_data/a549/validation" -l "1e-8" -s 512 -e 5 -se 50 -b 8 -tt
-    # "examples/original_data/a549/test/images" -w "models/a549_test" -o "Adam" -mt "dice_coef"
-    # -ls "dice_coef_loss" -sd 2 -f 0
+    # ! python -m cytounet -t "examples/original_data/a549/train" -i "images" -m "masks" -v
+    # "examples/original_data/a549/validation" -l "1e-8" -s 512 -ep 5 -se 50 -b 8
+    # -tt "examples/original_data/a549/test/images" -w "models/a549_test" -o "Adam" -mt "dice_coef" -ls
+    # "dice_coef_loss" -sd 2 -f 0 -p 0
 
     # Add relevant arguments
 
     arg_parser = argparse.ArgumentParser()
     arg_parser.add_argument("-f", "--finetune", type=bool, help="Are you fine tuning?", required=True,
                             default=0)
-    arg_parser.add_argument("-p", "--plot", type=bool, help="Plot results?", required=True,
+    arg_parser.add_argument("-p", "--plot", type=bool, help="Plot results?", required=False,
                             default=0)
     arg_parser.add_argument("-t", "--train", type=str, help="Path to train directory",
                             required=True)
     arg_parser.add_argument("-tt", "--test", type=str, help="Path to test directory",
-                            required=True)
+                            required=False)
     arg_parser.add_argument("-i", "--image", type=str,
                             help="Name of train image directory. Uses the same for validation directory",
                             required=True)
@@ -40,21 +41,19 @@ def main():
     arg_parser.add_argument("-ls", "--loss", type=str, help="Loss to minimize. Defaults to dice_coef_loss",
                             required=True, default="dice_coef_loss")
     arg_parser.add_argument("-sd", "--seed", type=int, help="Seed to use for the training/prediction. Defaults to 2",
-                            required=True, default=2)
+                            required=False, default=2)
     arg_parser.add_argument("-w", "--weights", type=str, help="Path to save model weights to.",
                             required=True)
 
     arg_parser.add_argument("-s", "--size", type=int, help="Input size eg 512 for (512,512,1)", required=True)
-    arg_parser.add_argument("-e", "--epochs", type=int, help="Number of train epochs", required=True)
+    arg_parser.add_argument("-ep", "--epochs", type=int, help="Number of train epochs", required=True)
     arg_parser.add_argument("-se", "--steps", type=int, help="Steps per epoch", required=True)
 
     # TODO
-    # Boolean with dice vs other metrics --Done
+
     # Regularization
     # Control viewing of images read
     # Support different image extensions
-    # Control model saving -- Done
-    # Fine tuning vs scratch training --Done
 
     arguments = arg_parser.parse_args()
 
@@ -102,20 +101,35 @@ def main():
     model.save(save_weights_as)
     print("Returning predictions from training")
 
-    if arguments.finetune:
+    def make_bool(args_to_bool):
+        if isinstance(args_to_bool, bool):
+            pass
+        possible_choices = {"True": True,
+                            "1": True, "true": True, "False": False, 0: False,
+                            "0": False,
+                            "Yes": True, "No": False, "1": True, 1: True,
+                            "yes": True, "no": False}
+
+        return possible_choices[args_to_bool]
+
+    if make_bool(arguments.finetune):
         print("Fine tuning results, as requested")
-        history = finetune(save_weights_as, model, my_generator, epochs=arguments.epochs,
+        history = finetune(save_weights_as, model, my_generator,
+                           epochs=arguments.epochs,
                            steps_per_epoch=arguments.steps, verbose=1,
-                           validation_data=valid_generator, validation_steps=arguments.steps,
+                           validation_data=valid_generator,
+                           validation_steps=arguments.steps,
                            monitor_metric="val_loss",
                            save_best_only=True)
 
-    results = predict(test_path="test", model_weights=save_weights_as, train_seed=arguments.seed,
+    results = predict(test_path="test", model_weights=save_weights_as,
+                      train_seed=arguments.seed,
                       custom_loss=use_custom_loss,
                       target_size=(arguments.size, arguments.size))
 
-    # if arguments.plot:
-    # show_images(y_test, results, number=10, titles=['truth', 'predicted'], figure_size=(20, 20))
+    if make_bool(arguments.plot):
+        show_images(x_test, results, number=10, titles=['truth', 'predicted'],
+                    figure_size=(20, 20))
 
 
 if __name__ == "__main__":

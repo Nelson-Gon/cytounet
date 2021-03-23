@@ -2,6 +2,22 @@
 Changes to cytounet
 ===================
 
+**Version 0.2.2**
+
+
+* 
+  Versioning is now automated, as is linking to the GitHub release. Please ensure you release in the 
+  form ``v#versionnumberhere``. 
+
+* 
+  Fixed issues with script mode 
+
+* 
+  Using ``tensorflow.Keras`` instead of ``Keras``. 
+
+* 
+  Added sanity checks to ensure paths actually exist. 
+
 **Version 0.2.1**
 
 

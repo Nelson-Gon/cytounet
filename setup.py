@@ -1,5 +1,6 @@
 from setuptools import setup, find_packages
 from cytounet.version import __version__
+zip_link = "https://github.com/Nelson-Gon/cytounet/archive/refs/tags/v"+__version__+".zip"
 
 setup(name='cytounet',
       version=__version__,

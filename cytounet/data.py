@@ -7,6 +7,17 @@ from PIL import Image
 import cv2
 
 
+def assert_path_exists(dir_path, image_suffix=None, path_ext=None):
+    if not os.path.exists(dir_path):
+        raise NotADirectoryError(f"{dir_path} is not a valid directory")
+    if path_ext is not None:
+        dir_path = os.path.join(dir_path, path_ext)
+    if image_suffix is not None:
+        files = sorted(glob.glob(dir_path + "/*." + image_suffix))
+        if len(files) == 0:
+            raise ValueError(f"{dir_path} contains no images.")
+
+
 def generate_train_data(batch_size, train_path, image_folder, mask_folder, aug_dict, image_color_mode="grayscale",
                         mask_color_mode="grayscale", image_save_prefix="image", mask_save_prefix="mask",
                         save_to_dir=None, target_size=(256, 256), seed=1, show_names=True):
@@ -27,6 +38,8 @@ def generate_train_data(batch_size, train_path, image_folder, mask_folder, aug_d
     :param seed: Reproducibility. May also affect results. Defaults to 1
     :return: A generator object to use with keras fit or fit_generator
     """
+
+    assert_path_exists(train_path, path_ext=image_folder)
 
     image_datagen = ImageDataGenerator(**aug_dict)
     mask_datagen = ImageDataGenerator(**aug_dict)
@@ -70,6 +83,7 @@ def generate_test_data(test_path, train_seed, target_size=(256, 256), show_names
     :return: A test image generator object to feed to keras' predict
 
     """
+    assert_path_exists(test_path)
     test_data_gen = ImageDataGenerator(rescale=1 / 255.)
     test_data_gen = test_data_gen.flow_from_directory(directory=test_path,
                                                       target_size=target_size,
@@ -104,6 +118,7 @@ def generate_validation_data(batch_size, validation_path, image_folder, mask_fol
     :return: A generator object to supply to the validation_data argument of keras fit or previously fit_generator
 
     """
+    assert_path_exists(validation_path)
     image_datagen = ImageDataGenerator(**aug_dict)
     mask_datagen = ImageDataGenerator(**aug_dict)
     image_generator = image_datagen.flow_from_directory(
@@ -149,6 +164,9 @@ def load_augmentations(image_path, mask_path, image_prefix="image", mask_prefix=
     :return: A tuple of images and masks
 
     """
+
+    assert_path_exists(image_path, image_suffix=image_suffix)
+    assert_path_exists(mask_path, image_suffix=image_suffix)
 
     image_name_arr = glob.glob(os.path.join(image_path, "{}*.{}".format(image_prefix, image_suffix)))
     image_arr = []
