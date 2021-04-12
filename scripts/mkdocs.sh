@@ -4,7 +4,6 @@
 # Next we run make.bat to build docs
 # Finally we push to GitHub following doc builds
 # Need to check that we are in the correct directory
-# input module name
 base_dir="$(realpath "$0")"
 file_location="$(dirname "$base_dir")"
 modules_location="$(dirname "$file_location")"
@@ -20,7 +19,7 @@ if [ ! -f docs/source/modules.rst ]
 python -m m2r README.md changelog.md .github/CONTRIBUTING.md --overwrite
 mv .github/CONTRIBUTING.rst README.rst changelog.rst docs/source
 
-echo "Building docs for" "$1"
+echo "Building docs for" "$(dirname "$file_location")"
 ./make.bat html
 echo  -e "\e[0;36m All done, commit latest changes if you wish."
 echo  -e "\e[0;36m If there were errors or warnings, delete modules.rst and ensure index.rst exists before trying again."
