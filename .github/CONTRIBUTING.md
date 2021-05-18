@@ -27,12 +27,18 @@ Please also update the docs using `sphinx`
 
 * Do the following:
 
-```
-bash scripts/mkdocs.sh
-```
 
 
-* Releasing
+```
+bash scripts/mkdocs.sh 
+```
+
+**Commit messages**
+
+Please write commit messages in the format "Extends functionality" instead of "Extended functionality".
+
+
+**Releasing**
 
 ```shell
 bash scripts/release.sh
@@ -44,7 +50,6 @@ The above does the following:
  - Uploads `dist` to test.pypi.org with `twine upload --repository-url https://test.pypi.org/legacy/ dist/*`
  - If everything looks good, asks you to upload to pypi.org with `twine upload dist/*`
  
-
 Please note that the 'cytounet' project is released with a
 [Contributor Code of Conduct](https://github/com/Nelson-Gon/cytounet/.github/CODE_OF_CONDUCT.md).
 By contributing to this project, you agree to abide by its terms.
