@@ -26,11 +26,6 @@ cytounet: Deep Learning Based Cell Segmentation
    :alt: Test Install
 
 
-.. image:: https://travis-ci.com/Nelson-Gon/cytounet.svg?branch=master
-   :target: https://travis-ci.com/Nelson-Gon/cytounet.svg?branch=master
-   :alt: Travis Build
-
-
 .. image:: https://img.shields.io/pypi/l/cytounet.svg
    :target: https://pypi.python.org/pypi/cytounet/
    :alt: PyPI license
