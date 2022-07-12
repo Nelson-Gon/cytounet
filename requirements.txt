@@ -5,12 +5,15 @@ numpy>=1.16.0 # actual is 1.18.1
 Keras>=2.2.0 # actual is 2.4.3
 Pillow>=6.0.0 # actual is 7.0.0
 opencv-python>=4.0.0.32 # actual is 4.2.0.32
-Sphinx==3.4.0
+Sphinx>=5.0.1
 sphinxcontrib-applehelp==1.0.2
 sphinxcontrib-devhelp==1.0.2
-sphinxcontrib-htmlhelp==1.0.3
+sphinxcontrib-htmlhelp==2.0.0
 sphinxcontrib-jsmath==1.0.1
 sphinxcontrib-qthelp==1.0.3
-sphinxcontrib-serializinghtml==1.1.4
+sphinxcontrib-serializinghtml==1.1.5
+mistune==0.8.4  
+m2r==0.2.1
+coverage==5.3.1
 
 
